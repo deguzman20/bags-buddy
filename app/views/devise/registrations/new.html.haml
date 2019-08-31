@@ -1,0 +1,57 @@
+.container
+  %br/
+  %br/
+  %br/
+  .row
+    .col-lg-3
+    .col-lg-6
+      .card
+        %h5.card-header.elegant-color.white-text.text-center.py-4
+          %strong Sign up
+        .card-body.px-lg-5.pt-0
+          = form_for(resource, as: resource_name,   |
+             url: registration_path(resource_name), |
+             class: 'text-center',                  |
+             style: 'color: #757575') do |f|        |
+            .form-row
+              .col
+                .md-form
+                  = f.text_field :first_name, class: 'form-control', |
+                    id: 'materialRegisterFormFirstName'              |
+                  %label{:for => "materialRegisterFormFirstName"}
+                    First name
+              .col
+                .md-form
+                  = f.text_field :last_name, class: 'form-control', |
+                    id: 'materialRegisterFormLastName'              |
+                  %label{:for => "materialRegisterFormLastName"}
+                    Last name
+            .md-form.mt-0
+              = f.email_field :email, class: 'form-control', |
+                id: 'materialRegisterFormEmail'              |
+              %label{:for => "materialRegisterFormFirstName"} E-mail
+            .md-form
+              = f.password_field :password,        |
+                class: 'form-control',             |
+                id: 'materialRegisterFormPassword' |
+              %label{:for => "materialRegisterFormPassword"}
+                Password
+            .md-form
+              = f.password_field :password_confirmation,       |
+                class: 'form-control',                         |
+                id: 'materialRegisterFormPasswordConfirmation' |
+              %label{:for => "materialRegisterFormPasswordConfirmation"}
+                Confirm Password
+            .row
+              .col-lg-12.col-md-12
+                %div{:style => "position: relative;left:40%"}
+                  = f.submit "Register",                |
+                    class: 'btn btn-success btn-rounded |
+                    btn-block waves-effect z-depth-0'   |
+                  %button.btn.btn-primary
+                    = link_to 'Login', new_user_session_path, |
+                      class: 'white-text'                     |
+    .col-lg-3
+%br/
+%br/
+= javascript_include_tag 'register.js'

@@ -1,0 +1,58 @@
+.container
+  %br/
+  %br/
+  %br/
+  .row
+    .col-lg-3.col-md-3
+    .col-lg-6.col-md-6
+      .card
+        %h5.card-header.elegant-color.white-text.text-center.py-4
+          %strong Sign in
+        / Card content
+        .card-body.px-lg-5.pt-0
+          = form_for(resource, as: resource_name, |
+            url: session_path(resource_name),     |
+            style: "color: #757575") do |f|       |
+            / Email
+            .md-form
+              = f.email_field :email,         |
+                id: "materialLoginFormEmail", |
+                class: "form-control"         |
+              %label{:for => "materialLoginFormEmail"} E-mail
+            / Password
+            .md-form
+              = f.password_field :password,      |
+                id: "materialLoginFormPassword", |
+                class: "form-control"            |
+              %label{:for => "materialLoginFormPassword"} Password
+            .d-flex.justify-content-around
+              %div
+                / Remember me
+                .form-check
+                  %input#materialLoginFormRemember.form-check-input{:name => "user[remember_me]", :type => "checkbox"}/
+                  %label.form-check-label{:for => "materialLoginFormRemember"}
+                    Remember me
+              %div
+                / Forgot password
+                = link_to "Forgot Password?", new_user_password_path
+            %br/
+            %button.btn.btn-success.waves-effect.waves-light.btn-block{"data-disable-with" => "Log in", :name => "commit", :type => "submit"}
+              Login
+            %br/
+            / Sign in button
+            - unless notice.nil?
+              .alert.alert-warning
+                %center= notice
+            - unless alert.nil?
+              .alert.alert-danger
+                %center= alert
+            #alert-panel
+            / Register
+            %center
+              %p
+                Not a member?
+                \#{link_to "Register" , new_user_registration_path}
+    .col-lg-3.col-md-3
+%br/
+%br/
+= javascript_include_tag 'login.js'

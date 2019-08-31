@@ -1,0 +1,69 @@
+.container
+  %section.text-center.my-5
+    %h2.h1-responsive.font-weight-bold.text-center.my-5 Portal
+    .row
+      .col-lg-4
+        %br/
+        %select#select_brand.browser-default.custom-select
+          %option Select Brand
+          - @brands.each do |brand|
+            = brand.brand_name
+      .col-lg-4
+        %br/
+        %select#select_category.browser-default.custom-select
+          %option Select Category
+          - @categories.each do |category|
+            = category.category_name
+      .col-lg-4
+        %br/
+        %select#select_item_type.browser-default.custom-select
+          %option Select Item Type
+          = @item_types.each do |item_type|
+            = item_type.item_type_name
+    %br/
+    .row
+      - @portals.each do |portal|
+        %div{:class => ["portal",
+                        "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
+                        "filter",
+                        "brand-#{portal.brand_id}",
+                        "category-#{portal.category_id}",
+                        "brand-#{portal.brand_id}-category-#{portal.category_id}"]}
+          .card.align-items-center
+            .view.overlay
+              = image_tag portal.image.to_s, class: 'card-img-top'
+              %a
+                .mask.rgba-white-slight
+            .card-body.text-center
+              .row
+                .col-lg-6.col-md-6
+                  %br/
+                  %h4= portal.category.name
+                .col-lg-6.col-md-6
+                  = link_to '<button class="btn btn-success text-white">Visit</button>'.html_safe, "#{portal.link}", |
+                    target: '_blank'                                                                                 |
+    .row
+      - @products.each do |product|
+        %div{:class => ["portal",
+                        "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4",
+                        "filter",
+                        "brand-#{product.brand_id}",
+                        "category-#{product.category_id}",
+                        "brand-#{product.brand_id}-category-#{product.category_id}"]}
+          .card.align-items-center
+            .view.overlay
+              = image_tag product.image.to_s, class: 'card-img-top'
+              %a
+                .mask.rgba-white-slight
+            .card-body.text-center
+              .row
+                .col-lg-12.col-md-12
+                  %center
+                    %h4= product.name
+                .col-lg-12.col-md-12
+                  %center
+                    %h5
+                      ₱ #{product.price}
+                .col-lg-12.col-md-12
+                  = link_to '<button class="btn btn-success text-white">Add to Cart</button>'.html_safe, add_to_cart_path(product.id)
+= javascript_include_tag 'filter-portal.js'
