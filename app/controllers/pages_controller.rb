@@ -24,11 +24,19 @@ class PagesController < ApplicationController
                       current_user.id,
                       params[:id]
                      )
-
       redirect_to cart_path if cart_product
     else
       redirect_to new_user_session_path
     end
+  end
+
+  def non_on_hand_add_to_cart
+    if user_signed_in?
+      pp 'login'
+    else
+      # redirect_to new_user_session_path
+    end
+    render json: params.to_json
   end
 
   def increase_product_quantity
@@ -83,4 +91,13 @@ class PagesController < ApplicationController
     end
   end
 
+  def calculator
+    @brands = Brand.all.decorate
+    @categories = Category.all.decorate
+  end
+
+  def calculate
+    calculate = Pages::CalculatorService.call(params)
+    render json: calculate.to_json
+  end
 end
