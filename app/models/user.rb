@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :cart
+  has_many :orders
 
   # def decrypted_password
   #   Devise::Encryptable::Encryptors::Aes256.decrypt(password,

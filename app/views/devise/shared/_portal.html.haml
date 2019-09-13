@@ -2,24 +2,16 @@
   %section.text-center.my-5
     %h2.h1-responsive.font-weight-bold.text-center.my-5 Portal
     .row
-      .col-lg-4
+      .col-lg-6
         %br/
         %select#select_brand.browser-default.custom-select
           %option Select Brand
           - @brands.each do |brand|
             = brand.brand_name
-      .col-lg-4
+      .col-lg-6
         %br/
         %select#select_category.browser-default.custom-select
-          %option Select Category
-          - @categories.each do |category|
-            = category.category_name
-      .col-lg-4
-        %br/
-        %select#select_item_type.browser-default.custom-select
-          %option Select Item Type
-          = @item_types.each do |item_type|
-            = item_type.item_type_name
+          %option#select_category_option Select Category
     %br/
     .row
       - @portals.each do |portal|
@@ -63,7 +55,8 @@
                 .col-lg-12.col-md-12
                   %center
                     %h5
-                      ₱ #{product.price}
+                      ₱ #{product.price}
                 .col-lg-12.col-md-12
                   = link_to '<button class="btn btn-success text-white">Add to Cart</button>'.html_safe, add_to_cart_path(product.id)
+= javascript_include_tag 'portal.js'
 = javascript_include_tag 'filter-portal.js'

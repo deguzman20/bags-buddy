@@ -1,52 +1,47 @@
 $(function(){
     $("#select_brand").change(function(){
      var brand = $(this).val();
-	 var category = $("#select_category").val();
+	   var category = $("#select_category").val();
 
           if(brand == "Select Brand" && category == "Select Category"){
-            $('.filter').show('1000');
-            console.log('1');
+            $('.filter').fadeIn();
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-${brand}`).show();
-              $(`.filter:not(.brand-${brand})`).hide();
-              console.log('2');
+              $(`.brand-${brand}`).fadeIn();
+              $(`.filter:not(.brand-${brand})`).fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-${category}`).show();
-              $(`.filter:not(.category-${category})`).hide();
-              console.log('3');
+              $(`.category-${category}`).fadeIn();
+              $(`.filter:not(.category-${category})`).fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(`div[class='brand-${brand}-category-${category}']`).show();
-              $(`.filter:not(.brand-${brand}-category-${category})`).hide();
+              $(".filter").not(`.brand-${brand}-category-${category}`).fadeOut();
+              $(".filter").filter(`.brand-${brand}-category-${category}`).fadeIn();
             }
           }
     });
 
 	  $("#select_category").change(function(){
-		var brand = $("#select_brand").val();
-		var category = $(this).val();
+		  var brand = $("#select_brand").val();
+	   	var category = $(this).val();
 
           if(brand == "Select Brand" && category == "Select Category"){
-            $('.filter').show('1000');
-            console.log('5');
+            $('.filter').fadeIn();
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-${brand}`).show();
-              $(`.filter:not(.brand-${brand})`).hide();
-              console.log('6');
+              $(`.brand-${brand}`).fadeIn();
+              $(`.filter:not(.brand-${brand})`).fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-${category}`).show();
-              $(`.filter:not(.category-${category})`).hide();
-              console.log('7');
+              $(`.category-${category}`).fadeIn();
+              $(`.brand-${brand}-category-${category}`).fadeIn();
+              $(`.filter:not(.category-${category})`).fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(`div[class='brand-${brand}-category-${category}']`).show();
-              $(`.filter:not(.brand-${brand}-category-${category})`).hide();
+              $(".filter").not(`.brand-${brand}-category-${category}`).fadeOut();
+              $(".filter").filter(`.brand-${brand}-category-${category}`).fadeIn();
             }
           }
 

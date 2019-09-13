@@ -1,0 +1,2 @@
+class ExchageRate < ApplicationRecord
+end

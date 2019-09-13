@@ -5,8 +5,16 @@ class PagesController < ApplicationController
     @portals    = Portal.all
     @carousels  = Carousel.limit(5)
     @brands     = Brand.all.decorate
-    @categories = Category.all.decorate
-    @item_types = ItemType.all.decorate
+  end
+
+  def brand_category
+    brand_category = BrandCategory.where(brand_id: params[:id])
+    render json: brand_category
+  end
+
+  def category
+    category = Category.find(params[:category_id])
+    render json: {id: category.id, name: category.name}
   end
 
   def cart
@@ -32,11 +40,16 @@ class PagesController < ApplicationController
 
   def non_on_hand_add_to_cart
     if user_signed_in?
-      pp 'login'
-    else
-      # redirect_to new_user_session_path
+      cart_product = Pages::CartProductService.call(
+                      current_user.id,
+                      params[:id],
+                      params
+                     )
+    #   redirect_to cart_path if cart_product
+    # else
+    #   redirect_to new_user_session_path
     end
-    render json: params.to_json
+    render json: cart_product.to_json
   end
 
   def increase_product_quantity

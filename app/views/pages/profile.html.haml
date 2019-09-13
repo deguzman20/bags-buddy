@@ -15,26 +15,21 @@
               .col
                 / First name
                 .md-form
-                  = f.text_field :first_name,       |
-                    id: "materialProfileFirstName", |
-                    class: "form-control"           |
-                  = f.label :first_name,            |
-                    for: "materialProfileFirstName" |
+                  = f.text_field :first_name, id: "materialProfileFirstName", class: "form-control"
+                  = f.label :first_name,
+                    for: "materialProfileFirstName"
               .col
-                / Last name
+                / Last name|
+
                 .md-form
-                  = f.text_field :last_name,       |
-                    id: "materialProfileLastName", |
-                    class: "form-control"          |
-                  = f.label :last_name,            |
-                    for: "materialProfileLastName" |
+                  = f.text_field :last_name, id: "materialProfileLastName", class: "form-control"
+                  = f.label :last_name,
+                    for: "materialProfileLastName"
             / E-mail
             .md-form.mt-0
-              = f.email_field :email,       |
-                id: "materialProfileEmail", |
-                class: "form-control"       |
-              = f.label :email,             |
-                for: "materialProfileEmail" |
+              = f.email_field :email, id: "materialProfileEmail", class: "form-control"
+              = f.label :email,
+                for: "materialProfileEmail"
             .row
               .col-lg-12.col-md-12
                 - if flash[:success].present?

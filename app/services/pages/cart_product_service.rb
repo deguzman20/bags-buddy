@@ -1,10 +1,14 @@
 module Pages
   class CartProductService < ApplicationService
-    attr_accessor :user_id, :product_id
+    attr_accessor :user_id, :product_id, :item_type_id, :quantity, :price, :attrib
 
-    def initialize(user_id, product_id)
-      @user_id     = user_id
-      @product_id  = product_id
+    def initialize(user_id, product_id, attr = {})
+      @attrib        = attr
+      @user_id       = user_id
+      @product_id    = product_id
+      @item_type_id  = attr[:item_type_id].nil? ? 1 : 2
+      @quantity      = attr[:quantity].nil? ? 1 : attr[:quantity]
+      @price         = attr[:price].nil? ? 0 : attr[:price]
     end
 
     def call
@@ -22,7 +26,9 @@ module Pages
         cart_product = CartProduct.new
         cart_product.cart_id = cart_id
         cart_product.product_id = product_id
-        cart_product.quantity = 1
+        cart_product.quantity = quantity
+        cart_product.item_type_id = item_type_id
+        cart_product.price       = price
         cart_product.save!
       end
     end

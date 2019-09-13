@@ -1,6 +1,6 @@
 $(function(){
   $(`#materialRegisterFormFirstName,
-     #materialRegisterFormLastName, 
+     #materialRegisterFormLastName,
      #materialRegisterFormEmail,
      #materialRegisterFormPassword,
      #materialRegisterFormPasswordConfirmation`).attr("autocomplete","off");
