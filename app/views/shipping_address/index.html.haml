@@ -1,0 +1,92 @@
+.container
+  %br/
+  %br/
+  %br/
+  .row
+    .col-lg-2
+    .col-lg-8
+      .card
+        %h5.card-header.elegant-color.white-text.py-4
+          %strong Shipping Address
+        .card-body.px-lg-5.pt-0
+          = form_tag('/', class: 'text-center', style: 'color: #757575') do
+            .form-row
+              .col
+                .md-form
+                  = text_field_tag :first_name, |
+                    nil, id: 'materialRegisterFormFirstName', class: 'form-control'   |
+                  %label{:for => "materialRegisterFormFirstName"}
+                    First name
+              .col
+                .md-form
+                  = text_field_tag :last_name, |
+                    nil, id: 'materialRegisterFormLastName', class: 'form-control'   |
+                  %label{:for => "materialRegisterFormLastName"}
+                    Last name
+            .form-row
+              .col
+                .md-form
+                  = text_field_tag :address, |
+                    nil, id: 'materialRegisterFormAddress', class: 'form-control'   |
+                  %label{:for => "materialRegisterFormAddress"}
+                    Address
+              .col
+                .md-form
+                  = text_field_tag :apartment, |
+                    nil, id: 'materialRegisterFormApartment', class: 'form-control'   |
+                  %label{:for => "materialRegisterFormApartment"}
+                    Apartment  
+            .form-row
+              .col
+                .md-form
+                  = select_tag :states, |
+                    nil, id: 'materialRegisterFormStates', class: 'browser-default custom-select custom-select-lg mb-3'   |  
+              .col
+                .md-form
+                  = select_tag :cities, |
+                    nil, id: 'materialRegisterFormCities', class: 'browser-default custom-select custom-select-lg mb-3'   |
+            .row
+              .custom-control.custom-checkbox
+                %input#shipping_address.custom-control-input{:checked => "checked", :type => "checkbox"}/
+                %label.custom-control-label{:for => "shipping_address"} Save Shipping Addess
+            %hr/
+            .row
+              .col-lg-12-col-md-12
+                %h5.py-4
+                  %strong Social Media Information
+            .row 
+              .col-lg-6.col-md-6 
+                .form-row
+                  .col
+                    .md-form
+                      = text_field_tag :email, |
+                        nil, id: 'materialRegisterFormFB', class: 'form-control'   |
+                      %label{:for => "materialRegisterFormFB"}
+                        Facebook Email (optional)
+            .row
+              .col-lg-12-col-md-12
+                %h5.py-4
+                  %strong Contact Information
+            .row 
+              .col-lg-6.col-md-6 
+                .form-row
+                  .col
+                    .md-form
+                      = text_field_tag :mobile_number, |
+                        nil, id: 'materialRegisterFormMobileNo', class: 'form-control'   |
+                      %label{:for => "materialRegisterFormMobileNo"}
+                        Mobile Number               
+            .row
+              .col-lg-12.col-md-12
+                %div{:style => "position: relative;left:30%"}
+                  = submit_tag "Checkout",              |
+                    class: 'btn btn-elegant btn-rounded |
+                    btn-block waves-effect z-depth-0',  |
+                    id: 'checkout'
+                  %button.btn.btn-danger
+                    = link_to 'Back', new_user_session_path, |
+                      class: 'white-text'                    |     
+    .col-lg-2
+%br/
+%br/
+= javascript_include_tag 'shipping_address.js'

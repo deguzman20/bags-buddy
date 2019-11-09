@@ -19,20 +19,26 @@
                   %strong Quantity
                 %th.font-weight-bold
                   %strong Amount
+                %th.font-weight-bold
+                  %strong Item Type
                 %th
+                  %strong Action
             %tbody.tbody-res
               - @cart_products.each do |cart_product|
                 %tr{:id => "row-#{cart_product.id}"}
                   %th{:scope => "row"}
-                    = image_tag cart_product.product.nil? ? "" : cart_product.product.image.url, class: 'img-thumbnail z-depth-0', width: 75, height: 75
+                    - if cart_product.product.nil?
+                      = image_tag "cart_logo", class: 'img-thumbnail z-depth-0', width: 75, height: 75
+                    - unless cart_product.product.nil?
+                      = image_tag cart_product.product.nil? ? "" : cart_product.product.image.url, class: 'img-thumbnail z-depth-0', width: 75, height: 75
                   %td
-                    %h5.mt-3
+                    %h6.mt-3
                       %strong= cart_product.product.nil? ? "" : cart_product.product.name
                   %td
                   %td
-                    %span{:class => "#{cart_product.product.nil? ? cart_product.price : cart_product.product.price}", :id => "price-#{cart_product.id}"}
+                    %span{:class => "#{cart_product.product.nil? ? cart_product.price * @exchange_rate : cart_product.product.price}", :id => "price-#{cart_product.id}"}
                       %br/
-                      = number_to_currency(cart_product.product.nil? ? cart_product.price : cart_product.product.price  , :unit => "₱", :separator => ".", :delimiter => ",")
+                      = number_to_currency(cart_product.product.nil? ? cart_product.price * @exchange_rate : cart_product.product.price  , :unit => "₱", :separator => ".", :delimiter => ",")
                   %td.center-on-small-only
                     .btn-group.radio-group.ml-2{"data-toggle" => "buttons"}
                       %label.btn.btn-sm.btn-rounded.waves-effect.waves-light.lbl-color-white{:id => "quantity-minus-#{cart_product.id}"}
@@ -46,6 +52,9 @@
                     %br/
                     %strong
                       %span{:id => "amount-#{cart_product.id}"}
+                  %td
+                    %br/
+                    = cart_product.product.nil? ? "<span class='badge badge-success text-white'>Not on Hand</span>".html_safe : "<span class='badge badge-info text-white'>On Hand</span>".html_safe
                   %td
                     %button.btn.btn-sm.waves-effect.waves-light.lbl-remove-item{"data-original-title" => "Remove item", "data-placement" => "top", "data-toggle" => "tooltip", :id => "delete-#{cart_product.id}", :style => "", :title => "", :type => "button"}
                       X

@@ -6,4 +6,8 @@ class CreateCarts < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
+
+  def down
+    remove_column :carts, :user_id
+  end  
 end

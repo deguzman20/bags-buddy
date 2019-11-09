@@ -1,3 +1,4 @@
+# Model for User
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -5,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :cart
   has_many :orders
+  has_many :shipping_addresses
+  validates_uniqueness_of :email
 
   # def decrypted_password
   #   Devise::Encryptable::Encryptors::Aes256.decrypt(password,
@@ -13,5 +16,4 @@ class User < ApplicationRecord
 
   # validates :email, presence: true
   # validates :password, presence: true
-
 end

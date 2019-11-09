@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.elegant-color
-       
+       
   %a.navbar-brand{:href => "/"}
     Bags Buddy
   %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarText", "data-toggle" => "collapse", :type => "button"}
@@ -8,4 +8,5 @@
     %ul#nav-menu.navbar-nav.mr-auto
       %li.nav-item
       %li.nav-item
-    = is_login
+    = login?
+= stylesheet_link_tag  'style.css'

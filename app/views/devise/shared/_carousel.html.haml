@@ -1,13 +1,13 @@
 / Carousel Wrapper
 #carousel-example-2.carousel.slide.carousel-fade{"data-ride" => "carousel"}
   %ol.carousel-indicators
-    - @carousels.each do |v,k|
-      %li{"data-slide-to" => "0", "data-target" => "#carousel-example-#{v.id}"}
+    - carousels.each do |v,k|
+      %li{"data-slide-to" => "#{k}", "data-target" => "#carousel-example-2"}
   .carousel-inner{:role => "listbox"}
-    - @carousels.each do |v,k|
+    - carousels.each do |v,k|
       .carousel-item.active
         .view
-          = image_tag v.image.to_s, class: 'd-block w-100', id: v.id.to_s
+          = image_tag v.image.to_s, class: 'd-block w-100', id: k.to_s
           .mask.rgba-black-light
   %a.carousel-control-prev{"data-slide" => "prev", :href => "#carousel-example-2", :role => "button"}
     %span.carousel-control-prev-icon{"aria-hidden" => "true"}

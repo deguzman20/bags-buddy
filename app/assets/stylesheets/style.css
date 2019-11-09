@@ -22,3 +22,56 @@ html::-webkit-scrollbar-thumb
   background-color:black;
   color:white;
 }
+
+/* @media (min-width:300px) and (max-width:910px){
+  #dropdown {
+    position: relative;
+    left: 1400%;
+  }
+  
+  /* #navbarDropdownMenuLink-333 {
+    position: relative;
+    left: 1400%;
+  } */
+/* }  */
+
+
+@media(min-width:767px) and (max-width:777px){
+  #dropdown{
+    position: relative;
+    left: 1230%;
+  }
+  #navbarDropdownMenuLink-333 {
+    position: relative;
+    left: 1450%;
+  } 
+}
+
+@media(min-width:991px) and (max-width:1056px){  
+  #navbarDropdownMenuLink-333 {
+    position: relative;
+    left: 10%;
+  } 
+}
+
+/* @media(min-width:1057px) and (max-width:1108px){
+  #nav-menu{
+    position: relative;
+    left:25%;
+  }
+}
+
+@media(min-width:1110px) and (max-width:1249px){
+  #nav-menu{
+    position: relative;
+    left:30%;
+  }
+}
+
+
+@media(min-width:1250px) and (max-width:2000px){
+  #nav-menu{
+    position: relative;
+    left:40%;
+  }
+} */

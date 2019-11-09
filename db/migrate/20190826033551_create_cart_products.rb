@@ -7,6 +7,7 @@ class CreateCartProducts < ActiveRecord::Migration[5.2]
       t.string  :link
       t.integer :quantity
       t.integer :item_type_id
+      t.decimal :additional
 
       t.timestamps
     end

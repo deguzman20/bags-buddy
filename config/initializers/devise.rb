@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -8,7 +6,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '39e03774d0095f1435263f6d839f86ffc439142f39cc69acb5fac76b4d3784c14f7fc3a626d0ff3f89fedce7cb60ffc5ce120dbaeb21b08f688fb8ab7832be5c'
+  # config.secret_key = '39e03774d0095f1435263f6d839f86ffc439142f39cc69acb5fac76b4d3784c14
+  # f7fc3a626d0ff3f89fedce7cb60ffc5ce120dbaeb21b08f688fb8ab7832be5c'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -18,11 +17,11 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
 
+  # config.mailer = 'Devise::Mailer'
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
 
@@ -30,7 +29,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -114,7 +113,8 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'a2bd46c864ce008aadf24185c7ffd5ccf246139ec5c151444c01cf8bdb8da5a755f58a5b2bd716c9f09dea196fc0bc4c22dc21b84b7f5a1d8836e09871ddea98'
+  # config.pepper = 'a2bd46c864ce008aadf24185c7ffd5ccf246139ec5c151444c01cf8bdb8da5a
+  # 755f58a5b2bd716c9f09dea196fc0bc4c22dc21b84b7f5a1d8836e09871ddea98'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

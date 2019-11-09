@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# sessions controller
 class Users::SessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token
   # before_action :configure_sign_in_params, only: [:create]

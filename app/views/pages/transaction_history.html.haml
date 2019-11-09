@@ -1,0 +1,42 @@
+.container
+  .col-md-12.col-lg-12.mb-5
+    %br/
+    .card
+      .card-body
+        .table-responsive.table-hover
+          %table#shopping.table.product-table
+            / Table head
+            %thead.elegant-color
+              %tr
+                %th.font-weight-bold
+                  %strong Order ID
+                %th.font-weight-bold
+                  %strong Order Status
+                %th.font-weight-bold
+                  %strong Payment Status
+                %th.font-weight-bold
+                  %strong Total
+                %th.font-weight-bold
+                  %strong Down Payment
+                %th.font-weight-bold
+                  %strong Balance  
+                %th.font-weight-bold
+                  %strong Action
+            %tbody.tbody-res
+              - @orders.each do |order|
+                %tr
+                  %td
+                    = "0000-#{order.id}"
+                  %td
+                    = order.order_status.name unless order.order_status.nil? 
+                  %td
+                    = order.payment_order_status.name unless order.payment_order_status.nil?     
+                  %td
+                    = "#{number_to_currency(order.total, :unit => "₱", :separator => ".", :delimiter => ",")}" unless order.total.nil?                               
+                  %td
+                    = "#{number_to_currency(order.down_payment, :unit => "₱", :separator => ".", :delimiter => ",")}" unless order.down_payment.nil?                              
+                  %td
+                    = "#{number_to_currency(order.balance, :unit => "₱", :separator => ".", :delimiter => ",")}" unless order.balance.nil?                                
+                  %td
+                    = link_to "<button class='btn btn-sm waves-effect waves-light lbl-remove-item'>View</button>".html_safe, order_product_path(order.id)
+= stylesheet_link_tag  'cart.css'

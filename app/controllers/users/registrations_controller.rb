@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# regisgration controller
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -16,11 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       id = resource.id
       cart = Cart.new
       cart.user_id = id
-      if cart.save!
-			  redirect_to root_path
-      end
+      redirect_to root_path if cart.save!
     else
-      pp resource.errors.full_messages
+      flash[:error] = resource.errors.full_messages[0]
+      redirect_to new_user_registration_path
     end
   end
 
@@ -73,7 +71,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(
       :first_name,
       :last_name,
+      :birthdate,
       :email,
-      :password)
+      :password
+    )
   end
 end

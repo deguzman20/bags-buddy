@@ -1,0 +1,64 @@
+.container
+  .row
+    .col-md-8.col-lg-8.mb-5
+      %br/
+      .card
+        .card-body
+          .table-responsive.table-hover
+            %table#shopping.table.product-table
+              %thead.elegant-color
+                %tr
+                  %th.font-weight-bold
+                    %strong Order ID
+                  %th.font-weight-bold
+                    %strong Image  
+                  %th.font-weight-bold
+                    %strong Product
+                  %th.font-weight-bold
+                    %strong Subtotal
+                %tbody.tbody-res
+                - @order_products.each do |op|
+                  %tr
+                    %td
+                      = op.order_id
+                    %td
+                      - if op.product.nil?
+                        = image_tag "cart_logo", class: 'img-thumbnail z-depth-0', width: 75, height: 75
+                      - unless op.product.nil?
+                        = image_tag op.product.nil? ? "" : op.product.image.url, class: 'img-thumbnail z-depth-0', width: 75, height: 75
+                    %td
+                      = op.product.name unless op.product.nil?
+                    %td
+                      = "#{number_to_currency(op.sub_total / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"  
+    .col-md-4.col-lg-4.mb-5
+      %br/
+      .card
+        .card-body
+          .table-responsive.table-hover
+            %table#shopping.table.product-table
+              %thead
+                %tr
+                  %td
+                    %h4{ style: "color:gray" }
+                      = "Exchange Rate:"   
+                  %td
+                    %h4{ style: "color:gray" }
+                      = "#{number_to_currency(@exchange_rate, :unit => "₱", :separator => ".", :delimiter => ",")}"      
+                %tr
+                  %td
+                    %h4{ style: "color:gray" }
+                      = "Subtotal: "       
+                  %td
+                    %h4{ style: "color:gray" }
+                      = "#{number_to_currency(@subtotal / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"        
+                %tr    
+                  %td 
+                    %h4{ style: "color:gray" }
+                      = "Total: "
+                  %td
+                    %h4{ style: "color:gray" }
+                      = "#{number_to_currency(@total / @exchange_rate, :unit => "₱", :separator => ".", :delimiter => ",")}"   
+                    %br/
+                
+= stylesheet_link_tag  'cart.css'
+        

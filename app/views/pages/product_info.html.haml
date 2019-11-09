@@ -1,0 +1,24 @@
+.container
+  %br/
+  .col-md-12.col-lg-12
+    .row
+      .col-md-6.col-lg-6
+        .card
+          / Card image
+          = image_tag @product_info.image.to_s, class: "card-img-top img thumbnail"
+          / Card content
+          .card-body
+        
+      .col-md-6.col-lg-6
+        .card
+          .card-body
+            / Title
+            %h4.card-title
+              %h3
+                = @product_info.name
+            / Text
+            %p.card-text 
+              %hr
+              %p
+                = @product_info.product_description 
+  %br/

@@ -1,4 +1,4 @@
-# product model
+# Model for Product
 class Product < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :category

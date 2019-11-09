@@ -1,8 +1,8 @@
 ItemType.create([
-  {
-    name: 'On Hand'
-  },
-  {
-    name: 'For Shipping'
-  }
-])
+                  {
+                    name: "On Hand"
+                  },
+                  {
+                    name: "For Shipping"
+                  }
+                ])

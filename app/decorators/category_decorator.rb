@@ -4,7 +4,7 @@ class CategoryDecorator < Draper::Decorator
   delegate_all
 
   def category_name
-    content_tag :option, class: "category-#{id}", value: id  do
+    content_tag :option, class: "category-#{id}", value: id do
       name
     end
   end

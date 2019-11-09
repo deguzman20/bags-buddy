@@ -1,50 +1,66 @@
 .container
+  %hr/
   %section.text-center.my-5
-    %h2.h1-responsive.font-weight-bold.text-center.my-5 Portal
+    %h2.h1-responsive.font-weight-bold.text-center.my-5 Pre Order
     .row
       .col-lg-6
         %br/
-        %select#select_brand.browser-default.custom-select
+        %select#select_brand_portal.browser-default.custom-select
           %option Select Brand
           - @brands.each do |brand|
             = brand.brand_name
       .col-lg-6
         %br/
-        %select#select_category.browser-default.custom-select
+        %select#select_category_portal.browser-default.custom-select
           %option#select_category_option Select Category
     %br/
     .row
-      - @portals.each do |portal|
+      - @pre_orders.each do |pre_order|
         %div{:class => ["portal",
                         "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
-                        "filter",
-                        "brand-#{portal.brand_id}",
-                        "category-#{portal.category_id}",
-                        "brand-#{portal.brand_id}-category-#{portal.category_id}"]}
+                        "filter-portal",
+                        "brand-portal-#{pre_order.brand_id}",
+                        "category-portal-#{pre_order.category_id}",
+                        "brand-portal-#{pre_order.brand_id}-category-portal-#{pre_order.category_id}"]}
           .card.align-items-center
             .view.overlay
-              = image_tag portal.image.to_s, class: 'card-img-top'
+              = image_tag pre_order.image.to_s, class: 'card-img-top'
               %a
                 .mask.rgba-white-slight
             .card-body.text-center
               .row
                 .col-lg-6.col-md-6
                   %br/
-                  %h4= portal.category.name
+                  %h4= pre_order.category.name
                 .col-lg-6.col-md-6
-                  = link_to '<button class="btn btn-success text-white">Visit</button>'.html_safe, "#{portal.link}", |
+                  = link_to '<button class="btn btn-success text-white">Visit</button>'.html_safe, "#{pre_order.link}", |
                     target: '_blank'                                                                                 |
+    %hr/
+    %section.text-center.my-5
+    %h2.h1-responsive.font-weight-bold.text-center.my-5 On Hand Product
+    .row
+      .col-lg-6
+        %br/
+        %select#select_brand_on_hand.browser-default.custom-select
+          %option Select Brand
+          - @brands.each do |brand|
+            = brand.brand_name
+      .col-lg-6
+        %br/
+        %select#select_category_on_hand.browser-default.custom-select
+          %option#select_category_option Select Category
+    %br/
     .row
       - @products.each do |product|
         %div{:class => ["portal",
                         "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4",
-                        "filter",
-                        "brand-#{product.brand_id}",
-                        "category-#{product.category_id}",
-                        "brand-#{product.brand_id}-category-#{product.category_id}"]}
+                        "filter-on-hand",
+                        "brand-on-hand-#{product.brand_id}",
+                        "category-on-hand-#{product.category_id}",
+                        "brand-on-hand-#{product.brand_id}-category-on-hand-#{product.category_id}"]}
           .card.align-items-center
             .view.overlay
-              = image_tag product.image.to_s, class: 'card-img-top'
+              = image_tag product.image.thumb.to_s, class: 'card-img-top img'
               %a
                 .mask.rgba-white-slight
             .card-body.text-center
@@ -55,8 +71,10 @@
                 .col-lg-12.col-md-12
                   %center
                     %h5
-                      ₱ #{product.price}
-                .col-lg-12.col-md-12
-                  = link_to '<button class="btn btn-success text-white">Add to Cart</button>'.html_safe, add_to_cart_path(product.id)
+                      = "#{number_to_currency(product.price, :unit => "₱", :separator => ".", :delimiter => ",")}"      
+                .col.lg-12.col-mf-12
+                  .div{class: "btn-group btn-group-sm"}
+                    = link_to '<button class="btn btn-success text-white" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-cart-arrow-down"></i></button>'.html_safe, add_to_cart_path(product.id)
+                    = link_to '<button class="btn btn-danger text-white"  data-toggle="tooltip" data-placement="top" title="Product Info"><i class="fa fa-info"></i></button>'.html_safe, product_info_path(product.id)
 = javascript_include_tag 'portal.js'
 = javascript_include_tag 'filter-portal.js'

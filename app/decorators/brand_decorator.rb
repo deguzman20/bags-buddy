@@ -4,7 +4,7 @@ class BrandDecorator < Draper::Decorator
   delegate_all
 
   def brand_name
-    content_tag :option, class: "brand-#{id}", value: id  do
+    content_tag :option, class: "brand-#{id}", value: id do
       name
     end
   end
