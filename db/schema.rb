@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_234733) do
+ActiveRecord::Schema.define(version: 2019_11_12_132706) do
 
   create_table "batches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "from", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_234733) do
     t.integer "quantity"
     t.integer "item_type_id"
     t.decimal "additional", precision: 10
+    t.integer "estimated_time_of_arrival_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,6 +68,12 @@ ActiveRecord::Schema.define(version: 2019_10_24_234733) do
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estimated_time_of_arrivals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,6 +114,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_234733) do
     t.decimal "balance", precision: 10
     t.decimal "down_payment", precision: 10
     t.decimal "total", precision: 10
+    t.boolean "is_have_down_payment"
+    t.boolean "false"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -125,6 +134,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_234733) do
     t.string "brand_id"
     t.datetime "ETA_air"
     t.datetime "ETA_sea"
+    t.text "instruction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -179,6 +189,18 @@ ActiveRecord::Schema.define(version: 2019_10_24_234733) do
     t.datetime "reset_password_sent_at"
     t.datetime "deleted_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

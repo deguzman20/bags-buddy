@@ -24,7 +24,7 @@
                         "brand-portal-#{pre_order.brand_id}-category-portal-#{pre_order.category_id}"]}
           .card.align-items-center
             .view.overlay
-              = image_tag pre_order.image.to_s, class: 'card-img-top'
+              = image_tag pre_order.image.to_s, class: 'card-img-top', style:"height:250px!important"
               %a
                 .mask.rgba-white-slight
             .card-body.text-center
@@ -33,8 +33,29 @@
                   %br/
                   %h4= pre_order.category.name
                 .col-lg-6.col-md-6
-                  = link_to '<button class="btn btn-success text-white">Visit</button>'.html_safe, "#{pre_order.link}", |
-                    target: '_blank'                                                                                 |
+                  = link_to '<button class="btn btn-success text-white btn-visit">Visit</button>'.html_safe, "#{pre_order.link}", |
+                    target: '_blank'
+              %hr/
+              .row
+                .col-lg-12.col-md-12
+                  %br/
+                  %span{ class: "fa fa-plane"}
+                  %span= "ETA end of #{pre_order.ETA_sea.nil? ? nil : pre_order.ETA_sea.strftime("%B")}"                                                                                       
+              %hr/
+              .row
+                .col-lg-12.col-md-12
+                  %br/
+                  %span{ class: "fa fa-ship"}
+                  %span= "ETA end of #{pre_order.ETA_air.nil? ? nil : pre_order.ETA_air.strftime("%B")}"
+              %hr/
+              .row
+                .col-lg-12.col-md-12
+                  %h3
+                    Instruction
+              .row
+                .col-lg-12.col-md-12
+                  %pre
+                    = pre_order.instruction      
     %hr/
     %section.text-center.my-5
     %h2.h1-responsive.font-weight-bold.text-center.my-5 On Hand Product
@@ -60,7 +81,7 @@
                         "brand-on-hand-#{product.brand_id}-category-on-hand-#{product.category_id}"]}
           .card.align-items-center
             .view.overlay
-              = image_tag product.image.thumb.to_s, class: 'card-img-top img'
+              = image_tag product.image.thumb.to_s, class: 'card-img-top img', style:"height:250px!important"
               %a
                 .mask.rgba-white-slight
             .card-body.text-center

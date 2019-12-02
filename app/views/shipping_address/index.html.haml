@@ -47,22 +47,18 @@
                     nil, id: 'materialRegisterFormCities', class: 'browser-default custom-select custom-select-lg mb-3'   |
             .row
               .custom-control.custom-checkbox
-                %input#shipping_address.custom-control-input{:checked => "checked", :type => "checkbox"}/
                 %label.custom-control-label{:for => "shipping_address"} Save Shipping Addess
+                %input#shipping_address.custom-control-input{:checked => "checked", :type => "checkbox"}/
             %hr/
-            .row
-              .col-lg-12-col-md-12
-                %h5.py-4
-                  %strong Social Media Information
-            .row 
-              .col-lg-6.col-md-6 
-                .form-row
-                  .col
-                    .md-form
-                      = text_field_tag :email, |
-                        nil, id: 'materialRegisterFormFB', class: 'form-control'   |
-                      %label{:for => "materialRegisterFormFB"}
-                        Facebook Email (optional)
+            -# .row 
+            -#   .col-lg-6.col-md-6 
+            -#     .form-row
+            -#       .col
+            -#         .md-form
+            -#           = text_field_tag :email, |
+            -#             nil, id: 'materialRegisterFormFB', class: 'form-control'   |
+            -#           %label{:for => "materialRegisterFormFB"}
+            -#             Facebook Email (optional)
             .row
               .col-lg-12-col-md-12
                 %h5.py-4
@@ -75,7 +71,13 @@
                       = text_field_tag :mobile_number, |
                         nil, id: 'materialRegisterFormMobileNo', class: 'form-control'   |
                       %label{:for => "materialRegisterFormMobileNo"}
-                        Mobile Number               
+                        Mobile Number
+              .col-lg-6.col-md-6 
+                .form-row
+                  .col  
+                    %strong
+                      %h1
+                        = @remaining_balances                       
             .row
               .col-lg-12.col-md-12
                 %div{:style => "position: relative;left:30%"}

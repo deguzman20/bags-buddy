@@ -1,5 +1,9 @@
 $(function(){
-   $('[data-toggle="tooltip"]').tooltip()
+   $('[data-toggle="tooltip"]').tooltip();
+   $(".btn-visit").click(function(){
+     window.location.href = "/calculator";
+   });
+
    $(`#select_brand`).change(function(){
     $("#select_category").html(`<option>Select Category</option>`);
     var id = this.value;
@@ -38,7 +42,8 @@ $(function(){
         console.log(err);
       }
     });
-  });
+   });
+  
   $(`#select_brand_portal`).change(function(){
     $("#select_category_portal").html(`<option>Select Category</option>`);
     var id = this.value;

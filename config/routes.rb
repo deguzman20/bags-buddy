@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "calculate", to: "pages#calculate"
   get "brand_category", to: "pages#brand_category"
   get "category", to: "pages#category"
+  get "shipping_type", to: "pages#shipping_type"
   get "increase_product_quantity", to: "pages#increase_product_quantity"
   get "decrease_product_quantity", to: "pages#decrease_product_quantity"
   get "non_on_hand_add_to_cart", to: "pages#non_on_hand_add_to_cart"

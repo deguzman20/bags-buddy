@@ -5,7 +5,7 @@ module ApplicationHelper
       (link_to "Calculator", calculator_path, class: "dropdown-item") +
       (link_to "Transaction History", transaction_history_path, class: "dropdown-item") +
       "<hr/>".html_safe +
-      (link_to "Logout", nil, class: "dropdown-item")
+      (link_to "Logout", destroy_user_session_path, class: "dropdown-item")
   end
 
   def login?

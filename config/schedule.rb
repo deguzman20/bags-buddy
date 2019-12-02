@@ -8,8 +8,10 @@
 set :environment, "development"
 set :output, error: "log/cron_error_log.log", standard: "log/cron_log.log"
 
-every 1.day do
+every 1.day, at: "12pm" do
   rake "exchange_rate:update_exchange_rate"
+  rake "order:shipped"
+  rake "order:completed"
 end
 #
 # every 4.days do

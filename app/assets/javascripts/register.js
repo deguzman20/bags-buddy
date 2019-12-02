@@ -90,7 +90,7 @@ $(function(){
       e.preventDefault();
     }
     
-    if(first_name.length == 0 || last_name.length == 0 || birthdate.length == 0 || 
+    if(first_name.length == 0 || last_name.length == 0 || birthdate.length == 0 || email.length == 0 || 
        password.length == 0 || retype_password.length == 0){
         $("#error_message").html(`
           <div class="alert alert-danger">
@@ -101,7 +101,7 @@ $(function(){
         return false;  
     }
 
-    if(first_name.length != 0 && last_name.length != 0 && birthdate.length != 0 && 
+    if(first_name.length != 0 && last_name.length != 0 && birthdate.length != 0 &&  email.length !=0 &&
       password.length != 0 && retype_password.length != 0){
       if(password != retype_password){
         validate("materialRegisterFormPasswordConfirmation");

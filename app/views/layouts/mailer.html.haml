@@ -1,8 +1,31 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
+  %style{:href => "style/css", :rel => "stylesheets"}
+  :cdata
+    thead {
+    \/*background-color:rgba(226,92,42,1);*/
+    color:white;
+    }
+    
+    input[type="radio"] {
+    opacity: 0;
+    }
+    
+    \.lbl-color-white{
+    background-color:#2e363a;
+    color:white;
+    }
+    
+    \.lbl-remove-item{
+    background-color:#444b4f;
+    color:white;
+    }
+    
+    input[id^="quantity-"] {
+    width:50px;
+    height:50px;
+    }
+
   %body
     = yield

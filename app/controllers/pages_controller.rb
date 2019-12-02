@@ -17,6 +17,19 @@ class PagesController < ApplicationController
     render json: { id: category.id, name: category.name }
   end
 
+  def shipping_type
+    shipment_type = []
+    brand_id = params[:brand_id]
+    category_id = params[:category_id]
+    pre_order   = PreOrder.where(brand_id: brand_id)
+                          .where(category_id: category_id).first
+    eta_sea = pre_order.ETA_sea.nil? ? nil : { id: 1, name: "Via Sea" }
+    eta_air = pre_order.ETA_air.nil? ? nil : { id: 2, name: "Via Air" }
+    shipment_type << eta_sea unless eta_sea.nil?
+    shipment_type << eta_air unless eta_air.nil?
+    render json: shipment_type
+  end
+
   def cart
     @exchange_rate = ExchangeRate.first.value.to_i
     if user_signed_in?
@@ -114,15 +127,16 @@ class PagesController < ApplicationController
     order = Order.new
     order.user_id = current_user.id
     order.order_status_id = 1
-    order.shipping_address_id = id
     order.payment_order_status_id = 2
-    order.down_payment = subtotal / 2
-    order.balance = subtotal / 2
+    order.down_payment = 0
+    order.balance = subtotal
     order.total = subtotal
+    order.shipping_address_id = id
     if order.save
       batch_id = nil
       exchange_rate = ExchangeRate.first.value
-      Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }.pluck(:id).each { |id| batch_id = id.to_i }
+      Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }
+           .pluck(:id).each { |id| batch_id = id.to_i }
       cart = Cart.find_by_user_id(current_user.id)
       CartProduct.where(cart_id: cart.id).each do |cp|
         cp_subtotal = 0
@@ -132,7 +146,9 @@ class PagesController < ApplicationController
         order_product.product_id = cp.product_id
         order_product.sub_total = cp_subtotal
         order_product.batch_id = batch_id
-        CartProduct.where(cart_id: cart.id).delete_all if order_product.save
+        next unless order_product.save
+
+        CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!
       end
     else
       pp order.errors.full_messages
@@ -174,7 +190,7 @@ class PagesController < ApplicationController
       shipping_address = ShippingAddress.new(user_id: current_user.id, first_name: params[:firstname],
                                              last_name: params[:lastname], address: params[:address],
                                              apartment: params[:apartment], city_id: params[:city_id].to_i,
-                                             state_id: params[:state_id].to_i, email: params[:email],
+                                             state_id: params[:state_id].to_i,
                                              mobile_number: params[:mobile_number],
                                              is_save_info: params[:save_shipping_address])
       if shipping_address.save
@@ -182,5 +198,5 @@ class PagesController < ApplicationController
         render json: "Saved successfully".to_json
       end
     end
- end
+  end
 end

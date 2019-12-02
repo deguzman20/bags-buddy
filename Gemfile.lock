@@ -94,6 +94,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    css_parser (1.7.0)
+      addressable
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.1)
@@ -136,6 +138,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -201,6 +204,13 @@ GEM
     parallel (1.18.0)
     parser (2.6.5.0)
       ast (~> 2.4.0)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.3)
+      actionmailer (>= 3)
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -391,6 +401,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   paperclip (~> 6.0.0)
+  premailer-rails
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.3)

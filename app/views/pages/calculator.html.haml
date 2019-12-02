@@ -33,6 +33,10 @@
           .col
             .md-form
               %input.form-control{ type: "text", value: "", id: "additional" }/
+        .form-row  
+          .col
+            %select#select-shipping-type.browser-default.custom-select
+              %option Select Shipping Type    
         %button#btncalculate.btn.btn-rounded.waves-effect.waves-light{ type: "button", class: "btn elegant-color white-text" }
           Calculate
         %br/
@@ -56,5 +60,5 @@
     %br/
   .row
   %br/
-= javascript_include_tag 'portal.js'
+-# = javascript_include_tag 'portal.js'
 = javascript_include_tag 'calculator.js'

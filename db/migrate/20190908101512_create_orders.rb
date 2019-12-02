@@ -8,6 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.decimal :balance
       t.decimal :down_payment
       t.decimal :total
+      t.boolean :is_have_down_payment, :false
 
       t.timestamps
     end
