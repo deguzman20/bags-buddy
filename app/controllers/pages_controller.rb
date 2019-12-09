@@ -67,20 +67,20 @@ class PagesController < ApplicationController
     cart_product = CartProduct.find(params[:cart_product_id].to_i)
     cart_product.quantity += 1
     cart_product.save!
-    get_sub_total
+    sub_totals
   end
 
   def decrease_product_quantity
     cart_product = CartProduct.find(params[:cart_product_id].to_i)
     cart_product.quantity -= 1
     cart_product.save!
-    get_sub_total
+    sub_totals
   end
 
   def delete_cart_product
     cart_product = CartProduct.find(params[:id].to_i)
     cart_product.delete
-    get_sub_total
+    sub_totals
   end
 
   def profile
@@ -104,7 +104,7 @@ class PagesController < ApplicationController
     update_successful if profile_form
   end
 
-  def get_sub_total
+  def sub_totals
     if user_signed_in?
       subtotal = 0
       exchange_rate = ExchangeRate.first.value
@@ -124,23 +124,17 @@ class PagesController < ApplicationController
       subtotal += !cart_product.product.nil? ? cart_product.product.price * cart_product.quantity : (cart_product.price * cart_product.quantity) * exchange_rate
     end
 
-    order = Order.new
-    order.user_id = current_user.id
-    order.order_status_id = 1
-    order.payment_order_status_id = 2
-    order.down_payment = 0
-    order.balance = subtotal
-    order.total = subtotal
-    order.shipping_address_id = id
+    order = Order.new(user_id: current_user.id, order_status_id: 1, payment_order_status_id: 2, down_payment: 0, balance: subtotal,
+                      total: subtotal, shipping_address_id: id)
     if order.save
       batch_id = nil
       exchange_rate = ExchangeRate.first.value
       Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }
-           .pluck(:id).each { |id| batch_id = id.to_i }
+           .pluck(:id).each { |i| batch_id = i.to_i }
       cart = Cart.find_by_user_id(current_user.id)
       CartProduct.where(cart_id: cart.id).each do |cp|
         cp_subtotal = 0
-        cp_subtotal +=  !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
+        cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
         order_product = OrderProduct.new
         order_product.order_id = order.id
         order_product.product_id = cp.product_id
@@ -185,14 +179,18 @@ class PagesController < ApplicationController
     @product_info = Product.find(params[:id])
   end
 
+  def shipping_address_obj(params = {})
+    ShippingAddress.new(user_id: current_user.id, first_name: params[:firstname],
+                        last_name: params[:lastname], address: params[:address],
+                        apartment: params[:apartment], city_id: params[:city_id].to_i,
+                        state_id: params[:state_id].to_i,
+                        mobile_number: params[:mobile_number],
+                        is_save_info: params[:save_shipping_address])
+  end
+
   def save_shipping_address
     if user_signed_in?
-      shipping_address = ShippingAddress.new(user_id: current_user.id, first_name: params[:firstname],
-                                             last_name: params[:lastname], address: params[:address],
-                                             apartment: params[:apartment], city_id: params[:city_id].to_i,
-                                             state_id: params[:state_id].to_i,
-                                             mobile_number: params[:mobile_number],
-                                             is_save_info: params[:save_shipping_address])
+      shipping_address = shipping_address_obj(params)
       if shipping_address.save
         complete_purchase(shipping_address.id)
         render json: "Saved successfully".to_json
