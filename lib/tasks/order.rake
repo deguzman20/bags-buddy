@@ -1,7 +1,7 @@
 namespace :order do
   desc "Task for order"
   task shipped: :environment do
-    order_products = OrderProduct.select do |op|
+    OrderProduct.select do |op|
       !op.product_id.nil? && !op.batch_id.nil? && op.order.order_status_id = 1 && op.order.payment_order_status_id = 3
     end
   end
