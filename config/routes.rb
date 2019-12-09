@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "decrease_product_quantity", to: "pages#decrease_product_quantity"
   get "non_on_hand_add_to_cart", to: "pages#non_on_hand_add_to_cart"
   get "delete_cart_product", to: "pages#delete_cart_product"
-  get "get_sub_total", to: "pages#get_sub_total"
+  get "get_sub_total", to: "pages#sub_totals"
   get "transaction_history", to: "pages#transaction_history"
   get "complete_purchase", to: "pages#complete_purchase"
   get "order_product/:id", to: "pages#order_product", as: :order_product
