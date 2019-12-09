@@ -1,4 +1,13 @@
 $(function(){
+  function checkout_validation(selector){
+    if(selector.val() == ""){
+      selector.css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+    }
+    else{
+      selector.css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+    }
+  }
+
   $("#checkout").click(function(){
     var firstname = $("#materialRegisterFormFirstName").val();
     var lastname  = $("#materialRegisterFormLastName").val();
@@ -9,25 +18,37 @@ $(function(){
     var postal    = $("#materialRegisterFormZipCode").val();
     var save_shipping_address = $("input[id='shipping_address']").prop('checked');
     var dataString = "firstname="+firstname+"&lastname="+lastname+"&address="+address+"&apartment="+apartment+"&state_id="+state_id+"&city_id="+city_id+"&save_shipping_address="+save_shipping_address+"&postal="+postal;
-    $.ajax({
-      url: "/save_shipping_address",
-      type: "GET",
-      data: dataString,
-      dataType: "JSON",
-      success:function(data){
-        if(data == "Saved successfully"){
-          window.location.href = "/transaction_history"; 
-        }
-      },
-      error:function(err){
-        console.log(err);
+      if(firstname != "" && lastname != "" && address != "" && apartment !="" && state_id != "" && city_id != "" && postal != ""){
+        $.ajax({
+          url: "/save_shipping_address",
+          type: "GET",
+          data: dataString,
+          dataType: "JSON",
+          success:function(data){
+            if(data == "Saved successfully"){
+              window.location.href = "/transaction_history"; 
+            }
+          },
+          error:function(err){
+            console.log(err);
+          }
+        });
       }
-    })
-    return false;
+      else{
+        checkout_validation($("#materialRegisterFormFirstName"));
+        checkout_validation($("#materialRegisterFormLastName"));
+        checkout_validation($("#materialRegisterFormAddress"));
+        checkout_validation($("#materialRegisterFormApartment"));
+        checkout_validation($("#materialRegisterFormStates option:selected"));
+        checkout_validation($("#materialRegisterFormCities option:selected"));
+        checkout_validation($("#materialRegisterFormZipCode"));
+        checkout_validation($("#materialRegisterFormMobileNo"));
+        return false; 
+      } 
   });
 
-  $("#materialRegisterFormCities").html("<option>Select City</option>");
-  $("#materialRegisterFormStates").html("<option>Select State</option>");
+  $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
+  $("#materialRegisterFormStates").html("<option value=''>Select State</option>");
   // Get All States from ph
   $.ajax({
     url: "/states",
@@ -42,7 +63,7 @@ $(function(){
       });
       
       $(`#materialRegisterFormStates`).change(function(){
-        $("#materialRegisterFormCities").html("<option>Select City</option>");
+        $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
         var state_id = this.value;
         // Get All Cities from specific region
         $.ajax({
