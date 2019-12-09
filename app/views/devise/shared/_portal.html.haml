@@ -16,7 +16,8 @@
     %br/
     .row
       - @pre_orders.each do |pre_order|
-        %div{:class => ["portal",
+        %div{:class => ["pre-order",
+                        "portal",
                         "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
                         "filter-portal",
                         "brand-portal-#{pre_order.brand_id}",
@@ -56,6 +57,12 @@
                 .col-lg-12.col-md-12
                   %pre
                     = pre_order.instruction      
+    .col-md-12
+      %center
+        %a#pre-order-load{:href => "#"} 
+          %button{:class => "btn btn-outline-primary waves-effect"}  
+            Load More
+
     %hr/
     %section.text-center.my-5
     %h2.h1-responsive.font-weight-bold.text-center.my-5 On Hand Product
@@ -74,6 +81,7 @@
     .row
       - @products.each do |product|
         %div{:class => ["portal",
+                        "on-hand",
                         "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4",
                         "filter-on-hand",
                         "brand-on-hand-#{product.brand_id}",
@@ -81,7 +89,7 @@
                         "brand-on-hand-#{product.brand_id}-category-on-hand-#{product.category_id}"]}
           .card.align-items-center
             .view.overlay
-              = image_tag product.image.thumb.to_s, class: 'card-img-top img', style:"height:250px!important"
+              = image_tag product.image.to_s, class: 'card-img-top img', style:"height:250px!important"
               %a
                 .mask.rgba-white-slight
             .card-body.text-center
@@ -97,5 +105,10 @@
                   .div{class: "btn-group btn-group-sm"}
                     = link_to '<button class="btn btn-success text-white" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-cart-arrow-down"></i></button>'.html_safe, add_to_cart_path(product.id)
                     = link_to '<button class="btn btn-danger text-white"  data-toggle="tooltip" data-placement="top" title="Product Info"><i class="fa fa-info"></i></button>'.html_safe, product_info_path(product.id)
+        .col-md-12
+          %center
+            %a#on-hand-load{:href => "#"} 
+              %button{:class => "btn btn-outline-primary waves-effect"}  
+                Load More            
 = javascript_include_tag 'portal.js'
 = javascript_include_tag 'filter-portal.js'
