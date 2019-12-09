@@ -1,9 +1,35 @@
 $(function(){
-   $('[data-toggle="tooltip"]').tooltip();
+   // $('[data-toggle="tooltip"]').tooltip();
    $(".btn-visit").click(function(){
      window.location.href = "/calculator";
    });
+   
+   $(".pre-order").hide().slice(0, 3).show();
+     if ($(".pre-order:hidden").length == 0) {
+       $("#pre-order-load").hide();
+     }   
+     
+     $("#pre-order-load").on('click', function (e) {
+       e.preventDefault();
+       $(".pre-order:hidden").slice(0, 3).slideDown();
+       if ($(".pre-order:hidden").length == 0) {
+         $("#pre-order-load").fadeOut('slow');
+       }
+    });
 
+    $(".on-hand").hide().slice(0, 3).show();
+     if ($(".on-hand:hidden").length == 0) {
+       $("#on-hand-load").hide();
+     }   
+     
+     $("#on-hand-load").on('click', function (e) {
+       e.preventDefault();
+       $(".on-hand:hidden").slice(0, 3).slideDown();
+       if ($(".on-hand:hidden").length == 0) {
+         $("#on-hand-load").fadeOut('slow');
+       }
+    }); 
+    
    $(`#select_brand`).change(function(){
     $("#select_category").html(`<option>Select Category</option>`);
     var id = this.value;
