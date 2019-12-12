@@ -1,17 +1,17 @@
 $(function(){
   function validate(selector){
-    $(`#${selector}`).css({
+    $("#"+selector).css({
       "border-bottom": "0.1px solid pink"
     });
   }
 
   function onchange_validation(selector){
-    if($(`#${selector}`).length == 0){
+    if($("#"+selector).length == 0){
       validate(selector);
       return false;
     }
     else{
-      $(`#${selector}`).css({
+      $("#"+selector).css({
         "border-bottom": "1px solid green"
       });
     }
