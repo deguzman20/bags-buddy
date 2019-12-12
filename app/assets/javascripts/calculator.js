@@ -25,14 +25,14 @@ $(function(){
        });
     });
 
-    $(`#confirm_to_add_to_cart`).click(function(){
-      var brand_id = $(`#select_brand`).val();
-      var category_id = $(`#select_category`).val();
-      var price = $(`#price`).val();
-      var subtotal = $(`#subtotal`).val();
-      var quantity = $(`#quantity`).val();
-      var additional = $(`#additional`).val();
-      var shipping_type_id = $(`#select-shipping-type`).val();
+    $("#confirm_to_add_to_cart").click(function(){
+      var brand_id = $("#select_brand").val();
+      var category_id = $("#select_category").val();
+      var price = $("#price").val();
+      var subtotal = $("#subtotal").val();
+      var quantity = $("#quantity").val();
+      var additional = $("#additional").val();
+      var shipping_type_id = $("#select-shipping-type").val();
 
       $.ajax({
         url: '/non_on_hand_add_to_cart',
@@ -58,10 +58,9 @@ $(function(){
 
     });
 
-    $(`#select_brand`).change(function(){
-      $("#select_category").html(`<option>Select Category</option>`);
+    $("#select_brand").change(function(){
+      $("#select_category").html("<option>Select Category</option>");
       var id = this.value;
-  
       $.ajax({
         url: "brand_category",
         type: "GET",
@@ -80,7 +79,7 @@ $(function(){
               },
               success: function(category_data){
                   if(category_data != ""){
-                    $("#select_category").append(`<option value="${category_data.id}">${category_data.name}</option>`);
+                    $("#select_category").append("<option value="+category_data.id+">"+category_data.name+"</option>");
                     $("#select_category").change(function(){
                       // Get all Available Shipment type
                         $.ajax({
@@ -94,18 +93,18 @@ $(function(){
                           success: function(shipping_type_data){
                             $.each(shipping_type_data, function(k,v){
                               $("#select-shipping-type").append(
-                                `<option value="${v.id}">${v.name}</option>`
+                                "<option value="+v.id+">"+v.name+"</option>"
                               );
-                            }); 
+                            });
                           },
                           error:function(err){
                             console.log(err);
-                          } 
+                          }
                         });
                     });
                   }
                   else{
-                    $("#select_category").html(`<option>Select Category</option>`);
+                    $("#select_category").html("<option>Select Category</option>");
                     $("#select-shipping-type").attr('disabled', 'disabled');
                   }
               },

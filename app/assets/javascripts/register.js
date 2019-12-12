@@ -48,12 +48,7 @@ $(function(){
     onchange_validation("materialRegisterFormPasswordConfirmation");
   });
 
-  $(`#materialRegisterFormFirstName,
-     #materialRegisterFormBirthdate,
-     #materialRegisterFormLastName,
-     #materialRegisterFormEmail,
-     #materialRegisterFormPassword,
-     #materialRegisterFormPasswordConfirmation`).attr("autocomplete","off");
+  $("#materialRegisterFormFirstName, #materialRegisterFormBirthdate, #materialRegisterFormLastName, #materialRegisterFormEmail, #materialRegisterFormPassword, #materialRegisterFormPasswordConfirmation").attr("autocomplete","off");
 
   $(".btn-register").click(function(e){i
     e.preventDefault();
@@ -95,12 +90,7 @@ $(function(){
 
     if(first_name.length == 0 || last_name.length == 0 || birthdate.length == 0 || email.length == 0 ||
        password.length == 0 || retype_password.length == 0){
-        $("#error_message").html(`
-          <div class="alert alert-danger">
-            <center>
-              All fields are required
-            </center>
-          </div>`);
+        $("#error_message").html('<div class="alert alert-danger"><center>All fields are required</center></div>');
         return false;
     }
 
@@ -108,12 +98,7 @@ $(function(){
       password.length != 0 && retype_password.length != 0){
       if(password != retype_password){
         validate("materialRegisterFormPasswordConfirmation");
-        $("#error_message").html(`
-          <div class="alert alert-danger">
-            <center>
-              Password and Confirm password did not match
-            </center>
-          </div>`);
+        $("#error_message").html('<div class="alert alert-danger"><center>Password and Confirm password did not match</center></div>');
         e.preventDefault();
       }
     }

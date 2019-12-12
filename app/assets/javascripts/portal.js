@@ -3,12 +3,12 @@ $(function(){
    $(".btn-visit").click(function(){
      window.location.href = "/calculator";
    });
-   
+
    $(".pre-order").hide().slice(0, 3).show();
      if ($(".pre-order:hidden").length == 0) {
        $("#pre-order-load").hide();
-     }   
-     
+     }
+
      $("#pre-order-load").on('click', function (e) {
        e.preventDefault();
        $(".pre-order:hidden").slice(0, 3).slideDown();
@@ -20,18 +20,18 @@ $(function(){
     $(".on-hand").hide().slice(0, 3).show();
      if ($(".on-hand:hidden").length == 0) {
        $("#on-hand-load").hide();
-     }   
-     
+     }
+
      $("#on-hand-load").on('click', function (e) {
        e.preventDefault();
        $(".on-hand:hidden").slice(0, 3).slideDown();
        if ($(".on-hand:hidden").length == 0) {
          $("#on-hand-load").fadeOut('slow');
        }
-    }); 
-    
-   $(`#select_brand`).change(function(){
-    $("#select_category").html(`<option>Select Category</option>`);
+    });
+
+   $("#select_brand").change(function(){
+    $("#select_category").html("<option>Select Category</option>");
     var id = this.value;
 
     $.ajax({
@@ -52,10 +52,10 @@ $(function(){
             },
             success: function(category_data){
                 if(category_data != null){
-                  $("#select_category").append(`<option value="${category_data.id}">${category_data.name}</option>`);
+                  $("#select_category").append("<option value="+category_data.id">"+category_data.name+"</option>");
                 }
                 else{
-                  $("#select_category").html(`<option>Select Category</option>`);
+                  $("#select_category").html("<option>Select Category</option>");
                 }
             },
             error: function(err){
@@ -69,9 +69,9 @@ $(function(){
       }
     });
    });
-  
-  $(`#select_brand_portal`).change(function(){
-    $("#select_category_portal").html(`<option>Select Category</option>`);
+
+  $("#select_brand_portal").change(function(){
+    $("#select_category_portal").html("<option>Select Category</option>");
     var id = this.value;
 
     $.ajax({
@@ -92,10 +92,10 @@ $(function(){
             },
             success: function(category_data){
                 if(category_data != null){
-                  $("#select_category_portal").append(`<option value="${category_data.id}">${category_data.name}</option>`);
+                  $("#select_category_portal").append("<option value="+category_data.id+">"+category_data.name+"</option>");
                 }
                 else{
-                  $("#select_category_portal").html(`<option>Select Category</option>`);
+                  $("#select_category_portal").html("<option>Select Category</option>");
                 }
             },
             error: function(err){
@@ -110,8 +110,8 @@ $(function(){
     });
   });
 
-  $(`#select_brand_on_hand`).change(function(){
-    $("#select_category_on_hand").html(`<option>Select Category</option>`);
+  $("#select_brand_on_hand").change(function(){
+    $("#select_category_on_hand").html("<option>Select Category</option>");
     var id = this.value;
 
     $.ajax({
@@ -122,7 +122,7 @@ $(function(){
         id: id
       },
       success: function(brand_data){
-        $.each(brand_data, function(k,v){
+          $.each(brand_data, function(k,v){
           $.ajax({
             url:"category",
             type: "GET",
@@ -132,10 +132,10 @@ $(function(){
             },
             success: function(category_data){
                 if(category_data != null){
-                  $("#select_category_on_hand").append(`<option value="${category_data.id}">${category_data.name}</option>`);
+                  $("#select_category_on_hand").append("<option value="+category_data.id+">"+category_data.name+"</option>");
                 }
                 else{
-                  $("#select_category_on_hand").html(`<option>Select Category</option>`);
+                  $("#select_category_on_hand").html("<option>Select Category</option>");
                 }
             },
             error: function(err){

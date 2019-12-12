@@ -98,13 +98,10 @@ $(function(){
     dataType: "JSON",
     success: function(data){
       $.each(data,function(k, v){
-        $("#materialRegisterFormStates").append(
-          `<option value="${v.id}">
-            ${v.region}
-           </option>`)
+        $("#materialRegisterFormStates").append("<option value="+v.id+">"+v.region+"</option>");
       });
 
-      $(`#materialRegisterFormStates`).change(function(){
+      $("#materialRegisterFormStates").change(function(){
         $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
         var state_id = this.value;
         // Get All Cities from specific region
@@ -117,10 +114,7 @@ $(function(){
           dataType: "JSON",
           success: function(city_data){
             $.each(city_data,function(k,v){
-              $("#materialRegisterFormCities").append(
-                `<option value="${v.id}">
-                  ${v.name}
-                 </option>`)
+              $("#materialRegisterFormCities").append("<option value="+v.id+">"+v.name+"</option>");
             });
           },
           error: function(err){

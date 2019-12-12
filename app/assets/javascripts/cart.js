@@ -14,11 +14,11 @@ $(function(){
           console.log(e)
         }
     };
-       
+
     $("#checkout").hover(function(){
       $(this).css({
         "color":"white"
-      });  
+      });
     });
 
     $("#checkout").click(function(){
@@ -41,12 +41,12 @@ $(function(){
    });
 
    for (var i = 1; i <= 100; i++) {
-     $(`#amount-${i}`).html("₱ "+formatMoney(parseInt($(`#price-${i}`).attr('class')) * parseInt($(`#quantity-${i}`).val())));
-     $(`#quantity-minus-${i}`).click(function(){
+     $("#amount-"+i).html("₱ "+formatMoney(parseInt($("#price-"+i).attr('class')) * parseInt($("#quantity-"+i).val())));
+     $("#quantity-minus-"+i).click(function(){
       var id = this.id.replace("quantity-minus-","");
       function decrease(){
-        if($(`#quantity-${id}`).val()>1){
-          $(`#quantity-${id}`).val(Number($(`#quantity-${id}`).val())-1);
+        if($("#quantity-"+id).val()>1){
+          $("#quantity-"+id).val(Number($("#quantity-"+id).val())-1);
             $.ajax({
                url:"/decrease_product_quantity",
                type:"GET",
@@ -55,7 +55,7 @@ $(function(){
                },
                success:function(data){
                  $("#txt-subtotal").html(formatMoney(data));
-                 $(`#amount-${id}`).html("₱ "+ formatMoney(parseInt($(`#price-${id}`).attr('class')) * parseInt($(`#quantity-${id}`).val()))); 
+                 $("#amount-"+id).html("₱ "+ formatMoney(parseInt($("#price-"+id).attr('class')) * parseInt($("#quantity-"+id).val())));
                },
                error:function(err){
                  console.log(err)
@@ -65,15 +65,15 @@ $(function(){
         }
         else{
           return false;
-        }  
-      } 
-      setTimeout(decrease, 1000) 
+        }
+      }
+      setTimeout(decrease, 1000)
      });
 
-     $(`#quantity-plus-${i}`).click(function(){
-      var id = this.id.replace("quantity-plus-",""); 
+     $("#quantity-plus-"+i).click(function(){
+      var id = this.id.replace("quantity-plus-","");
       function increase(){
-        $(`#quantity-${id}`).val(Number($(`#quantity-${id}`).val())+1);
+        $("#quantity-"+id).val(Number($("#quantity-"+id).val())+1);
          $.ajax({
             url:"/increase_product_quantity",
             type:"GET",
@@ -82,19 +82,19 @@ $(function(){
             },
             success:function(data){
               $("#txt-subtotal").html(formatMoney(data));
-              $(`#amount-${id}`).html("₱ "+formatMoney(parseInt($(`#price-${id}`).attr('class')) * parseInt($(`#quantity-${id}`).val()))); 
+              $(`#amount-${id}`).html("₱ "+formatMoney(parseInt($("#price-"+id).attr('class')) * parseInt($("#quantity-"+id).val())));
             },
             error:function(err){
               console.log(err)
             }
-         }); 
+         });
        }
       setTimeout(increase, 1000)
      });
 
-     $(`#delete-${i}`).click(function(){
+     $("#delete-"+i).click(function(){
        var id = this.id.replace("delete-","");
-        $(`#row-${id}`).fadeOut();
+        $("#row-"+id).fadeOut();
         $.ajax({
           url:"/delete_cart_product",
           type:"GET",
