@@ -1,0 +1,87 @@
+current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/johnson-2.0.0.pre3/ext/tracemonkey
+/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191212-9771-1lotg7i.rb extconf.rb
+creating cache ./config.cache
+checking host system type... x86_64-apple-darwin19.0.0
+checking target system type... x86_64-apple-darwin19.0.0
+checking build system type... x86_64-apple-darwin19.0.0
+checking for mawk... no
+checking for gawk... no
+checking for nawk... no
+checking for awk... awk
+checking for gcc... gcc
+checking whether the C compiler (gcc  ) works... yes
+checking whether the C compiler (gcc  ) is a cross-compiler... no
+checking whether we are using GNU C... yes
+checking whether gcc accepts -g... yes
+checking for c++... c++
+checking whether the C++ compiler (c++  ) works... yes
+checking whether the C++ compiler (c++  ) is a cross-compiler... no
+checking whether we are using GNU C++... yes
+checking whether c++ accepts -g... yes
+checking for ranlib... ranlib
+checking for as... /usr/bin/as
+checking for ar... ar
+checking for ld... ld
+checking for strip... strip
+checking for windres... no
+checking whether gcc and cc understand -c and -o together... yes
+checking how to run the C preprocessor... gcc -E
+checking how to run the C++ preprocessor... c++ -E
+checking for a BSD compatible install... /usr/local/bin/ginstall -c
+checking whether ln -s works... yes
+checking for perl5... no
+checking for perl... /usr/local/bin/perl
+checking for minimum required perl version >= 5.006... 5.030000
+checking for full perl installation... yes
+checking for python... /usr/bin/python
+checking for doxygen... :
+checking for whoami... /usr/bin/whoami
+checking for autoconf... /usr/local/bin/autoconf
+checking for unzip... /usr/bin/unzip
+checking for zip... /usr/bin/zip
+checking for makedepend... no
+checking for xargs... /usr/bin/xargs
+checking for pbbuild... no
+checking for xcodebuild... /usr/bin/xcodebuild
+./configure: line 3686: test: Xcode 11.2.1 Build version 11B500: integer expression expected
+checking for sdp... /usr/bin/sdp
+checking for gmake... no
+checking for make... /usr/bin/make
+checking for X... no
+checking whether the compiler supports -Wno-invalid-offsetof... yes
+checking whether the compiler supports -Wno-variadic-macros... yes
+checking whether ld has archive extraction flags... no
+checking that static assertion macros used in autoconf tests work... yes
+checking for 64-bit OS... yes
+checking for -dead_strip option to ld... yes
+checking for ANSI C header files... yes
+checking for working const... yes
+checking for mode_t... yes
+checking for off_t... yes
+checking for pid_t... yes
+checking for size_t... yes
+checking for st_blksize in struct stat... yes
+checking for siginfo_t... yes
+checking for stdint.h... yes
+checking for the size of void*... configure: error: No size found for void*
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/$(RUBY_BASE_NAME)
+extconf.rb:27:in `block in <main>': could not run configure (RuntimeError)
+	from extconf.rb:23:in `chdir'
+	from extconf.rb:23:in `<main>'
+
+extconf failed, exit code 1

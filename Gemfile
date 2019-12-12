@@ -24,7 +24,9 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "virtus"
 gem "whenever", require: false
-
+gem 'johnson', '~> 2.0.0.pre3'
+gem 'envjs', '0.3.7'
+gem 'harmony', '~> 0.5.6'
 gem "bootsnap", ">= 1.1.0", require: false
 
 group :development, :test do
