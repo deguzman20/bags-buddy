@@ -135,11 +135,7 @@ class PagesController < ApplicationController
       CartProduct.where(cart_id: cart.id).each do |cp|
         cp_subtotal = 0
         cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
-        order_product = OrderProduct.new
-        order_product.order_id = order.id
-        order_product.product_id = cp.product_id
-        order_product.sub_total = cp_subtotal
-        order_product.batch_id = batch_id
+        order_product = OrderProduct.new(order_id: order.id, product_id: cp.product_id, sub_total: cp_subtotal, batch_id: batch_id)
         next unless order_product.save
 
         CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!

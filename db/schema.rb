@@ -10,126 +10,134 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_132706) do
+ActiveRecord::Schema.define(version: 2019_12_12_004749) do
 
-  create_table "batches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "batches", force: :cascade do |t|
     t.datetime "from", null: false
     t.datetime "to", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "brand_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "brand_categories", force: :cascade do |t|
     t.integer "brand_id"
     t.integer "category_id"
-    t.decimal "additional", precision: 10
+    t.decimal "additional"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "brands", force: :cascade do |t|
     t.string "name"
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "carousels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "carousels", force: :cascade do |t|
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cart_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cart_products", force: :cascade do |t|
     t.integer "cart_id"
     t.integer "product_id"
-    t.decimal "price", precision: 10
+    t.decimal "price"
     t.string "link"
     t.integer "quantity"
     t.integer "item_type_id"
-    t.decimal "additional", precision: 10
+    t.decimal "additional"
     t.integer "estimated_time_of_arrival_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "carts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "estimated_time_of_arrivals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "content_management_systems", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estimated_time_of_arrivals", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "exchange_rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "exchange_rates", force: :cascade do |t|
     t.string "currency"
-    t.decimal "value", precision: 10
+    t.decimal "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "item_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "item_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
     t.integer "batch_id"
-    t.decimal "sub_total", precision: 10
+    t.decimal "sub_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "order_statuses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "order_status_id"
     t.integer "payment_order_status_id"
     t.integer "shipping_address_id"
-    t.decimal "balance", precision: 10
-    t.decimal "down_payment", precision: 10
-    t.decimal "total", precision: 10
+    t.decimal "balance"
+    t.decimal "down_payment"
+    t.decimal "total"
     t.boolean "is_have_down_payment"
     t.boolean "false"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "payment_order_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "payment_order_statuses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pre_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "pre_orders", force: :cascade do |t|
     t.string "link"
     t.string "image"
-    t.decimal "additional_price", precision: 10
+    t.decimal "additional_price"
     t.string "category_id"
     t.string "brand_id"
     t.datetime "ETA_air"
@@ -139,7 +147,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_132706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.integer "price"
@@ -151,7 +159,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_132706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shipping_addresses", force: :cascade do |t|
     t.integer "user_id"
     t.string "first_name"
     t.string "last_name"
@@ -166,20 +174,20 @@ ActiveRecord::Schema.define(version: 2019_11_12_132706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "states", force: :cascade do |t|
     t.string "region"
     t.string "regional_designation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "taxes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "percentage", precision: 10
+  create_table "taxes", force: :cascade do |t|
+    t.decimal "percentage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.datetime "birthdate"

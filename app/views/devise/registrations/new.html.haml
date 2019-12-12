@@ -29,7 +29,7 @@
             .md-form.mt-0
               = f.date_field :birthdate, class: 'form-control datepicker', |
                 id: 'materialRegisterFormBirthdate'             |
-              %label{:for => "materialRegisterFormBirthdate"}  Birthdate        
+              %label{:for => "materialRegisterFormBirthdate"}  Birthdate
             .md-form.mt-0
               = f.email_field :email, class: 'form-control', |
                 id: 'materialRegisterFormEmail'              |
@@ -51,16 +51,16 @@
                 - if flash[:error].present?
                   %div{:class => "alert alert-danger"}
                     %center
-                      = flash[:error]  
+                      = flash[:error]
                 - else 
-                  %span{id: "error_message"}   
+                  %span{id: "error_message"}
                 %div{:style => "position: relative;left:40%"}
                   = f.submit "Register",                |
                     class: 'btn btn-success btn-rounded |
                     btn-block waves-effect z-depth-0'   |
-                  %button.btn.btn-primary
+                  %button.btn.btn-primary.btn-login
                     = link_to 'Login', new_user_session_path, |
-                      class: 'white-text'                     |        
+                      class: 'white-text'                     |
     .col-lg-3
 %br/
 %br/

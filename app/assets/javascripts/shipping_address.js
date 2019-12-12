@@ -26,7 +26,7 @@ $(function(){
           dataType: "JSON",
           success:function(data){
             if(data == "Saved successfully"){
-              window.location.href = "/transaction_history"; 
+              window.location.href = "/transaction_history";
             }
           },
           error:function(err){
@@ -43,17 +43,59 @@ $(function(){
         checkout_validation($("#materialRegisterFormCities option:selected"));
         checkout_validation($("#materialRegisterFormZipCode"));
         checkout_validation($("#materialRegisterFormMobileNo"));
-        return false; 
-      } 
+        return false;
+      }
   });
+  // Keyup method
+    $("#materialRegisterFormFirstName").keyup(function(){
+      if($("#materialRegisterFormFirstName").val() == ""){
+        $("#materiallRegisterFormFirstName").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+      }
+      else{
+        $("#materialRegisterFormFirstName").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+      }
+    })
+    $("#materialRegisterFormLastName").keyup(function(){
+      if($("#materialRegisterFormLastName").val() == ""){
+        $("#materiallRegisterFormLastName").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+      }
+      else{
+        $("#materialRegisterFormLastName").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+      }
+    })
 
-  $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
+    $("#materialRegisterFormLastAddress").keyup(function(){
+      if($("#materialRegisterFormAddress").val() == ""){
+        $("#materiallRegisterFormAddress").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+      }
+      else{
+        $("#materialRegisterForAddress").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+      }
+    })
+
+    $("#materialRegisterFormApartment").keyup(function(){
+      if($("#materialRegisterFormApartment").val() == ""){
+        $("#materiallRegisterFormApartment").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+      }
+      else{
+        $("#materialRegisterFormApartment").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+      }
+    });
+
+    $("#materialRegisterFormMobileNo").keyup(function(){
+      if($("#materialRegisterFormMobileNo").val() == ""){
+        $("#materiallRegisterFormMobileNo").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
+      }
+      else{
+        $("#materialRegisterFormMobileNo").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+      }
+    });
   $("#materialRegisterFormStates").html("<option value=''>Select State</option>");
   // Get All States from ph
   $.ajax({
     url: "/states",
     type: "GET",
-    dataType: "JSON", 
+    dataType: "JSON",
     success: function(data){
       $.each(data,function(k, v){
         $("#materialRegisterFormStates").append(
@@ -61,7 +103,7 @@ $(function(){
             ${v.region}
            </option>`)
       });
-      
+
       $(`#materialRegisterFormStates`).change(function(){
         $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
         var state_id = this.value;
@@ -78,7 +120,7 @@ $(function(){
               $("#materialRegisterFormCities").append(
                 `<option value="${v.id}">
                   ${v.name}
-                 </option>`)  
+                 </option>`)
             });
           },
           error: function(err){

@@ -18,7 +18,7 @@
       - @pre_orders.each do |pre_order|
         %div{:class => ["pre-order",
                         "portal",
-                        "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
+                        "col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
                         "filter-portal",
                         "brand-portal-#{pre_order.brand_id}",
                         "category-portal-#{pre_order.category_id}",
@@ -56,7 +56,7 @@
               .row
                 .col-lg-12.col-md-12
                   %pre
-                    = pre_order.instruction      
+                    = pre_order.instruction
     .col-md-12
       %center
         %a#pre-order-load{:href => "#"} 
@@ -82,7 +82,7 @@
       - @products.each do |product|
         %div{:class => ["portal",
                         "on-hand",
-                        "col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-lg-0 mb-4",
+                        "col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-lg-0 mb-4",
                         "filter-on-hand",
                         "brand-on-hand-#{product.brand_id}",
                         "category-on-hand-#{product.category_id}",
@@ -107,8 +107,8 @@
                     = link_to '<button class="btn btn-danger text-white"  data-toggle="tooltip" data-placement="top" title="Product Info"><i class="fa fa-info"></i></button>'.html_safe, product_info_path(product.id)
         .col-md-12
           %center
-            %a#on-hand-load{:href => "#"} 
-              %button{:class => "btn btn-outline-primary waves-effect"}  
-                Load More            
+            %a#on-hand-load{:href => "#"}
+              %button{:class => "btn btn-outline-primary waves-effect"}
+                Load More
 = javascript_include_tag 'portal.js'
 = javascript_include_tag 'filter-portal.js'
