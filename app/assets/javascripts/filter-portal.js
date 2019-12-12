@@ -8,16 +8,16 @@ $(function(){
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-portal-${brand}`).fadeIn();
-              $(`.filter-portal:not(.brand-portal-${brand})`).fadeOut();
+              $(".brand-portal-"+brand).fadeIn();
+              $(".filter-portal:not(.brand-portal-"+brand+")").fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-portal-${category}`).fadeIn();
-              $(`.filter-portal:not(.category-portal-${category})`).fadeOut();
+              $(".category-portal-"+category).fadeIn();
+              $(".filter-portal:not(.category-portal-"+category+")").fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(".filter-portal").not(`.brand-portal-${brand}-category-portal-${category}`).fadeOut();
-              $(".filter-portal").filter(`.brand-portal-${brand}-category-portal-${category}`).fadeIn();
+              $(".filter-portal").not(".brand-portal-"+brand"-category-portal-"+category).fadeOut();
+              $(".filter-portal").filter(".brand-portal-"+brand+"-category-portal-"+category).fadeIn();
             }
           }
     });
@@ -31,17 +31,17 @@ $(function(){
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-portal-${brand}`).fadeIn();
-              $(`.filter-portal:not(.brand-portal-${brand})`).fadeOut();
+              $(".brand-portal-"+brand).fadeIn();
+              $(".filter-portal:not(.brand-portal-"+brand+")").fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-portal-${category}`).fadeIn();
-              $(`.brand-portal-${brand}-category-portal-${category}`).fadeIn();
-              $(`.filter-portal:not(.category-portal-${category})`).fadeOut();
+              $(".category-portal-"+category).fadeIn();
+              $(".brand-portal-"+brand+"-category-portal-"+category).fadeIn();
+              $(".filter-portal:not(.category-portal-"+category+")").fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(".filter-portal").not(`.brand-portal-${brand}-category-portal-${category}`).fadeOut();
-              $(".filter-portal").filter(`.brand-portal-${brand}-category-portal-${category}`).fadeIn();
+              $(".filter-portal").not(".brand-portal-"+brand+"-category-portal-"+category).fadeOut();
+              $(".filter-portal").filter(".brand-portal-"+brand+"-category-portal-"+category).fadeIn();
             }
           }
     });
@@ -55,16 +55,16 @@ $(function(){
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-on-hand-${brand}`).fadeIn();
-              $(`.filter-on-hand:not(.brand-on-hand-${brand})`).fadeOut();
+              $('.brand-on-hand-'+brand).fadeIn();
+              $('.filter-on-hand:not(.brand-on-hand-'+brand+')').fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-on-hand-${category}`).fadeIn();
-              $(`.filter-on-hand:not(.category-on-hand-${category})`).fadeOut();
+              $('.category-on-hand-'+category).fadeIn();
+              $('.filter-on-hand:not(.category-on-hand-'+category+')').fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(".filter-on-hand").not(`.brand-on-hand-${brand}-category-on-hand-${category}`).fadeOut();
-              $(".filter-on-hand").filter(`.brand-on-hand-${brand}-category-on-hand-${category}`).fadeIn();
+              $(".filter-on-hand").not('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeOut();
+              $(".filter-on-hand").filter('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeIn();
             }
           }
     });
@@ -78,17 +78,17 @@ $(function(){
           }
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
-              $(`.brand-on-hand-${brand}`).fadeIn();
-              $(`.filter-on-hand:not(.brand-on-hand-${brand})`).fadeOut();
+              $('.brand-on-hand-'+brand).fadeIn();
+              $('.filter-on-hand:not(.brand-on-hand-'+brand')').fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
-              $(`.category-on-hand-${category}`).fadeIn();
-              $(`.brand-on-hand-${brand}-category-on-hand-${category}`).fadeIn();
-              $(`.filter-on-hand:not(.category-on-hand-${category})`).fadeOut();
+              $('.category-on-hand-'+category).fadeIn();
+              $('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeIn();
+              $('.filter-on-hand:not(.category-on-hand-'+category')').fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(".filter-on-hand").not(`.brand-on-hand-${brand}-category-on-hand-${category}`).fadeOut();
-              $(".filter-on-hand").filter(`.brand-on-hand-${brand}-category-on-hand-${category}`).fadeIn();
+              $(".filter-on-hand").not('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeOut();
+              $(".filter-on-hand").filter('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeIn();
             }
           }
 	  });
