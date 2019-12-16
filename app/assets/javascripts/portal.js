@@ -52,7 +52,7 @@ $(function(){
             },
             success: function(category_data){
                 if(category_data != null){
-                  $("#select_category").append("<option value="+category_data.id">"+category_data.name+"</option>");
+                  $("#select_category").append("<option value="+category_data.id+">"+category_data.name+"</option>");
                 }
                 else{
                   $("#select_category").html("<option>Select Category</option>");

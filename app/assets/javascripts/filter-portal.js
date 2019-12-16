@@ -16,7 +16,7 @@ $(function(){
               $(".filter-portal:not(.category-portal-"+category+")").fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
-              $(".filter-portal").not(".brand-portal-"+brand"-category-portal-"+category).fadeOut();
+              $(".filter-portal").not(".brand-portal-"+brand+"-category-portal-"+category).fadeOut();
               $(".filter-portal").filter(".brand-portal-"+brand+"-category-portal-"+category).fadeIn();
             }
           }
@@ -79,12 +79,12 @@ $(function(){
           else{
             if(brand !== "Select Brand" && category == "Select Category"){
               $('.brand-on-hand-'+brand).fadeIn();
-              $('.filter-on-hand:not(.brand-on-hand-'+brand')').fadeOut();
+              $('.filter-on-hand:not(.brand-on-hand-'+brand+')').fadeOut();
             }
             else if(brand == "Select Brand" && category !== "Select Category"){
               $('.category-on-hand-'+category).fadeIn();
               $('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeIn();
-              $('.filter-on-hand:not(.category-on-hand-'+category')').fadeOut();
+              $('.filter-on-hand:not(.category-on-hand-'+category+')').fadeOut();
             }
             else if(brand !== "Select Brand" && category !== "Select Category" && brand !== "" && category !== ""){
               $(".filter-on-hand").not('.brand-on-hand-'+brand+'-category-on-hand-'+category).fadeOut();
