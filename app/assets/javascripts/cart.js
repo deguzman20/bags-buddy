@@ -13,7 +13,7 @@ $(function(){
         } catch (e) {
           console.log(e)
         }
-    };
+    }
 
     $("#checkout").hover(function(){
       $(this).css({
