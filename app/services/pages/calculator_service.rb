@@ -5,7 +5,7 @@ module Pages
     def initialize(params = {})
       @link        = params[:link]
       @price       = params[:price]
-      @quantity    = params[:quantity]
+      @quantity    = params[:quantity] || 1
       @brand_id    = params[:brand_id]
       @category_id = params[:category_id]
     end
@@ -21,7 +21,7 @@ module Pages
       end
 
       def exchange_rate
-        ExchangeRate.first.value.to_i
+        ExchangeRate.first.value.to_i || 0
       end
 
       def brand_categories
