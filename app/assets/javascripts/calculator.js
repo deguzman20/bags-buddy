@@ -16,8 +16,8 @@ $(function(){
           category_id: category_id
          },
          success:function(data){
-          $(`#additional`).val(data.additional.toString());
-          $(`#subtotal`).val(data.subtotal.toString());
+          $("#additional").val(data.additional.toString());
+          $("#subtotal").val(data.subtotal.toString());
          },
          error:function(err){
           console.log(err);
