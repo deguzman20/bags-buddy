@@ -91,6 +91,7 @@ $(function(){
       }
     });
   $("#materialRegisterFormStates").html("<option value=''>Select State</option>");
+  $("#materialRegisterFormCities").html("<option value=''>Select City</option>");
   // Get All States from ph
   $.ajax({
     url: "/states",
