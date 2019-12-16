@@ -82,7 +82,7 @@ $(function(){
             },
             success:function(data){
               $("#txt-subtotal").html(formatMoney(data));
-              $(`#amount-${id}`).html("₱ "+formatMoney(parseInt($("#price-"+id).attr('class')) * parseInt($("#quantity-"+id).val())));
+              $("#amount-"+id).html("₱ "+formatMoney(parseInt($("#price-"+id).attr('class')) * parseInt($("#quantity-"+id).val())));
             },
             error:function(err){
               console.log(err)
