@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_004749) do
     t.datetime "birthdate"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "admin"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "deleted_at"
