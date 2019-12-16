@@ -40,7 +40,7 @@
               .col
                 .md-form
                   = select_tag :states, |
-                    nil, id: 'materialRegisterFormStates', class: 'browser-default custom-select custom-select-lg mb-3'   |  
+                    nil, id: 'materialRegisterFormStates', class: 'browser-default custom-select custom-select-lg mb-3'   |
               .col
                 .md-form
                   = select_tag :cities, |
@@ -60,9 +60,18 @@
             -#           %label{:for => "materialRegisterFormFB"}
             -#             Facebook Email (optional)
             .row
-              .col-lg-12-col-md-12
+              .col-lg-6-col-md-6
                 %h5.py-4
                   %strong Contact Information
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;
+              .col-lg-6-col-md-6
+                %h5.py-4
+                  %strong dheins23@gmail.com
             .row 
               .col-lg-6.col-md-6 
                 .form-row
@@ -77,7 +86,7 @@
                   .col  
                     %strong
                       %h1
-                        = number_to_currency(@remaining_balances.nil? ? nil : @remaining_balances, :unit => "₱", :separator => ".", :delimiter => ",")                       
+                        = number_to_currency(@remaining_balances.nil? ? nil : @remaining_balances, :unit => "₱", :separator => ".", :delimiter => ",")
             .row
               .col-lg-12.col-md-12
                 %div{:style => "position: relative;left:30%"}
@@ -87,7 +96,7 @@
                     id: 'checkout'
                   %button.btn.btn-danger
                     = link_to 'Back', new_user_session_path, |
-                      class: 'white-text'                    |     
+                      class: 'white-text'                    |
     .col-lg-2
 %br/
 %br/
