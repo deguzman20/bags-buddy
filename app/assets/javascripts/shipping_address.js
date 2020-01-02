@@ -64,12 +64,12 @@ $(function(){
       }
     })
 
-    $("#materialRegisterFormLastAddress").keyup(function(){
+    $("#materialRegisterFormAddress").keyup(function(){
       if($("#materialRegisterFormAddress").val() == ""){
         $("#materiallRegisterFormAddress").css({"bottom" : "1px solid #712b29", "background-color": "#f7dddc"});
       }
       else{
-        $("#materialRegisterForAddress").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
+        $("#materialRegisterFormAddress").css({"bottom" : "1px solid #ced4da", "background-color": "white"});
       }
     })
 

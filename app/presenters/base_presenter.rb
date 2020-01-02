@@ -8,4 +8,10 @@ class BasePresenter < SimpleDeligator
   def h
     @view
   end
+
+  def self.present(name)
+    define_method(name) do
+      @model 
+    end 
+  end	
 end

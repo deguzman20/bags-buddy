@@ -56,9 +56,10 @@
                   %span{id: "error_message"}
                 %div{:style => "position: relative;left:40%"}
                   = f.submit "Register",                |
-                    class: 'btn btn-success btn-rounded |
-                    btn-block waves-effect z-depth-0'   |
-                  %button.btn.btn-primary.btn-login
+                    class: 'btn btn-rounded |
+                    btn-block waves-effect z-depth-0',   |
+                    style: "background-color:#AFDB63;color:white"
+                  %button.btn.btn-elegant.btn-primary.btn-login
                     = link_to 'Login', new_user_session_path, |
                       class: 'white-text'                     |
     .col-lg-3

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby "2.5.3"
-gem "cancancan"
+# gem "cancancan"
 gem "carrierwave"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
@@ -13,8 +13,9 @@ gem "jwt"
 gem "mini_magick"
 gem "pg", "~> 1.1"
 gem "rolify"
+gem "premailer-rails"
 # gem "mysql2", ">= 0.4.4", "< 0.6.0"
-gem "bootsnap", ">= 1.1.0", require: false
+gem 'bootsnap', '>= 1.1.0', '< 1.4.2', require: false
 gem "paperclip", "~> 6.0.0"
 gem "puma", "~> 3.11"
 gem "rack-cors"
@@ -27,6 +28,8 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "virtus"
 gem "whenever", require: false
+gem "paper_trail"
+gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -34,6 +37,7 @@ end
 
 group :development do
   # gem "factory_girl_rails"
+  gem "bullet"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
   gem "rubocop-performance"

@@ -1,5 +1,5 @@
 current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.5/ext/bootsnap
-/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191205-47329-15ewqjp.rb extconf.rb
+/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191217-2233-14t10do.rb extconf.rb
 creating Makefile
 
 current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.5/ext/bootsnap
@@ -12,4 +12,4 @@ linking shared-object bootsnap/bootsnap.bundle
 
 current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.5/ext/bootsnap
 make "DESTDIR=" install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20191205-47329-wsdo6j/bootsnap
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20191217-2233-19pm5ki/bootsnap

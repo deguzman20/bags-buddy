@@ -1,5 +1,4 @@
-# controller for page
-class PagesController < ApplicationController
+class PagesController < ApplicationController  
   def home
     @products   = Product.all
     @pre_orders = PreOrder.all
@@ -77,7 +76,7 @@ class PagesController < ApplicationController
     sub_totals
   end
 
-  def delete_cart_product
+   def delete_cart_product
     cart_product = CartProduct.find(params[:id].to_i)
     cart_product.delete
     sub_totals
@@ -110,7 +109,9 @@ class PagesController < ApplicationController
       exchange_rate = ExchangeRate.first.value
       cart = Cart.find_by_user_id(current_user.id)
       CartProduct.where(cart_id: cart.id).each do |cart_product|
-        subtotal += !cart_product.product.nil? ? cart_product.product.price * cart_product.quantity : (cart_product.price * cart_product.quantity) * exchange_rate
+        product_nil = (cart_product.price * cart_product.quantity) * exchange_rate
+        product_not_nil = cart_product.product.price * cart_product.quantity
+        subtotal += !cart_product.product.nil? ? product_not_nil : product_nil
       end
       render json: subtotal.to_json
     end
@@ -183,7 +184,7 @@ class PagesController < ApplicationController
                         mobile_number: params[:mobile_number],
                         is_save_info: params[:save_shipping_address])
   end
-
+  
   def save_shipping_address
     if user_signed_in?
       shipping_address = shipping_address_obj(params)

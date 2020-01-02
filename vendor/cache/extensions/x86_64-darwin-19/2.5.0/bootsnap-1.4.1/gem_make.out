@@ -1,0 +1,15 @@
+current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.1/ext/bootsnap
+/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191217-19184-m7mhxx.rb extconf.rb
+creating Makefile
+
+current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.1/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.1/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/bootsnap-1.4.1/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20191217-19184-9n2zle/bootsnap

@@ -1,5 +1,5 @@
 current directory: /Users/dev-venteny/Desktop/bags-buddy/vendor/cache/gems/ffi-1.11.3/ext/ffi_c
-/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191210-11901-x9udd6.rb extconf.rb
+/Users/dev-venteny/.rvm/rubies/ruby-2.5.3/bin/ruby -I /Users/dev-venteny/.rvm/rubies/ruby-2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20191217-2233-1fdg7h2.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi... no
 checking for shlwapi.h... no
@@ -125,4 +125,4 @@ compiling Types.c
 compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.bundle
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ffi_c.bundle ./.gem.20191210-11901-vb2loi
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ffi_c.bundle ./.gem.20191217-2233-t4v6ce

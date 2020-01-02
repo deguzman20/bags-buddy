@@ -14,13 +14,48 @@ RailsAdmin.config do |config|
   # config.authorize_with :pundit
 
   ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+
+  config.current_user_method(&:current_user)
+
+  # PAPER_TRAIL_AUDIT_MODEL = ['Order', 'OrderProduct', 'Product']
+  # config.actions do
+  #   history_index do
+  #     only PAPER_TRAIL_AUDIT_MODEL
+  #   end
+  #   history_show do
+  #     only PAPER_TRAIL_AUDIT_MODEL
+  #   end
+  # end
+
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' do
+    visible :false
+  end  
+  
+  config.audit_with :paper_trail, 'User', 'Version' # PaperTrail < 3.0.0
+  
+  config.authorize_with do
+    # if current_user&.has_role? :admin
+      config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+    # end
+  end
+
+  # config.authorize_with do
+  #   if current_user
+  #     unless current_user.has_role? :admin
+  #       redirect_to main_app.root_path, error: 'You are not authorized to perform this action.'
+  #     end
+  #   else 
+  #     redirect_to main_app.root_path, error: 'You are not authorized to perform this action.'       
+  #   end  
+  # end
+
   config.model Brand do
     configure :brand_categories do
       visible false
@@ -154,7 +189,7 @@ RailsAdmin.config do |config|
     show_in_app
 
     ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    history_index
+    history_show
   end
 end

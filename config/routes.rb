@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  get 'pages/home'
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
-  root to: "pages#home"
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-
+  root to: "pages#home"
   get "cart", to: "pages#cart", as: :cart
   get "add_to_cart/:id", to: "pages#add_to_cart", as: :add_to_cart
   get "profile", to: "pages#profile"

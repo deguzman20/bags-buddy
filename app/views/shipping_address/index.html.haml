@@ -91,10 +91,10 @@
               .col-lg-12.col-md-12
                 %div{:style => "position: relative;left:30%"}
                   = submit_tag "Checkout",              |
-                    class: 'btn btn-elegant btn-rounded |
+                    class: 'btn btn-rounded |
                     btn-block waves-effect z-depth-0',  |
-                    id: 'checkout'
-                  %button.btn.btn-danger
+                    id: 'checkout', style: "background-color:#AFDB63;color:white"
+                  %button.btn.btn-elegant
                     = link_to 'Back', new_user_session_path, |
                       class: 'white-text'                    |
     .col-lg-2
