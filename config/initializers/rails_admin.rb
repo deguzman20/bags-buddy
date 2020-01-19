@@ -14,7 +14,7 @@ RailsAdmin.config do |config|
   # config.authorize_with :pundit
 
   ## == PaperTrail ==
-  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  # config.audit_with :paper_trail, "User", "PaperTrail::Version" # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -34,26 +34,24 @@ RailsAdmin.config do |config|
   #   end
   # end
 
-  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' do
+  config.audit_with :paper_trail, "User", "PaperTrail::Version" do
     visible :false
-  end  
-  
-  config.audit_with :paper_trail, 'User', 'Version' # PaperTrail < 3.0.0
-  
-  config.authorize_with do
-    # if current_user&.has_role? :admin
-      config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-    # end
   end
+
+  # config.audit_with :paper_trail, "User", "Version" # PaperTrail < 3.0.0
+
+  # config.authorize_with do
+  #   if current_user&.has_role? :admin
+  #     config.audit_with :paper_trail, "User", "PaperTrail::Version" # PaperTrail >= 3.0.0
+  #   end
+  # end
 
   # config.authorize_with do
   #   if current_user
-  #     unless current_user.has_role? :admin
-  #       redirect_to main_app.root_path, error: 'You are not authorized to perform this action.'
-  #     end
-  #   else 
-  #     redirect_to main_app.root_path, error: 'You are not authorized to perform this action.'       
-  #   end  
+  #     redirect_to main_app.root_path, error: "You are not authorized to perform this action." unless current_user.has_role? :admin
+  #   else
+  #     redirect_to main_app.root_path, error: "You are not authorized to perform this action."
+  #   end
   # end
 
   config.model Brand do
@@ -75,7 +73,7 @@ RailsAdmin.config do |config|
   end
 
   config.model BrandCategory do
-    visible false
+    visible true
   end
 
   config.model Category do
@@ -128,7 +126,31 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model PreOrder do
+    field :link
+    field :image
+    field :additional_price
+    field :category_id
+    field :brand_id
+    field :eta_air
+    field :eta_sea
+    field :instruction, :ck_editor
+  end  
+
   config.model Product do
+    edit do
+      field :name
+      field :image
+      field :price
+      field :brand
+      field :category do
+        visible do
+          bindings[:view]._current_user.roles.include?(:accounting)
+        end
+      end  
+      field :product_description, :ck_editor
+    end
+
     configure :cart_product do
       visible false
     end
@@ -185,11 +207,13 @@ RailsAdmin.config do |config|
     bulk_delete
     show
     edit
-    delete
-    show_in_app
+    delete do
+      except [Order, OrderProduct] 
+    end  
+    # show_in_app
 
     ## With an audit adapter, you can add:
     history_index
-    history_show
+    # history_show
   end
 end

@@ -6,8 +6,8 @@ class CreatePreOrders < ActiveRecord::Migration[5.2]
       t.decimal :additional_price
       t.string :category_id
       t.string :brand_id
-      t.datetime :ETA_air
-      t.datetime :ETA_sea
+      t.datetime :eta_air
+      t.datetime :eta_sea
       t.text :instruction
       t.timestamps
     end

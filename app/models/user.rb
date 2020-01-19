@@ -6,9 +6,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
+  
+  has_many :wishlists
+  has_many :products, through: :wishlists       
+
   has_one :cart
   has_many :orders
   has_many :shipping_addresses
+  
   validates_uniqueness_of :email
 
   def update_password_with_password(params, *options)

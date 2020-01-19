@@ -17,10 +17,9 @@
             url: password_path(resource_name),    |
             html: { method: :post }) do |f|       |
             .md-form.mt-0
-              %input#materialRegisterFormEmail.form-control{:name => "user[email]", :type => "email"}/
-              %label{:for => "materialRegisterFormEmail"} E-mail
+              %input#materialRegisterFormEmail.form-control{:name => "user[email]", :type => "email", placeholder: "E-mail"}/
             / Sign up button
-            %button.btn.btn-success.btn-rounded.btn-block.my-4.waves-effect.z-depth-0{:name => "commit", :type => "su]bmit"} Submit
+            %button.btn.btn-rounded.btn-block.my-4.waves-effect.z-depth-0.btn-black{:name => "commit", :type => "submit" } Submit
     .col-lg-3.col-md-3
   %br/
   %br/

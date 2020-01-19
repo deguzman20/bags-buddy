@@ -1,0 +1,12 @@
+.ht__bradcaump__area{  style: "background-color:#bcbcbc" }
+  .container
+    .row
+      .col-lg-12
+        .bradcaump__inner.text-center
+          %h2.bradcaump-title 
+            = current_location
+          %nav.bradcaump-content
+            %a.breadcrumb_item{:href => "/"} Home
+            %span.brd-separetor /
+            %span.breadcrumb_item.active 
+              = current_location

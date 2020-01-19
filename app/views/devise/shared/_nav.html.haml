@@ -1,11 +1,144 @@
-%nav.navbar.navbar-expand-lg{style: "background-color:#B1E864"}
-  %a.navbar-brand{:href => "/", style: "color:white"}
-    Bags Buddy
-  %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarText", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarText.collapse.navbar-collapse
-    %ul#nav-menu.navbar-nav.mr-auto
-      %li.nav-item
-      %li.nav-item
-    = login?
-= stylesheet_link_tag  'style.css'
+-# 75X94
+%header#wn__header.header__area.header__absolute.sticky__header
+  .container-fluid
+    .row
+      .col-md-6.col-sm-6.col-6.col-lg-2
+        .logo
+          = link_to "Bags Buddy", root_path, style: "color:white;font-size:15px"
+          -# %a{:href => "index.html", style: "color:white"}
+      .col-lg-8.d-none.d-lg-block
+        %nav.mainmenu__nav
+          %ul.meninmenu.d-flex.justify-content-start
+      .col-md-6.col-sm-6.col-6.col-lg-2
+        %ul.header__sidebar__right.d-flex.justify-content-end.align-items-center
+          - if user_signed_in?   
+            %li.wishlist
+              = link_to "", wishlist_path
+            %li.shopcart
+              %a.cartbox_active{:href => "#"}
+                %span.product_qun 
+              / Start Shopping Cart
+              .block-minicart.minicart__active
+                .minicart-content-wrapper
+                  .micart__close
+                    %span close
+                  .items-total.d-flex.justify-content-between
+                    %span 
+                      = current_user.cart.cart_products.count
+                      = current_user.cart.cart_products.count >= 2 ? "Items" : "Item"
+                    %span Cart Subtotal
+                  .total_amount.text-right
+                    %span 
+                      - total = 0
+                      - current_user.cart.cart_products.each do |cps|
+                        - total += (cps.product.price * cps.quantity)
+                      = "#{number_to_currency(total, :unit => "₱", :separator => ".", :delimiter => ",")}"    
+                  .mini_action.checkout
+                    %a.checkout__btn{:href => "/shipping_address"} Go to Checkout
+                  .single__items
+                    .miniproduct
+                      - current_user.cart.cart_products.each do |cp|
+                        .item01.d-flex{ id: "item_#{cp.id}"}
+                          .thumb
+                            %a{:href => "product-details.html"}
+                              = image_tag cp.product.image.to_s
+                          .content
+                            %h6
+                              %a{:href => ""} 
+                                = cp.product.name
+                            %span.prize 
+                              = "#{number_to_currency(cp.product.price, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.product.nil?      
+                            .product_prize.d-flex.justify-content-between
+                              %span.qun  
+                                = "Qty: #{cp.quantity>= 10 ? cp.quantity : "0#{cp.quantity}" }"
+                              %ul.d-flex.justify-content-end
+                                -# %li
+                                -#   %a{:href => "#"}
+                                -#     %i.zmdi.zmdi-settings
+                                %li
+                                  %a{:href => "#", :id => "remove_#{cp.id}"}
+                                    %i.zmdi.zmdi-delete
+                  .mini_action.cart
+                    %a.cart__btn{:href => "/cart"} View and edit cart
+              -# %a{:href => "#"}    
+              / End Shopping Cart
+          %li.setting__bar__icon{ style: "background: rgba(0, 0, 0, 0) url('assets/icons/icon_setting_white.png') no-repeat scroll 0 center;"}
+            %a.setting__active{:href => "#"}
+            .searchbar__content.setting__block
+              .content-inner
+                .switcher-currency
+                  %strong.label.switcher-label
+                    %span My Account
+                  .switcher-options
+                    .switcher-currency-trigger
+                      .setting__menu
+                        - if user_signed_in?
+                          %span
+                            = link_to "Profile", profile_path
+                          %span
+                            = link_to "Cart", cart_path
+                          %span
+                            = link_to "Calculator", calculator_path  
+                          %span
+                            = link_to "Transaction History", transaction_history_path
+                          %span
+                            = link_to "Logout", destroy_user_session_path  
+                        - else
+                          %span
+                            = link_to "Sign In", new_user_session_path
+                          %span
+                            = link_to "Create An Account", new_user_registration_path
+    .row.d-none
+      .col-lg-12.d-none
+        %nav.mobilemenu__nav
+          %ul.meninmenu
+            %li
+              %a{:href => "index.html"} Home
+            %li
+              %a{:href => "#"} Pages
+              %ul
+                %li
+                  %a{:href => "about.html"} About Page
+                %li
+                  %a{:href => "portfolio.html"} Portfolio
+                  %ul
+                    %li
+                      %a{:href => "portfolio.html"} Portfolio
+                    %li
+                      %a{:href => "portfolio-details.html"} Portfolio Details
+                %li
+                  %a{:href => "my-account.html"} My Account
+                %li
+                  %a{:href => "cart.html"} Cart Page
+                %li
+                  %a{:href => "checkout.html"} Checkout Page
+                %li
+                  %a{:href => "wishlist.html"} Wishlist Page
+                %li
+                  %a{:href => "error404.html"} 404 Page
+                %li
+                  %a{:href => "faq.html"} Faq Page
+                %li
+                  %a{:href => "team.html"} Team Page
+            %li
+              %a{:href => "shop-grid.html"} Shop
+              %ul
+                %li
+                  %a{:href => "shop-grid.html"} Shop Grid
+                %li
+                  %a{:href => "single-product.html"} Single Product
+            %li
+              %a{:href => "blog.html"} Blog
+              %ul
+                %li
+                  %a{:href => "blog.html"} Blog Page
+                %li
+                  %a{:href => "blog-details.html"} Blog Details
+            %li
+              %a{:href => "contact.html"} Contact
+    / End Mobile Menu
+    .mobile-menu.d-block.d-lg-none
+    / Mobile Menu
+
+
+  = javascript_include_tag 'nav_cart.js'

@@ -15,13 +15,7 @@ $(function(){
         }
     }
 
-    $("#checkout").hover(function(){
-      $(this).css({
-        "color":"white"
-      });
-    });
-
-    $("#checkout").click(function(){
+    $("#checkouts").click(function(){
       window.location.href = "/shipping_address";
     });
 
@@ -81,7 +75,7 @@ $(function(){
               cart_product_id: id
             },
             success:function(data){
-              $("#txt-subtotal").html(formatMoney(data));
+              $("#txt-subtotal").html("₱"+formatMoney(data));
               $("#amount-"+id).html("₱ "+formatMoney(parseInt($("#price-"+id).attr('class')) * parseInt($("#quantity-"+id).val())));
             },
             error:function(err){
@@ -103,7 +97,7 @@ $(function(){
           },
           dataType:"JSON",
           success:function(data){
-            $("#txt-subtotal").html(formatMoney(data));
+            $("#txt-subtotal").html("₱"+formatMoney(data));
           },
           error:function(err){
             console.log(err)

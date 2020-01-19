@@ -1,2 +1,0 @@
-class ContentManagementSystem < ApplicationRecord
-end

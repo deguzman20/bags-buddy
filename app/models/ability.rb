@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -11,16 +9,16 @@ class Ability
     # if user && user.has_role? :admin
     #   can :manage, :all
     #   cannot :page_views, :pages
-    # elsif user && user.has_role? :user 
+    # elsif user && user.has_role? :user
     #   # can :read, :all
     #   # can :page_views, :pages
     #   cannot :access, :rails_admin
     #   cannot :manage, :rails_admin
-    # else 
+    # else
     #   # can :read, :all
     #   # can :page_views, :pages
     #   cannot :manage, :rails_admin
-    #   cannot :access, :rails_admin 
+    #   cannot :access, :rails_admin
     # end
     #
     # The first argument to `can` is the action you are giving the user

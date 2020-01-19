@@ -1,114 +1,130 @@
-.container
-  %hr/
-  %section.text-center.my-5
-    %h2.h1-responsive.font-weight-bold.text-center.my-5 Pre Order
-    .row
-      .col-lg-6
+.row
+  .col-lg-12
+    .section__title.text-center
+      %h2.title__be--2
+        Pre
+        %span.color--theme Order
+      %p There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form
+      .row
+        .col-lg-6
+          %br/
+          %select#select_brand_portal.browser-default.custom-select
+            %option Select Brand
+            - @brands.each do |brand|
+              = brand.brand_name
+        .col-lg-6
+          %br/
+          %select#select_category_portal.browser-default.custom-select
+            %option#select_category_option Select Category
+      .row
         %br/
-        %select#select_brand_portal.browser-default.custom-select
-          %option Select Brand
-          - @brands.each do |brand|
-            = brand.brand_name
-      .col-lg-6
-        %br/
-        %select#select_category_portal.browser-default.custom-select
-          %option#select_category_option Select Category
-    %br/
-    .row
-      - @pre_orders.each do |pre_order|
-        %div{:class => ["pre-order",
-                        "portal",
-                        "col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
-                        "filter-portal",
-                        "brand-portal-#{pre_order.brand_id}",
-                        "category-portal-#{pre_order.category_id}",
-                        "brand-portal-#{pre_order.brand_id}-category-portal-#{pre_order.category_id}"]}
-          .card.align-items-center
-            .view.overlay
-              = image_tag pre_order.image.to_s, class: 'card-img-top', style:"height:250px!important"
-              %a
-                .mask.rgba-white-slight
-            .card-body.text-center
-              .row
-                .col-lg-6.col-md-6
-                  %br/
-                  %h4= pre_order.category.name
-                .col-lg-6.col-md-6
-                  = link_to '<button class="btn btn-success text-white btn-visit">Visit</button>'.html_safe, "#{pre_order.link}", |
-                    target: '_blank'
-              %hr/
-              .row
-                .col-lg-12.col-md-12
-                  %br/
-                  %span{ class: "fa fa-plane"}
-                  %span= "ETA end of #{pre_order.ETA_sea.nil? ? nil : pre_order.ETA_sea.strftime("%B")}"                                                                                       
-              %hr/
-              .row
-                .col-lg-12.col-md-12
-                  %br/
-                  %span{ class: "fa fa-ship"}
-                  %span= "ETA end of #{pre_order.ETA_air.nil? ? nil : pre_order.ETA_air.strftime("%B")}"
-              %hr/
-              .row
-                .col-lg-12.col-md-12
-                  %h3
-                    Instruction
-              .row
-                .col-lg-12.col-md-12
-                  %pre
-                    = pre_order.instruction
-    .col-md-12
-      %center
-        %a#pre-order-load{:href => "#"} 
-          %button{:class => "btn btn-outline-primary waves-effect"}  
-            Load More
-
-    %hr/
-    %section.text-center.my-5
-    %h2.h1-responsive.font-weight-bold.text-center.my-5 On Hand Product
-    .row
-      .col-lg-6
-        %br/
-        %select#select_brand_on_hand.browser-default.custom-select
-          %option Select Brand
-          - @brands.each do |brand|
-            = brand.brand_name
-      .col-lg-6
-        %br/
-        %select#select_category_on_hand.browser-default.custom-select
-          %option#select_category_option Select Category
-    %br/
-    .row
-      - @products.each do |product|
-        %div{:class => ["portal",
-                        "on-hand",
-                        "col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-lg-0 mb-4",
-                        "filter-on-hand",
-                        "brand-on-hand-#{product.brand_id}",
-                        "category-on-hand-#{product.category_id}",
-                        "brand-on-hand-#{product.brand_id}-category-on-hand-#{product.category_id}"]}
-          .card.align-items-center
-            .view.overlay
-              = image_tag product.image.to_s, class: 'card-img-top img', style:"height:250px!important"
-              %a
-                .mask.rgba-white-slight
-            .card-body.text-center
-              .row
-                .col-lg-12.col-md-12
-                  %center
-                    %h4= product.name
-                .col-lg-12.col-md-12
-                  %center
-                    %h5
-                      = "#{number_to_currency(product.price, :unit => "₱", :separator => ".", :delimiter => ",")}"      
-                .col.lg-12.col-mf-12
-                  .div{class: "btn-group btn-group-sm"}
-                    = link_to '<button class="btn btn-success text-white" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-cart-arrow-down"></i></button>'.html_safe, add_to_cart_path(product.id)
-                    = link_to '<button class="btn btn-danger text-white"  data-toggle="tooltip" data-placement="top" title="Product Info"><i class="fa fa-info"></i></button>'.html_safe, product_info_path(product.id)
+      .row
+        - @pre_orders.each do |pre_order|
+          %div{:class => ["pre-order",
+                          "portal",
+                          "col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-lg-0 mb-4 ",
+                          "filter-portal",
+                          "brand-portal-#{pre_order.brand_id}",
+                          "category-portal-#{pre_order.category_id}",
+                          "brand-portal-#{pre_order.brand_id}-category-portal-#{pre_order.category_id}"]}
+            .card.align-items-center
+              .view.overlay
+                = image_tag pre_order.image.to_s, class: 'card-img-top', style:"height:250px!important"
+                %a
+                  .mask.rgba-white-slight
+              .card-body.text-center
+                .row
+                  .col-lg-6.col-md-6
+                    %br/
+                    %h4= pre_order.category.name
+                  .col-lg-6.col-md-6
+                    = link_to '<button class="btn text-white btn-visit btn-block" style="background-color:black">Visit</button>'.html_safe, "#{pre_order.link}", |
+                      target: '_blank'
+                %hr/
+                .row
+                  .col-lg-12.col-md-12
+                    %br/
+                    %span{ class: "fa fa-plane"}
+                    %span= "ETA end of #{pre_order.eta_sea.nil? ? nil : pre_order.eta_sea.strftime("%B")}"                                                                                       
+                %hr/
+                .row
+                  .col-lg-12.col-md-12
+                    %br/
+                    %span{ class: "fa fa-ship"}
+                    %span= "ETA end of #{pre_order.eta_air.nil? ? nil : pre_order.eta_air.strftime("%B")}"
+                %hr/
+                .row
+                  .col-lg-12.col-md-12
+                    %br
+                    %h3
+                      Instruction
+                .row
+                  .col-lg-12.col-md-12
+                    %pre
+                      = pre_order.instruction.truncate(100)
         .col-md-12
           %center
-            %a#on-hand-load{:href => "#"}
-              %button{:class => "btn btn-outline-primary waves-effect"}
+            %a#pre-order-load{:href => "#"} 
+              %button{:class => "btn btn-outline-primary waves-effect"}  
                 Load More
+
+    %hr/
+    .col-lg-12
+      %br/ 
+      .section__title.text-center
+        %h2.title__be--2
+          On
+          %span.color--theme Hand Products
+        %p There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form
+        .row
+          .col-lg-6
+            %br/
+            %select#select_brand_on_hand.browser-default.custom-select
+              %option Select Brand
+              - @brands.each do |brand|
+                = brand.brand_name
+          .col-lg-6
+            %br/
+            %select#select_category_on_hand.browser-default.custom-select
+              %option#select_category_option Select Category
+        %br/
+        .container
+          .row
+            - @products.each do |product|
+              %div{ class: ["product product__style--3 col-lg-6 col-md-4.col-sm-6 col-xs-12",
+                            "portal",
+                            "on-hand",
+                            "col-lg-4 col-md-4 col-sm-6 col-xs-12",
+                            "filter-on-hand",
+                            "brand-on-hand-#{product.brand_id}",
+                            "category-on-hand-#{product.category_id}",
+                            "brand-on-hand-#{product.brand_id}-category-on-hand-#{product.category_id}" ] }  
+                .product__thumb
+                  %a.first__img{:href => "product_info/#{product.id}"}
+                    = image_tag product.image.thumb.to_s, style: "width:400px!important;height:350px!important"
+                  .hot__box
+                    %span.hot-label
+                      = product.quantity.zero? ? "Out of stock" : "In Stock"
+                .product__content.content--center
+                  %h4
+                    %a{:href => "#"} 
+                      = product.name
+                  %ul.prize.d-flex
+                    %li
+                      = "#{number_to_currency(product.price, :unit => "₱", :separator => ".", :delimiter => ",")}"
+                  .action
+                    .actions_inner
+                      %ul.add_to_links
+                        %li
+                          = link_to "<i class='bi bi-shopping-bag4'></i>".html_safe, add_to_cart_path(product.id), class: "cart"
+                        %li
+                          %a.wishlist{:href => "wishlist.html"}
+                            %i.bi.bi-shopping-cart-full
+    
+            .col-md-12
+              %center
+                %a#on-hand-load{:href => "#"}
+                  %button{:class => "btn btn-outline-primary waves-effect"}
+                    Load More
 = javascript_include_tag 'portal.js'
 = javascript_include_tag 'filter-portal.js'

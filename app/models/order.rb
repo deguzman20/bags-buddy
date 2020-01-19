@@ -5,4 +5,5 @@ class Order < ApplicationRecord
   belongs_to :payment_order_status
   belongs_to :shipping_address
   has_many :order_products
+  has_many :products, through: :order_products
 end

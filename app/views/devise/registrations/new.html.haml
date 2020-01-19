@@ -1,3 +1,13 @@
+.ht__bradcaump__area{  style: "background-color:#bcbcbc" }
+  .container
+    .row
+      .col-lg-12
+        .bradcaump__inner.text-center
+          %h2.bradcaump-title Register
+          %nav.bradcaump-content
+            %a.breadcrumb_item{:href => "/"} Home
+            %span.brd-separetor /
+            %span.breadcrumb_item.active Register
 .container
   %br/
   %br/
@@ -11,41 +21,37 @@
         .card-body.px-lg-5.pt-0
           = form_for(resource, as: resource_name,   |
              url: registration_path(resource_name), |
+             builder: RegisterFormBuilder,          |
              class: 'text-center',                  |
              style: 'color: #757575') do |f|        |
             .form-row
               .col
+                %br/
                 .md-form
                   = f.text_field :first_name, class: 'form-control', |
-                    id: 'materialRegisterFormFirstName'              |
-                  %label{:for => "materialRegisterFormFirstName"}
-                    First name
+                    id: 'materialRegisterFormFirstName',             |
+                    placeholder: 'Firstname'
               .col
+                %br/
                 .md-form
                   = f.text_field :last_name, class: 'form-control', |
-                    id: 'materialRegisterFormLastName'              |
-                  %label{:for => "materialRegisterFormLastName"}
-                    Last name
-            .md-form.mt-0
-              = f.date_field :birthdate, class: 'form-control datepicker', |
-                id: 'materialRegisterFormBirthdate'             |
-              %label{:for => "materialRegisterFormBirthdate"}  Birthdate
-            .md-form.mt-0
-              = f.email_field :email, class: 'form-control', |
-                id: 'materialRegisterFormEmail'              |
-              %label{:for => "materialRegisterFormFirstName"} E-mail
-            .md-form
-              = f.password_field :password,        |
-                class: 'form-control',             |
-                id: 'materialRegisterFormPassword' |
-              %label{:for => "materialRegisterFormPassword"}
-                Password
-            .md-form
-              = f.password_field :password_confirmation,       |
-                class: 'form-control',                         |
-                id: 'materialRegisterFormPasswordConfirmation' |
-              %label{:for => "materialRegisterFormPasswordConfirmation"}
-                Confirm Password
+                    id: 'materialRegisterFormLastName',             |
+                    placeholder: 'Lastname'
+            
+            = f.date_field :birthdate, class: 'form-control datepicker', |
+              id: 'materialRegisterFormBirthdate'  
+            = f.email_field :email, class: 'form-control', |
+              id: 'materialRegisterFormEmail',             |
+              placeholder: 'E-mail'
+            = f.password_field :password,        |
+              class: 'form-control',             |
+              id: 'materialRegisterFormPassword', |
+              placeholder: 'Password'
+            = f.password_field :password_confirmation,       |
+              class: 'form-control',                         |
+              id: 'materialRegisterFormPasswordConfirmation', |
+              placeholder: 'Confirm Password'
+            %br/
             .row
               .col-lg-12.col-md-12
                 - if flash[:error].present?
@@ -54,14 +60,10 @@
                       = flash[:error]
                 - else 
                   %span{id: "error_message"}
-                %div{:style => "position: relative;left:40%"}
+                %div
                   = f.submit "Register",                |
                     class: 'btn btn-rounded |
-                    btn-block waves-effect z-depth-0',   |
-                    style: "background-color:#AFDB63;color:white"
-                  %button.btn.btn-elegant.btn-primary.btn-login
-                    = link_to 'Login', new_user_session_path, |
-                      class: 'white-text'                     |
+                    btn-block waves-effect z-depth-0 btn-black'   |
     .col-lg-3
 %br/
 %br/

@@ -15,8 +15,8 @@ class Users::SessionsController < Devise::SessionsController
         redirect_to "/admin"
       else
         redirect_to root_path
-      end  
-    end  
+      end
+    end
     # super
   end
 

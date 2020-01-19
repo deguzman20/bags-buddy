@@ -37,4 +37,3 @@ class ProfileForm
       )
     end
 end
-

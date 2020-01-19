@@ -14,3 +14,4 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require rails_admin/custom/ckeditor_ajax

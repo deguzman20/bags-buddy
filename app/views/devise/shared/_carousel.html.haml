@@ -1,17 +1,19 @@
-/ Carousel Wrapper
-#carousel-example-2.carousel.slide.carousel-fade{"data-ride" => "carousel"}
-  %ol.carousel-indicators
-    - carousels.each do |v,k|
-      %li{"data-slide-to" => "#{k}", "data-target" => "#carousel-example-2"}
-  .carousel-inner{:role => "listbox"}
-    - carousels.each do |v,k|
-      .carousel-item.active
-        .view
-          = image_tag v.image.to_s, class: 'd-block w-100', id: k.to_s
-          .mask.rgba-black-light
-  %a.carousel-control-prev{"data-slide" => "prev", :href => "#carousel-example-2", :role => "button"}
-    %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-    %span.sr-only Previous
-  %a.carousel-control-next{"data-slide" => "next", :href => "#carousel-example-2", :role => "button"}
-    %span.carousel-control-next-icon{"aria-hidden" => "true"}
-    %span.sr-only Next
+.slider-area.brown__nav.slider--15.slide__activation.slide__arrow01.owl-carousel.owl-theme
+  - carousels.each do |carousel|
+    .slide.animation__style10.fullscreen.align__center--left{ style: "background-image: url(#{carousel.image})" }
+      .container
+        .row
+          .col-lg-12
+            .slider__content
+              .contentbox
+                %h2
+                  Buy
+                  %span your
+                %h2
+                  favourite
+                  %span Book
+                %h2
+                  from
+                  %span Here
+                %a.shopbtn{:href => "#"} shop now
+  

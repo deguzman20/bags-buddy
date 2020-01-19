@@ -1,24 +1,73 @@
-.container
-  %br/
-  .col-md-12.col-lg-12
+= render 'devise/shared/page_directory', current_location: 'Shop Single'
+.maincontent.bg--white.pt--80.pb--55
+  .container
     .row
-      .col-md-6.col-lg-6
-        .card
-          / Card image
-          = image_tag @product_info.image.to_s, class: "card-img-top img thumbnail"
-          / Card content
-          .card-body
-        
-      .col-md-6.col-lg-6
-        .card
-          .card-body
-            / Title
-            %h4.card-title
-              %h3
-                = @product_info.name
-            / Text
-            %p.card-text 
-              %hr
-              %p
-                = @product_info.product_description 
-  %br/
+      .col-lg-9.col-12
+        .wn__single__product
+          .row
+            .col-lg-6.col-12
+              .wn__fotorama__wrapper
+                .fotorama.wn__fotorama__action{"data-nav" => "thumbs"}
+                  - @product_info.image_galleries.each do |pg|
+                    %a{:href => "#{@product_info.image.image_galleries.to_s}"}
+                      = image_tag @product_info.image.image_galleries.to_s, style: "width:450px!important;height:565px!important"
+                    %a{:href => "#{pg.image.image_galleries.to_s}"}
+                      = image_tag pg.image.image_galleries.to_s, style: "width:450px!important;height:565px!important"  
+            .col-lg-6.col-12
+              .product__info__main
+                %h1 
+                  = @product_info.name if @product_info.name.present?
+                -# .product-reviews-summary.d-flex
+                  %ul.rating-summary.d-flex
+                    %li
+                      %i.zmdi.zmdi-star-outline
+                    %li
+                      %i.zmdi.zmdi-star-outline
+                    %li
+                      %i.zmdi.zmdi-star-outline
+                    %li.off
+                      %i.zmdi.zmdi-star-outline
+                    %li.off
+                      %i.zmdi.zmdi-star-outline
+                .price-box
+                  %span
+                    = number_to_currency(@product_info.price, :unit => "₱", :separator => ".", :delimiter => ",")
+                .product__overview
+                  %p 
+                    = @product_info.product_description 
+                .box-tocart.d-flex
+                  %input#product_id{ value: "#{@product_info.id}", style: "display:none" }
+                  %span Qty
+                  %input#qty.input-text.qty{:min => "1", :name => "qty", :title => "Qty", :type => "number", :value => "1"}/
+                  .addtocart__actions
+                    %button.tocart{:title => "Add to Cart", :type => "submit", id: "add_to_cart"} Add to Cart
+                    %br/ 
+                    %br/
+                    %button.tocart{:title => "Add to WishList", :type => "submit", style:"background-color:black", id: "add_to_wishlist"} Add to wishlist
+                  -# .product-addto-links.clearfix
+                  -#   %a.wishlist{:href => "#", style: "background:url('/assets/icons/button-wishlist.png');background-repeat:no-repeat;background-position:center"}
+                    -# %a.compare{:href => "#"}
+                .product_meta
+                  %span.posted_in
+                    Categories:
+                    = succeed "," do
+                      %a{:href => "#"} 
+                        = @product_info.category.name
+          
+                .product-share
+                  %ul
+                    %li.categories-title Share :
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-social-twitter.icons
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-social-tumblr.icons
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-social-facebook.icons
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-social-linkedin.icons
+        .product__info__detailed
+= javascript_include_tag 'single_product.js'

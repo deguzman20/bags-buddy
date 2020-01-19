@@ -11,7 +11,7 @@ class BasePresenter < SimpleDeligator
 
   def self.present(name)
     define_method(name) do
-      @model 
-    end 
-  end	
+      @model
+    end
+  end
 end

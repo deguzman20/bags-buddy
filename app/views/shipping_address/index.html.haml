@@ -1,103 +1,131 @@
-.container
-  %br/
-  %br/
-  %br/
-  .row
-    .col-lg-2
-    .col-lg-8
-      .card
-        %h5.card-header.elegant-color.white-text.py-4
-          %strong Shipping Address
-        .card-body.px-lg-5.pt-0
-          = form_tag('/', class: 'text-center', style: 'color: #757575') do
-            .form-row
-              .col
-                .md-form
-                  = text_field_tag :first_name, |
-                    nil, id: 'materialRegisterFormFirstName', class: 'form-control'   |
-                  %label{:for => "materialRegisterFormFirstName"}
+= render 'devise/shared/page_directory', current_location: 'Checkout'
+%section.wn__checkout__area.section-padding--lg.bg__white
+  .container
+    .row
+      .col-lg-6.col-12
+        = form_tag('/') do
+          .customer_details
+            %h3 Billing details
+            .customar__field
+              .margin_between
+                .input_box.space_between
+                  %label
                     First name
-              .col
-                .md-form
-                  = text_field_tag :last_name, |
-                    nil, id: 'materialRegisterFormLastName', class: 'form-control'   |
-                  %label{:for => "materialRegisterFormLastName"}
-                    Last name
-            .form-row
-              .col
-                .md-form
+                    %span *
+                  = text_field_tag :first_name, nil, id: 'materialRegisterFormFirstName'
+                .input_box.space_between
+                  %label
+                    last name
+                    %span *
+                  = text_field_tag :last_name, nil, id: 'materialRegisterFormLastName'
+              .input_box
+                %label
+                  States
+                  %span *
+                = select_tag :states, |
+                    nil, id: 'materialRegisterFormStates', class: 'select__option' 
+              .input_box
+                %label
+                  City
+                  %span *
+                = select_tag :cities, |
+                    nil, id: 'materialRegisterFormCities', class: 'select__option'       
+              .input_box
+                %label
+                  Address
+                  %span *
                   = text_field_tag :address, |
-                    nil, id: 'materialRegisterFormAddress', class: 'form-control'   |
-                  %label{:for => "materialRegisterFormAddress"}
-                    Address
-              .col
-                .md-form
-                  = text_field_tag :apartment, |
-                    nil, id: 'materialRegisterFormApartment', class: 'form-control'   |
-                  %label{:for => "materialRegisterFormApartment"}
-                    Apartment  
-            .form-row
-              .col
-                .md-form
-                  = select_tag :states, |
-                    nil, id: 'materialRegisterFormStates', class: 'browser-default custom-select custom-select-lg mb-3'   |
-              .col
-                .md-form
-                  = select_tag :cities, |
-                    nil, id: 'materialRegisterFormCities', class: 'browser-default custom-select custom-select-lg mb-3'   |
-            .row
-              .custom-control.custom-checkbox
-                %label.custom-control-label{:for => "shipping_address"} Save Shipping Address
-                %input#shipping_address.custom-control-input{:checked => "checked", :type => "checkbox"}/
-            %hr/
-            -# .row 
-            -#   .col-lg-6.col-md-6 
-            -#     .form-row
-            -#       .col
-            -#         .md-form
-            -#           = text_field_tag :email, |
-            -#             nil, id: 'materialRegisterFormFB', class: 'form-control'   |
-            -#           %label{:for => "materialRegisterFormFB"}
-            -#             Facebook Email (optional)
-            .row
-              .col-lg-6-col-md-6
-                %h5.py-4
-                  %strong Contact Information
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;
-              .col-lg-6-col-md-6
-                %h5.py-4
-                  %strong dheins23@gmail.com
-            .row 
-              .col-lg-6.col-md-6 
-                .form-row
-                  .col
-                    .md-form
-                      = text_field_tag :mobile_number, |
-                        nil, id: 'materialRegisterFormMobileNo', class: 'form-control'   |
-                      %label{:for => "materialRegisterFormMobileNo"}
-                        Mobile Number
-              .col-lg-6.col-md-6.panelah 
-                .form-row
-                  .col  
-                    %strong
-                      %h1
-                        = number_to_currency(@remaining_balances.nil? ? nil : @remaining_balances, :unit => "₱", :separator => ".", :delimiter => ",")
-            .row
-              .col-lg-12.col-md-12
-                %div{:style => "position: relative;left:30%"}
-                  = submit_tag "Checkout",              |
-                    class: 'btn btn-rounded |
-                    btn-block waves-effect z-depth-0',  |
-                    id: 'checkout', style: "background-color:#AFDB63;color:white"
-                  %button.btn.btn-elegant
-                    = link_to 'Back', new_user_session_path, |
-                      class: 'white-text'                    |
-    .col-lg-2
-%br/
-%br/
+                    nil, id: 'materialRegisterFormAddress', placeholder: 'Street address'
+              .input_box
+                = text_field_tag :apartment, |
+                  nil, id: 'materialRegisterFormApartment', placeholder: 'Apartment, suite, unit etc. (optional)'
+              -# .input_box
+              -#   %label
+              -#     Postcode / ZIP
+              -#     %span *
+              -#   %input{:type => "text"}/
+              .margin_between
+                .input_box.space_between
+                  %label
+                    Mobile no
+                    %span *
+                  = text_field_tag :mobile_number, |
+                    nil, id: 'materialRegisterFormMobileNo', placeholder: ''
+                .input_box.space_between
+                  %label
+                    Email address
+                    %span *
+                  = text_field_tag :email, |
+                    nil, id: 'materialRegisterFormEmail', class: 'form-control' 
+          .customer_details.mt--20
+            .differt__address
+              %input{:name => "ship_to_different_address", :type => "checkbox", id:"shipping_address"}/
+              %span Save shipping address?
+          .customer_details
+            %br/
+            = submit_tag "Checkout",              |
+              class: 'btn btn-rounded |
+              btn-block waves-effect z-depth-0',  |
+              id: 'checkout', style: "background-color:black;color:white"
+            %br/  
+            = link_to '<button class="btn btn-black btn-rounded btn-block waves-effect z-depth-0">Back</button>'.html_safe, new_user_session_path  |    
+        
+      .col-lg-6.col-12.md-mt-40.sm-mt-40
+        .wn__order__box
+          %h3.onder__title Your order
+          %ul.order__total
+            %li Product
+            %li Total
+          %ul.order_product
+          - if @card_product.present? 
+            - @cart_products.each do |cp|  
+              %li
+                = cp.product.name
+                %span
+                  = "#{number_to_currency(cp.product.price * cp.quantity, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.nil?    
+          -# %ul.shipping__method
+          -#   %li
+          -#     Cart Subtotal
+          -#     %span $48.00
+            %li
+              Shipping
+              %ul
+                %li
+                  %input{:checked => "checked", "data-index" => "0", :name => "shipping_method[0]", :type => "radio", :value => "legacy_flat_rate"}/
+                  %label Flat Rate: $48.00
+                %li
+                  %input{:checked => "checked", "data-index" => "0", :name => "shipping_method[0]", :type => "radio", :value => "legacy_flat_rate"}/
+                  %label Flat Rate: $48.00
+          %ul.total__amount
+            %li
+              Order Total
+              %span    
+                = "#{number_to_currency(@grand_total, :unit => "₱", :separator => ".", :delimiter => ",")}" unless @grand_total.nil?    
+        -# #accordion.checkout_accordion.mt--30{:role => "tablist"}
+        -#   .payment
+        -#     #headingOne.che__header{:role => "tab"}
+        -#       %a.checkout__title{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-toggle" => "collapse", :href => "#collapseOne"}
+        -#         %span Direct Bank Transfer
+        -#     #collapseOne.collapse.show{"aria-labelledby" => "headingOne", "data-parent" => "#accordion", :role => "tabpanel"}
+        -#       .payment-body Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.
+        -#   .payment
+        -#     #headingTwo.che__header{:role => "tab"}
+        -#       %a.collapsed.checkout__title{"aria-controls" => "collapseTwo", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseTwo"}
+        -#         %span Cheque Payment
+        -#     #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion", :role => "tabpanel"}
+        -#       .payment-body Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+        -#   .payment
+        -#     #headingThree.che__header{:role => "tab"}
+        -#       %a.collapsed.checkout__title{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseThree"}
+        -#         %span Cash on Delivery
+        -#     #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion", :role => "tabpanel"}
+        -#       .payment-body Pay with cash upon delivery.
+          -# .payment
+          -#   #headingFour.che__header{:role => "tab"}
+          -#     %a.collapsed.checkout__title{"aria-controls" => "collapseFour", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseFour"}
+          -#       %span
+          -#         PayPal
+          -#         %img{:alt => "payment images", :src => "images/icons/payment.png"}/
+          -#   #collapseFour.collapse{"aria-labelledby" => "headingFour", "data-parent" => "#accordion", :role => "tabpanel"}
+          -#     .payment-body Pay with cash upon delivery.
 = javascript_include_tag 'shipping_address.js'

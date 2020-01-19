@@ -10,6 +10,7 @@ module Bns
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     ENV["RAILS_ADMIN_THEME"] = "rollincode"
+    # ENV['RAILS_ADMIN_THEME'] = 'flatly_theme'
     config.load_defaults 5.2
     config.autoload_paths << Rails.root.join("lib")
     config.middleware.insert_before 0, Rack::Cors do

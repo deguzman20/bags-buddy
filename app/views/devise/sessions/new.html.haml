@@ -1,3 +1,4 @@
+= render 'devise/shared/page_directory', current_location: 'Login'
 .container
   %br/
   %br/
@@ -11,32 +12,27 @@
         / Card content
         .card-body.px-lg-5.pt-0
           = form_for(resource, as: resource_name, |
-            url: session_path(resource_name),     |
+            url: session_path(resource_name), |
+            builder: LoginFormBuilder,     |
             style: "color: #757575") do |f|       |
             / Email
-            .md-form
-              = f.email_field :email,         |
-                id: "materialLoginFormEmail", |
-                class: "form-control"         |
-              %label{:for => "materialLoginFormEmail"} E-mail
+            = f.email_field :email,         |
+              id: "materialLoginFormEmail", |
+              class: "form-control",        |
+              placeholder: "Email"
             / Password
-            .md-form
-              = f.password_field :password,      |
-                id: "materialLoginFormPassword", |
-                class: "form-control"            |
-              %label{:for => "materialLoginFormPassword"} Password
+            = f.password_field :password,      |
+              id: "materialLoginFormPassword", |
+              class: "form-control",           |
+              placeholder: "Password"
+            %br/    
             .d-flex.justify-content-around
-              %div
-                / Remember me
-                .form-check
-                  %input#materialLoginFormRemember.form-check-input{:name => "user[remember_me]", :type => "checkbox"}/
-                  %label.form-check-label{:for => "materialLoginFormRemember"}
-                    Remember me
+              = f.check_box :remember_me, class: "materialLoginFormRemember form-check-input"
               %div
                 / Forgot password
                 = link_to "Forgot Password?", new_user_password_path
             %br/
-            %button.btn.waves-effect.waves-light.btn-block{"data-disable-with" => "Log in", :name => "commit", :type => "submit", style: "background-color:#AFDB63;color:white"}
+            %button.btn.waves-effect.waves-light.btn-block.btn-black{"data-disable-with" => "Log in", :name => "commit", :type => "submit"}
               Login
             %br/
             / Sign in button

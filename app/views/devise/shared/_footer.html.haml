@@ -1,97 +1,56 @@
-/ Footer
-%footer.page-footer.font-small.unique-color-dark
-  %div{:style => "background-color: #C0EB98;"}
+%footer#wn__footer.footer__area.bg__cat--8.brown--color
+  .footer-static-top
     .container
-      / Grid row
-      .row.py-4.d-flex.align-items-center
-        / Grid column
-        .col-md-6.col-lg-5.text-center.text-md-left.mb-4.mb-md-0
-          %h6.mb-0 Get connected with us on social networks!
-        / Grid column
-        / Grid column
-        .col-md-6.col-lg-7.text-center.text-md-right
-          / Facebook
-          %a.fb-ic
-            %i.fab.fa-facebook-f.white-text.mr-4
-          / Twitter
-          %a.tw-ic
-            %i.fab.fa-twitter.white-text.mr-4
-          / Google +
-          %a.gplus-ic
-            %i.fab.fa-google-plus-g.white-text.mr-4
-          / Linkedin
-          %a.li-ic
-            %i.fab.fa-linkedin-in.white-text.mr-4
-          / Instagram
-          %a.ins-ic
-            %i.fab.fa-instagram.white-text
-        / Grid column
-      / Grid row
-  / Footer Links
-  .container.text-center.text-md-left.mt-5
-    / Grid row
-    .row.mt-3
-      / Grid column
-      .col-md-3.col-lg-4.col-xl-3.mx-auto.mb-4
-        / Content
-        %h6.text-uppercase.font-weight-bold BAGS BUDDY
-        %hr.deep-purple.accent-2.mb-4.mt-0.d-inline-block.mx-auto{:style => "width: 60px;"}/
-        %p
-          Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.
-      / Grid column
-      / Grid column
-      .col-md-2.col-lg-2.col-xl-2.mx-auto.mb-4
-        / Links
-        %h6.text-uppercase.font-weight-bold Products
-        %hr.deep-purple.accent-2.mb-4.mt-0.d-inline-block.mx-auto{:style => "width: 60px;"}/
-        %p
-          %a{:href => "#!"} MDBootstrap
-        %p
-          %a{:href => "#!"} MDWordPress
-        %p
-          %a{:href => "#!"} BrandFlow
-        %p
-          %a{:href => "#!"} Bootstrap Angular
-      / Grid column
-      / Grid column
-      .col-md-3.col-lg-2.col-xl-2.mx-auto.mb-4
-        / Links
-        %h6.text-uppercase.font-weight-bold Useful links
-        %hr.deep-purple.accent-2.mb-4.mt-0.d-inline-block.mx-auto{:style => "width: 60px;"}/
-        %p
-          %a{:href => "#!"} Your Account
-        %p
-          %a{:href => "#!"} Become an Affiliate
-        %p
-          %a{:href => "#!"} Shipping Rates
-        %p
-          %a{:href => "#!"} Help
-      / Grid column
-      / Grid column
-      .col-md-4.col-lg-3.col-xl-3.mx-auto.mb-md-0.mb-4
-        / Links
-        %h6.text-uppercase.font-weight-bold Contact
-        %hr.deep-purple.accent-2.mb-4.mt-0.d-inline-block.mx-auto{:style => "width: 60px;"}/
-        %p
-          %i.fas.fa-home.mr-3
-          New York, NY 10012, US
-        %p
-          %i.fas.fa-envelope.mr-3
-          info@example.com
-        %p
-          %i.fas.fa-phone.mr-3
-          + 01 234 567 88
-        %p
-          %i.fas.fa-print.mr-3
-          + 01 234 567 89
-      / Grid column
-    / Grid row
-  / Footer Links
-  / Copyright
-  .footer-copyright.text-center.py-3
-    © 2018 Copyright:
-    %a{:href => "https://mdbootstrap.com/education/bootstrap/"} MDBootstrap.com
-  / Copyright
-/ Footer
+      .row
+        .col-lg-12
+          .footer__widget.footer__menu
+            .ft__logo
+              = link_to "Bags Buddy", root_path, style: "color:gray;font-size:25px"
+              -# %a{:href => "index.html"}
+              -#   = image_tag "logo/3.png"
+              %p There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages
+            .footer__content
+              %ul.social__net.social__net--2.d-flex.justify-content-center
+                %li
+                  %a{:href => "#"}
+                    %i.bi.bi-facebook
+                %li
+                  %a{:href => "#"}
+                    %i.bi.bi-google
+                %li
+                  %a{:href => "#"}
+                    %i.bi.bi-twitter
+                %li
+                  %a{:href => "#"}
+                    %i.bi.bi-linkedin
+                %li
+                  %a{:href => "#"}
+                    %i.bi.bi-youtube
+              %ul.mainmenu.d-flex.justify-content-center
+                -# %li
+                -#   %a{:href => "index.html"} Trending
+                -# %li
+                -#   %a{:href => "index.html"} Best Seller
+                %li
+                  %a{:href => "index.html"} All Product
+                %li
+                  %a{:href => "index.html"} Wishlist
+                -# %li
+                -#   %a{:href => "index.html"} Blog
+                %li
+                  %a{:href => "index.html"} Contact
+  .copyright__wrapper
+    .container
+      .row
+        .col-lg-6.col-md-6.col-sm-12
+          .copyright
+            .copy__right__inner.text-left
+              %p
+                Copyright
+                %i.fa.fa-copyright
+                %a{:href => "https://freethemescloud.com/"} Free themes Cloud.
+                All Rights Reserved
+        .col-lg-6.col-md-6.col-sm-12
+          .payment.text-right
+            = image_tag "icons/payment.png"
+ 

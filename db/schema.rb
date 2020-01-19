@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_054626) do
+ActiveRecord::Schema.define(version: 2020_01_17_064839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,12 @@ ActiveRecord::Schema.define(version: 2020_01_02_054626) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "content_management_systems", force: :cascade do |t|
+  create_table "contact_us", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "subject"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,6 +94,13 @@ ActiveRecord::Schema.define(version: 2020_01_02_054626) do
   create_table "exchange_rates", force: :cascade do |t|
     t.string "currency"
     t.decimal "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "image_galleries", force: :cascade do |t|
+    t.string "image"
+    t.string "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,8 +152,8 @@ ActiveRecord::Schema.define(version: 2020_01_02_054626) do
     t.decimal "additional_price"
     t.string "category_id"
     t.string "brand_id"
-    t.datetime "ETA_air"
-    t.datetime "ETA_sea"
+    t.datetime "eta_air"
+    t.datetime "eta_sea"
     t.text "instruction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -243,6 +255,14 @@ ActiveRecord::Schema.define(version: 2020_01_02_054626) do
     t.datetime "created_at"
     t.text "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

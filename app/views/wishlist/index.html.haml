@@ -1,0 +1,44 @@
+= render 'devise/shared/page_directory', current_location: 'Wishlist'
+.wishlist-area.section-padding--lg.bg__white
+  .container
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .wishlist-content
+          %form{:action => "#"}
+            .wishlist-table.wnro__table.table-responsive
+              %table
+                %thead
+                  %tr
+                    %th.product-remove
+                    %th.product-thumbnail
+                    %th.product-name
+                      %span.nobr Product Name
+                    %th.product-price
+                      %span.nobr Unit Price
+                    %th.product-stock-qty
+                      %span.nobr Qty
+                    %th.product-stock-status
+                      %span.nobr Stock Status  
+                    %th.product-add-to-cart
+                %tbody
+                  - @wishlists.each do |wishlist|
+                    %tr{ id: "wishlist-row-#{wishlist.id}" }
+                      %td.product-remove
+                        %a{:href => "#", id: "remove-wishlist-#{wishlist.id}"} ×
+                      %td.product-thumbnail
+                        %a{:href => "#"}
+                          = image_tag wishlist.product.image.wishlist.to_s
+                      %td.product-name
+                        %a{:href => "#"} 
+                          = wishlist.product.name
+                      %td.product-price
+                        %span.amount 
+                          = number_to_currency(wishlist.product.price, :unit => "₱", :separator => ".", :delimiter => ",")  
+                      %td.product-qty
+                        %span.qty
+                          = wishlist.quantity 
+                      %td.product-stock-status
+                        %span.wishlist-in-stock In Stock
+                      %td.product-add-to-cart
+                        %a{:href => "#", id: "wishlist-add-to-cart-#{wishlist.id}"} Add to Cart
+= javascript_include_tag 'wishlist.js'

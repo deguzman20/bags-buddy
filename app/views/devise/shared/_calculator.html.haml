@@ -13,6 +13,7 @@
           .col-lg-12.col-md-12
             .card{ style: 'padding-left:10%;padding-right:10%' }
               .form-row
+                
                 .col
                   .md-form
                     %input.form-control{ type: "text", value: "", id: "link" }/
@@ -37,14 +38,14 @@
                     %input.form-control{ type: "number", value: "", id: "quantity" }/
                     %label{:for => "quantity"}
                       Quantity
-              %button#btncalculate.btn.btn-rounded.waves-effect.waves-light{ type: "button", class: "btn elegant-color white-text" }
+              %button#btncalculate.btn.btn-rounded.waves-effect.waves-light
                 Calculate
               %br/
               %input.form-control{ type: "text", id: "subtotal", disabled: "disabled" }/
               %br/
               %input.form-control{ type: "text", id: "subtotal", disabled: "disabled" }/
               %br/
-              %button#add_to_cart{ type: 'button', class: 'btn elegant-color white-text', "data-toggle": 'modal', "data-target": '#AddToCartModal' }
+              %button#add_to_cart.btn.btn-black{ type: 'button', "data-toggle": 'modal', "data-target": '#AddToCartModal' }
                 Add To Cart
         .row
         %br/
