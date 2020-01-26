@@ -130,12 +130,23 @@ RailsAdmin.config do |config|
     field :link
     field :image
     field :additional_price
-    field :category_id
-    field :brand_id
+    field :category
+    field :brand
     field :eta_air
     field :eta_sea
     field :instruction, :ck_editor
   end  
+
+  config.model ContactUs do
+    edit do
+      field :first_name
+      field :last_name
+      field :email
+      field :subject
+      field :message
+      field :email
+    end
+  end
 
   config.model Product do
     edit do
@@ -143,11 +154,7 @@ RailsAdmin.config do |config|
       field :image
       field :price
       field :brand
-      field :category do
-        visible do
-          bindings[:view]._current_user.roles.include?(:accounting)
-        end
-      end  
+      field :category 
       field :product_description, :ck_editor
     end
 

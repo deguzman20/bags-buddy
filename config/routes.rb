@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Cart Routes
 
   get "contact", to: "contact_us#contact"
+  get "add_contact", to: "contact_us#add_contact"
   
   get "wishlist", to: 'wishlist#index'
   get "add_to_wishlist", to: "wishlist#add_to_wishlist"

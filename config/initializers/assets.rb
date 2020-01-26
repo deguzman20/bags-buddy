@@ -21,6 +21,7 @@ Rails.application.config.assets.precompile += %w[style.css]
 Rails.application.config.assets.precompile += %w[cart.css]
 Rails.application.config.assets.precompile += %w[cart.js]
 Rails.application.config.assets.precompile += %w[calculator.js]
+Rails.application.config.assets.precompile += %w[contact.js]
 Rails.application.config.assets.precompile += %w[forgot-password.js]
 Rails.application.config.assets.precompile += %w[shipping_address.js]
 

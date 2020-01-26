@@ -7,19 +7,19 @@
           %h2.contact__title Get in touch
           %p Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
           
-          %form#contact-form{:action => "#", :method => "post"}
+          %form#contact-form{:action => "#", :method => "get"}
             .single-contact-form.space-between
-              %input{:name => "firstname", :placeholder => "First Name*", :type => "text"}/
-              %input{:name => "lastname", :placeholder => "Last Name*", :type => "text"}/
+              %input{:name => "firstname", :id => "firstname", :placeholder => "First Name*", :type => "text"}/
+              %input{:name => "lastname",:id => "lastname", :placeholder => "Last Name*", :type => "text"}/
             .single-contact-form.space-between
-              %input{:name => "email", :placeholder => "Email*", :type => "email"}/
-              %input{:name => "website", :placeholder => "Website*", :type => "text"}/
+              %input{:name => "email", :id => "email", :placeholder => "Email*", :type => "email"}/
+              %input{:name => "website", :id => "website", :placeholder => "Website*", :type => "text"}/
             .single-contact-form
-              %input{:name => "subject", :placeholder => "Subject*", :type => "text"}/
+              %input{:name => "subject", :id => "subject", :placeholder => "Subject*", :type => "text"}/
             .single-contact-form.message
-              %textarea{:name => "message", :placeholder => "Type your message here.."}
+              %textarea{:name => "message", :id => "message", :placeholder => "Type your message here.."}
             .contact-btn
-              %button{:type => "submit"} Send Email
+              %button{:type => "button", :id => "Send"} Send Email
         .form-output
           %p.form-messege
       .col-lg-4.col-12.md-mt-40.sm-mt-40
@@ -47,3 +47,5 @@
               .content
                 %span website address:
                 %p 716-298-1822
+
+= javascript_include_tag 'contact.js'
