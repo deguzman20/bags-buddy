@@ -143,13 +143,8 @@ RailsAdmin.config do |config|
     field :link
     field :image
     field :additional_price
-<<<<<<< Updated upstream
-    field :category
-    field :brand
-=======
     field :brand
     field :category
->>>>>>> Stashed changes
     field :eta_air
     field :eta_sea
     field :instruction, :ck_editor
