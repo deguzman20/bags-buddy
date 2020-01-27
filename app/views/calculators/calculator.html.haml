@@ -5,6 +5,13 @@
     .col-lg-3.col-md-3
     .col-lg-6.col-md-6
       .card{ style: 'padding-left:10%;padding-right:10%' }
+        .form-row
+          .col
+            %br/
+            .md-form
+              %input.form-control{ type: "file", value: "", id: "pre_order_screenshot" }/
+              %label{:for => "pre_order_screenshot"}
+                Pre Order Item Screenshot
         %br/
         .form-row
           .col
@@ -36,10 +43,8 @@
           .col
             .md-form
               %input.form-control{ type: "text", value: "", id: "additional" }/
-        .form-row  
-          .col
-            %select#select-shipping-type.browser-default.custom-select
-              %option Select Shipping Type    
+        %select#select-shipping-type.browser-default.custom-select
+          %option Select Shipping Type    
         %br/      
         %button#btncalculate.btn.btn-rounded.waves-effect.waves-light.btn-black{ type: "button" }
           Calculate

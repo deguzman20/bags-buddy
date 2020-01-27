@@ -27,6 +27,7 @@ Lint/Void:
 Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
+    - app/controllers/users/**
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
@@ -39,8 +40,8 @@ Style/Documentation:
 
   Exclude:
     - config/environments/**/*
-    - test/**/*
-    - spec/**/*
+    # - test/**/*
+    # - spec/**/*
 
 # Offense count: 47
 # Configuration parameters: CountComments.
@@ -60,53 +61,53 @@ Metrics/ModuleLength:
   Max: 141
 
 Metrics/BlockLength:
-  Max: 120
+  Max: 150
   Exclude:
     - '**/*_spec.rb'
     - 'config/routes.rb'
 
 # Offense count: 10
-RSpec/AnyInstance:
-  Exclude:
-    - 'spec/rubocop/cli_spec.rb'
-    - 'spec/rubocop/cop/lint/duplicate_methods_spec.rb'
-    - 'spec/rubocop/cop/team_spec.rb'
-    - 'spec/rubocop/target_finder_spec.rb'
+# RSpec/AnyInstance:
+#   Exclude:
+#     - 'spec/rubocop/cli_spec.rb'
+#     - 'spec/rubocop/cop/lint/duplicate_methods_spec.rb'
+#     - 'spec/rubocop/cop/team_spec.rb'
+#     - 'spec/rubocop/target_finder_spec.rb'
 
-# Offense count: 1106
-# Configuration parameters: Prefixes.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Enabled: false
+# # Offense count: 1106
+# # Configuration parameters: Prefixes.
+# # Prefixes: when, with, without
+# RSpec/ContextWording:
+#   Enabled: false
 
-# Offense count: 3363
-# Configuration parameters: Max.
-RSpec/ExampleLength:
-  Enabled: false
+# # Offense count: 3363
+# # Configuration parameters: Max.
+# RSpec/ExampleLength:
+#   Enabled: false
 
-# Offense count: 36
-RSpec/ExpectOutput:
-  Exclude:
-    - 'spec/rubocop/cli/cli_auto_gen_config_spec.rb'
-    - 'spec/rubocop/cli/cli_options_spec.rb'
-    - 'spec/rubocop/config_spec.rb'
-    - 'spec/rubocop/cop/cop_spec.rb'
-    - 'spec/rubocop/formatter/disabled_config_formatter_spec.rb'
-    - 'spec/rubocop/formatter/formatter_set_spec.rb'
-    - 'spec/rubocop/options_spec.rb'
-    - 'spec/rubocop/rake_task_spec.rb'
-    - 'spec/rubocop/result_cache_spec.rb'
-    - 'spec/rubocop/target_finder_spec.rb'
+# # Offense count: 36
+# RSpec/ExpectOutput:
+#   Exclude:
+#     - 'spec/rubocop/cli/cli_auto_gen_config_spec.rb'
+#     - 'spec/rubocop/cli/cli_options_spec.rb'
+#     - 'spec/rubocop/config_spec.rb'
+#     - 'spec/rubocop/cop/cop_spec.rb'
+#     - 'spec/rubocop/formatter/disabled_config_formatter_spec.rb'
+#     - 'spec/rubocop/formatter/formatter_set_spec.rb'
+#     - 'spec/rubocop/options_spec.rb'
+#     - 'spec/rubocop/rake_task_spec.rb'
+#     - 'spec/rubocop/result_cache_spec.rb'
+#     - 'spec/rubocop/target_finder_spec.rb'
 
 # Offense count: 467
 # Configuration parameters: AggregateFailuresByDefault.
-RSpec/MultipleExpectations:
-  Max: 25
+# RSpec/MultipleExpectations:
+#   Max: 25
 
-# Offense count: 13
-RSpec/SubjectStub:
-  Exclude:
-    - 'spec/rubocop/config_spec.rb'
-    - 'spec/rubocop/cop/cop_spec.rb'
-    - 'spec/rubocop/formatter/json_formatter_spec.rb'
-    - 'spec/rubocop/formatter/progress_formatter_spec.rb'
+# # Offense count: 13
+# RSpec/SubjectStub:
+#   Exclude:
+#     - 'spec/rubocop/config_spec.rb'
+#     - 'spec/rubocop/cop/cop_spec.rb'
+#     - 'spec/rubocop/formatter/json_formatter_spec.rb'
+#     - 'spec/rubocop/formatter/progress_formatter_spec.rb'

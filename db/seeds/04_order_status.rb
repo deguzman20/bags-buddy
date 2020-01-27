@@ -1,15 +1,31 @@
 # order status
 OrderStatus.create!([
                       {
-                        # id: 1,
                         name: "Pending"
                       },
                       {
-                        # id: 3,
+                        # down payment received
+                        name: "Order Confirmed"
+                      },
+                      {
+                        # Item ready to ship from US to PH
                         name: "Shipped"
                       },
                       {
-                        # id: "2"
+                        # basta nandito na
+                        # required to pay remaining balance
+                        # depends on batch
+                        name: "Item Arrived PH"
+                      },
+                      {
+                        # item ship
+                        # 1 day
+                        # manual
+                        name: "Ready to ship to local"
+                      },
+                      {
+                        # manual
+                        # 2 day
                         name: "Completed"
                       }
                     ])

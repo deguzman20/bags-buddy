@@ -21,14 +21,11 @@
                 - @order_products.each do |op|
                   %tr
                     %td
-                      = op.order_id
+                      = op.try(:order_id)
                     %td
-                      - if op.product.nil?
-                        = image_tag "cart_logo", class: 'img-thumbnail z-depth-0', width: 75, height: 75
-                      - unless op.product.nil?
-                        = image_tag op.product.nil? ? "" : op.product.image.url, class: 'img-thumbnail z-depth-0', width: 75, height: 75
+                      = image_tag op.product.try(:image).url || "cart_logo", class: 'img-thumbnail z-depth-0', width: 75, height: 75
                     %td
-                      = op.product.name unless op.product.nil?
+                      = op.product.try(:name)
                     %td
                       = "#{number_to_currency(op.sub_total / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"  
     .col-md-4.col-lg-4.mb-5
@@ -59,7 +56,5 @@
                   %td
                     %h4{ style: "color:gray" }
                       = "#{number_to_currency(@total / @exchange_rate, :unit => "₱", :separator => ".", :delimiter => ",")}"   
-                    %br/
-                
+                    %br/              
 = stylesheet_link_tag  'cart.css'
-        

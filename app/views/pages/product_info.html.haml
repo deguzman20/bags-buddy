@@ -31,10 +31,10 @@
                       %i.zmdi.zmdi-star-outline
                 .price-box
                   %span
-                    = number_to_currency(@product_info.price, :unit => "₱", :separator => ".", :delimiter => ",")
+                    = number_to_currency(@product_info.try(:price), :unit => "₱", :separator => ".", :delimiter => ",")
                 .product__overview
                   %p 
-                    = @product_info.product_description 
+                    = @product_info.try(:product_description) 
                 .box-tocart.d-flex
                   %input#product_id{ value: "#{@product_info.id}", style: "display:none" }
                   %span Qty

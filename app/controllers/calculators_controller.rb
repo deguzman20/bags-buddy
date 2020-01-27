@@ -1,3 +1,4 @@
+# Calculator Controller
 class CalculatorsController < ApplicationController
   def calculator
     @brands = Brand.all.decorate

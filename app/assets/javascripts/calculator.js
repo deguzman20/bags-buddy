@@ -7,22 +7,22 @@ $(function(){
         var quantity = $(`#quantity`).val();
 
         $.ajax({
-         url:'/calculate',
-         type:"GET",
-         data:{
-          price: id,
-          quantity: quantity,
-          brand_id: brand_id,
-          category_id: category_id
-         },
-         success:function(data){
-          $("#additional").val(data.additional.toString());
-          $("#subtotal").val(data.subtotal.toString());
-         },
-         error:function(err){
-          console.log(err);
-         }
-       });
+          url:'/calculate',
+          type:"GET",
+          data:{
+            price: id,
+            quantity: quantity,
+            brand_id: brand_id,
+            category_id: category_id
+          },
+           success:function(data){
+            $("#additional").val(data.additional.toString());
+            $("#subtotal").val(data.subtotal.toString());
+           },
+           error:function(err){
+            console.log(err);
+           }
+        });
     });
 
     $("#confirm_to_add_to_cart").click(function(){
@@ -32,7 +32,8 @@ $(function(){
       var subtotal = $("#subtotal").val();
       var quantity = $("#quantity").val();
       var additional = $("#additional").val();
-      var shipping_type_id = $("#select-shipping-type").val();
+      var shipping_type_id = $("#select-shipping-type").val(); 
+  
 
       $.ajax({
         url: '/non_on_hand_add_to_cart',

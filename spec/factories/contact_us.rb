@@ -4,6 +4,7 @@ FactoryBot.define do
     last_name { "MyString" }
     email { "MyString" }
     subject { "MyString" }
+
     message { "MyString" }
   end
 end

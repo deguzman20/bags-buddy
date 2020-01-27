@@ -61,7 +61,7 @@
                 .row
                   .col-lg-12.col-md-12
                     %pre
-                      = pre_order.instruction.truncate(100)
+                      = pre_order.instruction.truncate(100).html_safe
         .col-md-12
           %center
             %a#pre-order-load{:href => "#"} 
@@ -116,9 +116,11 @@
                     .actions_inner
                       %ul.add_to_links
                         %li
-                          = link_to "<i class='bi bi-shopping-bag4'></i>".html_safe, add_to_cart_path(product.id), class: "cart"
+                          %a
+                            %i.bi.bi-shopping-bag4.cart{id: "item_#{product.id}"}
+                          -# = link_to "<i class='bi bi-shopping-bag4'></i>".html_safe, add_to_cart_path(product.id), class: "cart"
                         %li
-                          %a.wishlist{:href => "wishlist.html"}
+                          %a.wishlist{:href => "/wishlist"}
                             %i.bi.bi-shopping-cart-full
     
             .col-md-12

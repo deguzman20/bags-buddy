@@ -1,3 +1,4 @@
+# Carts Controller
 class CartsController < ApplicationController
   def cart
     @exchange_rate = ExchangeRate.first.value.to_i
@@ -68,19 +69,19 @@ class CartsController < ApplicationController
     cart_product = CartProduct.find(params[:id].to_i)
     cart_product.delete
     sub_totals
- end
+  end
 
   def sub_totals
-    if user_signed_in?
-      subtotal = 0
-      exchange_rate = ExchangeRate.first.value
-      cart = Cart.find_by_user_id(current_user.id)
-      CartProduct.where(cart_id: cart.id).each do |cart_product|
-        product_nil = (cart_product.price * cart_product.quantity) * exchange_rate
-        product_not_nil = cart_product.product.price * cart_product.quantity
-        subtotal += !cart_product.product.nil? ? product_not_nil : product_nil
-      end
-      render json: subtotal.to_json
+    subtotal = 0
+    return unless user_signed_in?
+
+    exchange_rate = ExchangeRate.first.value
+    cart = Cart.find_by_user_id(current_user.id)
+    CartProduct.where(cart_id: cart.id).each do |cart_product|
+      product_nil = (cart_product.price * cart_product.quantity) * exchange_rate
+      product_not_nil = cart_product.product.try(:price) || 0 * cart_product.quantity
+      subtotal += !cart_product.product.nil? ? product_not_nil : product_nil
     end
+    render json: subtotal.to_json
   end
 end

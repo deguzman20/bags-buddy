@@ -1,3 +1,4 @@
+# Page Controller
 class PagesController < ApplicationController
   def home
     @products   = Product.all
@@ -20,15 +21,17 @@ class PagesController < ApplicationController
     shipment_type = []
     brand_id = params[:brand_id]
     category_id = params[:category_id]
-    pre_order   = PreOrder.where(brand_id: brand_id)
-                          .where(category_id: category_id).first
-    eta_sea = pre_order.ETA_sea.nil? ? nil : { id: 1, name: "Via Sea" }
-    eta_air = pre_order.ETA_air.nil? ? nil : { id: 2, name: "Via Air" }
+    pre_order   = PreOrder.where(brand_id: brand_id.to_i)
+                          .where(category_id: category_id.to_i).first
+
+    eta_sea = pre_order.eta_sea.nil? ? nil : { id: 1, name: "Via Sea" }
+    eta_air = pre_order.eta_air.nil? ? nil : { id: 2, name: "Via Air" }
     shipment_type << eta_sea unless eta_sea.nil?
     shipment_type << eta_air unless eta_air.nil?
+
     render json: shipment_type
   end
-  
+
   def transaction_history
     @orders = Order.where(user_id: current_user.id)
   end

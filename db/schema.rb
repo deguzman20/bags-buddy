@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_01_17_064839) do
     t.integer "item_type_id"
     t.decimal "additional"
     t.integer "estimated_time_of_arrival_id"
+    t.string "item_screenshot"
+    t.string "additional_shipping_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_01_17_064839) do
 
   create_table "estimated_time_of_arrivals", force: :cascade do |t|
     t.string "name"
+    t.decimal "additional_shipping_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

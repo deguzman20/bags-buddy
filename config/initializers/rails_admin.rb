@@ -35,7 +35,7 @@ RailsAdmin.config do |config|
   # end
 
   config.audit_with :paper_trail, "User", "PaperTrail::Version" do
-    visible :false
+    visible false
   end
 
   # config.audit_with :paper_trail, "User", "Version" # PaperTrail < 3.0.0
@@ -104,6 +104,19 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model CartProduct do
+    field :cart
+    field :product
+    field :price
+    field :link
+    field :quantity
+    field :item_type
+    field :additional
+    field :estimated_time_of_arrival
+    field :item_screenshot
+    field :additional_shipping_fee
+  end
+
   config.model ItemType do
     list do
       include_fields :id, :name, :created_at, :updated_at
@@ -130,12 +143,17 @@ RailsAdmin.config do |config|
     field :link
     field :image
     field :additional_price
+<<<<<<< Updated upstream
     field :category
     field :brand
+=======
+    field :brand
+    field :category
+>>>>>>> Stashed changes
     field :eta_air
     field :eta_sea
     field :instruction, :ck_editor
-  end  
+  end
 
   config.model ContactUs do
     edit do
@@ -154,7 +172,8 @@ RailsAdmin.config do |config|
       field :image
       field :price
       field :brand
-      field :category 
+      field :category
+      field :quantity
       field :product_description, :ck_editor
     end
 
@@ -215,8 +234,8 @@ RailsAdmin.config do |config|
     show
     edit
     delete do
-      except [Order, OrderProduct] 
-    end  
+      except [Order, OrderProduct]
+    end
     # show_in_app
 
     ## With an audit adapter, you can add:

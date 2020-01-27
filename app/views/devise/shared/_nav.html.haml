@@ -31,7 +31,7 @@
                     %span 
                       - total = 0
                       - current_user.cart.cart_products.each do |cps|
-                        - total += (cps.product.price * cps.quantity)
+                        - total += (cps.product.try(:price) || cps.price * cps.quantity)
                       = "#{number_to_currency(total, :unit => "₱", :separator => ".", :delimiter => ",")}"    
                   .mini_action.checkout
                     %a.checkout__btn{:href => "/shipping_address"} Go to Checkout
@@ -40,12 +40,12 @@
                       - current_user.cart.cart_products.each do |cp|
                         .item01.d-flex{ id: "item_#{cp.id}"}
                           .thumb
-                            %a{:href => "product-details.html"}
-                              = image_tag cp.product.image.to_s
+                            %a{:href => ""}
+                              = image_tag cp.product.try(:image).to_s || "cart_logo"
                           .content
                             %h6
                               %a{:href => ""} 
-                                = cp.product.name
+                                = cp.product.try(:name)
                             %span.prize 
                               = "#{number_to_currency(cp.product.price, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.product.nil?      
                             .product_prize.d-flex.justify-content-between
@@ -88,57 +88,57 @@
                             = link_to "Sign In", new_user_session_path
                           %span
                             = link_to "Create An Account", new_user_registration_path
-    .row.d-none
-      .col-lg-12.d-none
-        %nav.mobilemenu__nav
-          %ul.meninmenu
-            %li
-              %a{:href => "index.html"} Home
-            %li
-              %a{:href => "#"} Pages
-              %ul
-                %li
-                  %a{:href => "about.html"} About Page
-                %li
-                  %a{:href => "portfolio.html"} Portfolio
-                  %ul
-                    %li
-                      %a{:href => "portfolio.html"} Portfolio
-                    %li
-                      %a{:href => "portfolio-details.html"} Portfolio Details
-                %li
-                  %a{:href => "my-account.html"} My Account
-                %li
-                  %a{:href => "cart.html"} Cart Page
-                %li
-                  %a{:href => "checkout.html"} Checkout Page
-                %li
-                  %a{:href => "wishlist.html"} Wishlist Page
-                %li
-                  %a{:href => "error404.html"} 404 Page
-                %li
-                  %a{:href => "faq.html"} Faq Page
-                %li
-                  %a{:href => "team.html"} Team Page
-            %li
-              %a{:href => "shop-grid.html"} Shop
-              %ul
-                %li
-                  %a{:href => "shop-grid.html"} Shop Grid
-                %li
-                  %a{:href => "single-product.html"} Single Product
-            %li
-              %a{:href => "blog.html"} Blog
-              %ul
-                %li
-                  %a{:href => "blog.html"} Blog Page
-                %li
-                  %a{:href => "blog-details.html"} Blog Details
-            %li
-              %a{:href => "contact.html"} Contact
-    / End Mobile Menu
-    .mobile-menu.d-block.d-lg-none
-    / Mobile Menu
+    -# .row.d-none
+    -#   .col-lg-12.d-none
+    -#     %nav.mobilemenu__nav
+    -#       %ul.meninmenu
+    -#         %li
+    -#           %a{:href => "index.html"} Home
+    -#         %li
+    -#           %a{:href => "#"} Pages
+    -#           %ul
+    -#             %li
+    -#               %a{:href => "about.html"} About Page
+    -#             %li
+    -#               %a{:href => "portfolio.html"} Portfolio
+    -#               %ul
+    -#                 %li
+    -#                   %a{:href => "portfolio.html"} Portfolio
+    -#                 %li
+    -#                   %a{:href => "portfolio-details.html"} Portfolio Details
+    -#             %li
+    -#               %a{:href => "my-account.html"} My Account
+    -#             %li
+    -#               %a{:href => "cart.html"} Cart Page
+    -#             %li
+    -#               %a{:href => "checkout.html"} Checkout Page
+    -#             %li
+    -#               %a{:href => "wishlist.html"} Wishlist Page
+    -#             %li
+    -#               %a{:href => "error404.html"} 404 Page
+    -#             %li
+    -#               %a{:href => "faq.html"} Faq Page
+    -#             %li
+    -#               %a{:href => "team.html"} Team Page
+    -#         %li
+    -#           %a{:href => "shop-grid.html"} Shop
+    -#           %ul
+    -#             %li
+    -#               %a{:href => "shop-grid.html"} Shop Grid
+    -#             %li
+    -#               %a{:href => "single-product.html"} Single Product
+    -#         %li
+    -#           %a{:href => "blog.html"} Blog
+    -#           %ul
+    -#             %li
+    -#               %a{:href => "blog.html"} Blog Page
+    -#             %li
+    -#               %a{:href => "blog-details.html"} Blog Details
+    -#         %li
+    -#           %a{:href => "contact.html"} Contact
+    -# / End Mobile Menu
+    -# .mobile-menu.d-block.d-lg-none
+    -# / Mobile Menu
 
 
   = javascript_include_tag 'nav_cart.js'

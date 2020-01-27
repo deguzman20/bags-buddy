@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
-  
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
- 
+
   root to: "pages#home"
   # Cart Routes
 
   get "contact", to: "contact_us#contact"
+<<<<<<< Updated upstream
   get "add_contact", to: "contact_us#add_contact"
   
   get "wishlist", to: 'wishlist#index'
+=======
+
+  get "wishlist", to: "wishlist#index"
+>>>>>>> Stashed changes
   get "add_to_wishlist", to: "wishlist#add_to_wishlist"
-  get "remove_item_from_wishlist", to: "wishlist#remove_item_from_wishlist" 
+  get "remove_item_from_wishlist", to: "wishlist#remove_item_from_wishlist"
   get "wishlist_add_to_cart", to: "wishlist#wishlist_add_to_cart"
 
   get "cart", to: "carts#cart", as: :cart
@@ -34,7 +38,7 @@ Rails.application.routes.draw do
   # Calculator Routes
   get "calculator", to: "calculators#calculator"
   get "calculate", to: "calculators#calculate"
-  
+
   # Pages Routes
   get "brand_category", to: "pages#brand_category"
   get "category", to: "pages#category"
@@ -49,5 +53,4 @@ Rails.application.routes.draw do
   get "states", to: "shipping_address#states"
   get "cities", to: "shipping_address#cities"
   get "save_shipping_address", to: "shipping_address#save_shipping_address"
-  
 end

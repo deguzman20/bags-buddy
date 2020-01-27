@@ -80,7 +80,7 @@
           - if @card_product.present? 
             - @cart_products.each do |cp|  
               %li
-                = cp.product.name
+                = cp.product.name 
                 %span
                   = "#{number_to_currency(cp.product.price * cp.quantity, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.nil?    
           -# %ul.shipping__method

@@ -1,4 +1,9 @@
-# Model for Exchange Rate
+# create_table "exchange_rates", force: :cascade do |t|
+#   t.string "currency"
+#   t.decimal "value"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+# end
 require "net/http"
 require "json"
 # Exchange Rate

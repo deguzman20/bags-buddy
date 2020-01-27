@@ -1,3 +1,4 @@
+# Authorization Model
 class Ability
   include CanCan::Ability
 

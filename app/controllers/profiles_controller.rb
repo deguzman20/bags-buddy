@@ -1,3 +1,4 @@
+# Profile Controller
 class ProfilesController < ApplicationController
   def profile
     if user_signed_in?

@@ -1,4 +1,4 @@
-require "rails_helper"
+# require "rails_helper"
 
-RSpec.describe ProfileDecorator do
-end
+# RSpec.describe ProfileDecorator do
+# end

@@ -10,12 +10,12 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if current_user.present?
-      if current_user.has_role? :admin
-        redirect_to "/admin"
-      else
-        redirect_to root_path
-      end
+    return unless current_user.present?
+
+    if current_user.has_role? :admin
+      redirect_to "/admin"
+    else
+      redirect_to root_path
     end
     # super
   end

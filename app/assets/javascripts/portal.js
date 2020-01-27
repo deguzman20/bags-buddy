@@ -30,6 +30,23 @@ $(function(){
        }
     });
 
+   for(var i = 1; i <= 100; i++){
+     $("#item_"+i).click(function(){
+      var id = Number(this.id.replace("item_",""));
+      $.ajax({
+        url: "add_to_cart/"+id,
+        type:"GET",
+        dataType: "JSON",
+        success:function(data){
+          console.log(data);
+        },
+        error:function(err){
+          console.log(err);
+        }
+      });
+    });
+  }
+
    $("#select_brand").change(function(){
     $("#select_category").html("<option>Select Category</option>");
     var id = this.value;
