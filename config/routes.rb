@@ -9,14 +9,8 @@ Rails.application.routes.draw do
   # Cart Routes
 
   get "contact", to: "contact_us#contact"
-<<<<<<< Updated upstream
   get "add_contact", to: "contact_us#add_contact"
-  
-  get "wishlist", to: 'wishlist#index'
-=======
-
   get "wishlist", to: "wishlist#index"
->>>>>>> Stashed changes
   get "add_to_wishlist", to: "wishlist#add_to_wishlist"
   get "remove_item_from_wishlist", to: "wishlist#remove_item_from_wishlist"
   get "wishlist_add_to_cart", to: "wishlist#wishlist_add_to_cart"

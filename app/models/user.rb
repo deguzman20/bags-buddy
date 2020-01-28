@@ -64,5 +64,7 @@ class User < ApplicationRecord
   #                                                   Devise.pepper)
   # end
 
-  validates_presence_of :first_name
+  validates_presence_of :first_name, 
+                        :last_name, 
+                        :email, :birthdate, :admin, on: :create
 end

@@ -15,7 +15,7 @@ Metrics/AbcSize:
 
 # This will ignore the comments as an offense if the comment is not longer than 100
 Metrics/LineLength:
-  Max: 150
+  Max: 170
   IgnoredPatterns: ['\A#']
 
 Lint/Void:
@@ -51,7 +51,7 @@ Metrics/ClassLength:
 # Offense count: 219
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
-  Max: 20
+  Max: 25
   Exclude:
     - '**/*_spec.rb'
 

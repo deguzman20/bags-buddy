@@ -6,4 +6,5 @@
 # end
 class Batch < ApplicationRecord
   has_many :order_products
+  validates_presence_of :from, :to
 end

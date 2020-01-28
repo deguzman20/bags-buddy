@@ -18,4 +18,30 @@ class Order < ApplicationRecord
   belongs_to :shipping_address
   has_many :order_products
   has_many :products, through: :order_products
+  
+  after_update_commit :update_order_status
+
+  def update_order_status
+    case self.order_status.name
+    when "Pending" then  
+    when "Order Confirmed" then
+    when "Shipped" then   
+    when "Item Arrived PH" then
+    when "Ready to ship to local" then
+    when "Completed" then completed(self.order_products)
+    else
+    end      
+  end  
+
+  def completed(obj)
+    @quantity = 0
+    obj.each do |order_product|
+      if order_product.product_id.present?
+        @quantity =  order_product.sub_total / order_product.product.price
+        product = Product.find(order_product.product_id)
+        product.quantity -= @quantity
+        product.save     
+      end  
+    end  
+  end  
 end
