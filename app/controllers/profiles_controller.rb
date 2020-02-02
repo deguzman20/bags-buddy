@@ -1,11 +1,8 @@
 # Profile Controller
 class ProfilesController < ApplicationController
   def profile
-    if user_signed_in?
-      @profile_form = ProfileForm.new(id: current_user.id)
-    else
-      redirect_to root_path
-    end
+    return redirect_to root_path unless user_signed_in? 
+    @profile_form = ProfileForm.new(id: current_user.id)
   end
 
   def update_successful

@@ -1,10 +1,9 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-
   context "when field's are nil" do
     let(:user) { build(:user) }
-    
+
     it "ensure presence of first_name" do
       user.first_name = nil
       expect(user.save).to eq(false)
@@ -47,8 +46,8 @@ RSpec.describe User, type: :model do
       user.admin = true
       user.password = "deguzman123"
       expect(user.save).to eq(true)
-    end 
-  end  
+    end
+  end
 
   describe "Associations" do
     it { is_expected.to have_one(:cart) }

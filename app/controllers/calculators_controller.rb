@@ -7,6 +7,6 @@ class CalculatorsController < ApplicationController
 
   def calculate
     calculate = Pages::CalculatorService.call(params)
-    render json: calculate.to_json
+    render json: calculate.to_json, status: :success
   end
 end

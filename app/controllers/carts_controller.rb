@@ -1,38 +1,32 @@
 # Carts Controller
 class CartsController < ApplicationController
   def cart
+    return redirect_to new_user_session_path unless user_signed_in?  
+    
     @exchange_rate = ExchangeRate.first.value.to_i
-    if user_signed_in?
-      cart_id = Cart.find_by_user_id(current_user.id)
-      @cart_products = CartProduct.where(cart_id: cart_id)
-    else
-      redirect_to new_user_session_path
-    end
+    cart_id = Cart.find_by_user_id(current_user.id)
+    @cart_products = CartProduct.where(cart_id: cart_id)
   end
 
-  def add_to_cart
-    if user_signed_in?
-      cart_product = Pages::CartProductService.call(
+  def add_to_cart 
+    return redirect_to new_user_session_path unless user_signed_in?  
+    
+    cart_product = Pages::CartProductService.call(
         current_user.id,
         params[:id]
       )
-      render json: "Successfuly add to cart".to_json if cart_product
-    else
-      redirect_to new_user_session_path
-    end
+    render json: "Successfuly add to cart".to_json if cart_product
   end
 
   def single_product_add_to_cart
-    if user_signed_in?
-      cart_product = Pages::AddToCartProductService.call(
-        current_user.id,
-        params[:id],
-        params[:quantity].to_i
-      )
-      render json: { response: cart_product } if cart_product
-    else
-      redirect_to new_user_session_path
-    end
+    return redirect_to new_user_session_path unless user_signed_in? 
+    
+    cart_product = Pages::AddToCartProductService.call(
+      current_user.id,
+      params[:id],
+      params[:quantity].to_i
+    )
+    render json: { response: cart_product } if cart_product
   end
 
   def remove_cart_product
@@ -41,13 +35,13 @@ class CartsController < ApplicationController
   end
 
   def non_on_hand_add_to_cart
-    if user_signed_in?
-      cart_product = Pages::CartProductService.call(
-        current_user.id,
-        params[:id],
-        params
-      )
-    end
+    return redirect_to new_user_session_path unless user_signed_in? 
+    
+    cart_product = Pages::CartProductService.call(
+      current_user.id,
+      params[:id],
+      params
+    )
     render json: cart_product.to_json
   end
 

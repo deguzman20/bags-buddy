@@ -1,4 +1,4 @@
-require "rails_helper"
+# require "rails_helper"
 
-RSpec.describe Carousel, type: :model do
-end
+# RSpec.describe Carousel, type: :model do
+# end

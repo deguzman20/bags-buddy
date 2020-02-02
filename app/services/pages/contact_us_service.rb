@@ -1,13 +1,12 @@
 module Pages
   class ContactUsService < ApplicationService
-    attr_accessor :firstname, :lastname, :email, :subject, :website, :message
+    attr_accessor :firstname, :lastname, :email, :subject, :message
 
     def initialize(attr = {})
       @firstname = attr[:firstname]
       @lastname = attr[:lastname]
       @email = attr[:email]
       @subject = attr[:subject]
-      @website = attr[:website]
       @message = attr[:message]
     end
 
@@ -18,7 +17,7 @@ module Pages
     private
 
       def add_contact_us
-        ContactUs.create(first_name: @firstname, last_name: @lastname, email: @email, subject: @subject, website: @website, message: @message)
+        ContactUs.create(first_name: @firstname, last_name: @lastname, email: @email, subject: @subject, message: @message)
       end
   end
 end

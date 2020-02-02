@@ -24,26 +24,27 @@ class ShippingAddressController < ApplicationController
     subtotal = 0
     exchange_rate = ExchangeRate.first.value
     cart = Cart.find_by_user_id(current_user.id)
+
     CartProduct.where(cart_id: cart.id).each do |cart_product|
       subtotal += !cart_product.product.nil? ? cart_product.product.price * cart_product.quantity : (cart_product.price * cart_product.quantity) * exchange_rate
     end
+
     order = Order.new(user_id: current_user.id, order_status_id: 1, payment_order_status_id: 2, down_payment: 0, balance: subtotal,
                       total: subtotal, shipping_address_id: id)
-    if order.save
-      batch_id = nil
-      exchange_rate = ExchangeRate.first.value
-      Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }.pluck(:id).each { |i| batch_id = i.to_i }
-      cart = Cart.find_by_user_id(current_user.id)
-      CartProduct.where(cart_id: cart.id).each do |cp|
-        cp_subtotal = 0
-        cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
-        order_product = OrderProduct.new(order_id: order.id, product_id: cp.product_id, sub_total: cp_subtotal, batch_id: batch_id)
-        next unless order_product.save
 
-        CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!
-      end
-    else
-      pp order.errors.full_messages
+    next unless order.save
+
+    batch_id = nil
+    exchange_rate = ExchangeRate.first.value
+    Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }.pluck(:id).each { |i| batch_id = i.to_i }
+    cart = Cart.find_by_user_id(current_user.id)
+    CartProduct.where(cart_id: cart.id).each do |cp|
+      cp_subtotal = 0
+      cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
+      order_product = OrderProduct.new(order_id: order.id, product_id: cp.product_id, sub_total: cp_subtotal, batch_id: batch_id)
+      next unless order_product.save
+
+      CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!
     end
   end
 
@@ -66,7 +67,7 @@ class ShippingAddressController < ApplicationController
     return unless user_signed_in? && !shipping_address.save
 
     complete_purchase(shipping_address.id)
-    render json: "Saved successfully".to_json
+    render json: "Saved successfully".to_json, status: :success
   end
 
   def states
