@@ -21,8 +21,8 @@ class PagesController < ApplicationController
     shipment_type = []
     brand_id = params[:brand_id]
     category_id = params[:category_id]
-    pre_order   = PreOrder.where(brand_id: brand_id.to_i)
-                          .where(category_id: category_id.to_i).first
+    pre_order = PreOrder.where(brand_id: brand_id.to_i)
+                        .where(category_id: category_id.to_i).first
 
     eta_sea = pre_order.eta_sea.nil? ? nil : { id: 1, name: "Via Sea" }
     eta_air = pre_order.eta_air.nil? ? nil : { id: 2, name: "Via Air" }

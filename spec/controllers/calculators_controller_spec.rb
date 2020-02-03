@@ -1,19 +1,23 @@
 require "rails_helper"
 
 RSpec.describe CalculatorsController, type: :controller do
-  describe "GET #calculator" do
-    subject
-    let(:brands) { Brand.all.decorate }
-    let(:categories) { Category.all.decorate }
+  let(:brands) { Brand.all.decorate }
+  let(:categories) { Category.all.decorate }
 
-    it "returns draper decorator of brands and categegories" do
+  describe "GET #calculator" do
+    it "check instance variable for calculator method if it's equal to brand and category let variable" do
       get :calculator
       expect(assigns(:brands)).to eq(brands)
       expect(assigns(:categories)).to eq(categories)
     end
   end
 
-  describe "GET #calculate" do
-    
-  end  
+  # describe "GET #calculate" do
+  #   it "calculate's the total price of pre order item"
+  # end
+
+  # describe "GET #calculate" do
+  #   get :calculate
+  #   expect(assigns())
+  # end
 end

@@ -1,7 +1,8 @@
 # Profile Controller
 class ProfilesController < ApplicationController
   def profile
-    return redirect_to root_path unless user_signed_in? 
+    return redirect_to root_path unless user_signed_in?
+
     @profile_form = ProfileForm.new(id: current_user.id)
   end
 

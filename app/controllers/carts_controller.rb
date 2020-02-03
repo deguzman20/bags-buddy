@@ -1,26 +1,26 @@
 # Carts Controller
 class CartsController < ApplicationController
   def cart
-    return redirect_to new_user_session_path unless user_signed_in?  
-    
+    return redirect_to new_user_session_path unless user_signed_in?
+
     @exchange_rate = ExchangeRate.first.value.to_i
     cart_id = Cart.find_by_user_id(current_user.id)
     @cart_products = CartProduct.where(cart_id: cart_id)
   end
 
-  def add_to_cart 
-    return redirect_to new_user_session_path unless user_signed_in?  
-    
+  def add_to_cart
+    return redirect_to new_user_session_path unless user_signed_in?
+
     cart_product = Pages::CartProductService.call(
-        current_user.id,
-        params[:id]
-      )
+      current_user.id,
+      params[:id]
+    )
     render json: "Successfuly add to cart".to_json if cart_product
   end
 
   def single_product_add_to_cart
-    return redirect_to new_user_session_path unless user_signed_in? 
-    
+    return redirect_to new_user_session_path unless user_signed_in?
+
     cart_product = Pages::AddToCartProductService.call(
       current_user.id,
       params[:id],
@@ -35,8 +35,8 @@ class CartsController < ApplicationController
   end
 
   def non_on_hand_add_to_cart
-    return redirect_to new_user_session_path unless user_signed_in? 
-    
+    return redirect_to new_user_session_path unless user_signed_in?
+
     cart_product = Pages::CartProductService.call(
       current_user.id,
       params[:id],
