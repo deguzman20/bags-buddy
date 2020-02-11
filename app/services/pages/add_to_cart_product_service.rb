@@ -27,5 +27,9 @@ module Pages
                              quantity: quantity, item_type_id: 1, price: price)
         end
       end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
+      end
   end
 end

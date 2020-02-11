@@ -33,5 +33,9 @@ module Pages
                              estimated_time_of_arrival_id: shipping_type_id)
         end
       end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
+      end
   end
 end

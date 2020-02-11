@@ -8,7 +8,6 @@ class CalculatorsController < ApplicationController
   def calculate
     @calculate = Pages::CalculatorService.call(params)
     return unless @calculate
-
-    render json: @calculate.to_json, status: :success
+    render json: @calculate.to_json
   end
 end

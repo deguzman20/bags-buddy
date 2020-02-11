@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
   has_many :shipping_addresses
+  
 
   validates_uniqueness_of :email
 

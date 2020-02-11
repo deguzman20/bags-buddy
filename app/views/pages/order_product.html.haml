@@ -12,7 +12,7 @@
                   %th.font-weight-bold
                     %strong Order ID
                   %th.font-weight-bold
-                    %strong Image  
+                    %strong Image
                   %th.font-weight-bold
                     %strong Product
                   %th.font-weight-bold
@@ -27,7 +27,7 @@
                     %td
                       = op.product.try(:name)
                     %td
-                      = "#{number_to_currency(op.sub_total / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"  
+                      = "#{number_to_currency(op.sub_total / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"
     .col-md-4.col-lg-4.mb-5
       %br/
       .card
@@ -38,23 +38,23 @@
                 %tr
                   %td
                     %h4{ style: "color:gray" }
-                      = "Exchange Rate:"   
+                      = "Exchange Rate:"
                   %td
                     %h4{ style: "color:gray" }
                       = "#{number_to_currency(@exchange_rate, :unit => "₱", :separator => ".", :delimiter => ",")}"      
                 %tr
                   %td
                     %h4{ style: "color:gray" }
-                      = "Subtotal: "       
+                      = "Subtotal: "
                   %td
                     %h4{ style: "color:gray" }
                       = "#{number_to_currency(@subtotal / @exchange_rate, :unit => "$", :separator => ".", :delimiter => ",")}"        
-                %tr    
-                  %td 
+                %tr
+                  %td
                     %h4{ style: "color:gray" }
                       = "Total: "
                   %td
                     %h4{ style: "color:gray" }
                       = "#{number_to_currency(@total / @exchange_rate, :unit => "₱", :separator => ".", :delimiter => ",")}"   
-                    %br/              
+                    %br/
 = stylesheet_link_tag  'cart.css'

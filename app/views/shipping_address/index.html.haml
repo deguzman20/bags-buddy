@@ -56,7 +56,7 @@
                     Email address
                     %span *
                   = text_field_tag :email, |
-                    nil, id: 'materialRegisterFormEmail', class: 'form-control' 
+                    nil, id: 'materialRegisterFormEmail', class: 'form-control'
           .customer_details.mt--20
             .differt__address
               %input{:name => "ship_to_different_address", :type => "checkbox", id:"shipping_address"}/
@@ -67,9 +67,9 @@
               class: 'btn btn-rounded |
               btn-block waves-effect z-depth-0',  |
               id: 'checkout', style: "background-color:black;color:white"
-            %br/  
-            = link_to '<button class="btn btn-black btn-rounded btn-block waves-effect z-depth-0">Back</button>'.html_safe, new_user_session_path  |    
-        
+            %br/
+            = link_to '<button class="btn btn-black btn-rounded btn-block waves-effect z-depth-0">Back</button>'.html_safe, new_user_session_path  |
+
       .col-lg-6.col-12.md-mt-40.sm-mt-40
         .wn__order__box
           %h3.onder__title Your order
@@ -77,12 +77,12 @@
             %li Product
             %li Total
           %ul.order_product
-          - if @card_product.present? 
-            - @cart_products.each do |cp|  
+          - if @card_product.present?
+            - @cart_products.each do |cp|
               %li
-                = cp.product.name 
+                = cp.product.name
                 %span
-                  = "#{number_to_currency(cp.product.price * cp.quantity, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.nil?    
+                  = "#{number_to_currency(cp.product.price * cp.quantity, :unit => "₱", :separator => ".", :delimiter => ",")}" unless cp.nil?
           -# %ul.shipping__method
           -#   %li
           -#     Cart Subtotal

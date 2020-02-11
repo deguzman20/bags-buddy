@@ -42,20 +42,20 @@
                           %input{:name => "options", :type => "radio"}>/
                           +
                     %td.product-item-type
-                      = cart_product.try(:product) ? "<span class='badge badge-info text-white'>On Hand</span>".html_safe :  "<span class='badge badge-success text-white'>Not on Hand</span>".html_safe 
+                      = cart_product.try(:product) ? "<span class='badge badge-info text-white'>On Hand</span>".html_safe :  "<span class='badge badge-success text-white'>Not on Hand</span>".html_safe
                     %td.product-subtotal
                       %strong
                         %span{:id => "amount-#{cart_product.id}"}
                     %td.product-remove
                       %a{:href => "#"}
                         %button.btn.btn-sm.waves-effect.waves-light.lbl-remove-item{"data-original-title" => "Remove item", "data-placement" => "top", "data-toggle" => "tooltip", :id => "delete-#{cart_product.id}", :title => "", :type => "button"}
-                          X 
+                          X
         .cartbox__btn
           %ul.cart__btn__list.d-flex.flex-wrap.flex-md-nowrap.flex-lg-nowrap.justify-content-between
             %li
               %a{:href => "#", id: "continue_shopping"} Continue Shopping
             %li
               %a{:href => "#", id: "checkouts"} Check Out
-    
+
 = stylesheet_link_tag  'cart.css'
 = javascript_include_tag 'cart.js'

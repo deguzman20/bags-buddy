@@ -4,10 +4,10 @@ module Pages
 
     def initialize(params = {})
       @link        = params[:link]
-      @price       = params[:price]
+      @price       = params[:price] || 0
       @quantity    = params[:quantity] || 1
-      @brand_id    = params[:brand_id]
-      @category_id = params[:category_id]
+      @brand_id    = params[:brand_id] || 0
+      @category_id = params[:category_id] || 0
     end
 
     def call
@@ -21,7 +21,7 @@ module Pages
       end
 
       def exchange_rate
-        ExchangeRate.first.value.to_i || 0
+        ExchangeRate.first.try(:amount).to_i || 0
       end
 
       def brand_categories
@@ -36,8 +36,12 @@ module Pages
         end
 
         additional.each { |add| @additional = add.additional_price }
-        subtotal = ((price.to_i + (price.to_i * tax)) * exchange_rate) + @additional
+        subtotal = ((price.to_f + (price.to_i * tax)) * exchange_rate ) + @additional
         { subtotal: subtotal, additional: @additional }
+      end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
       end
   end
 end

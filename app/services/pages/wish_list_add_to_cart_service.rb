@@ -20,5 +20,9 @@ module Pages
         cart.cart_products.build(product_id: wishlist.product.id, price: wishlist.product.price, quantity: wishlist.quantity, item_type_id: 1)
         wishlist.delete if cart.save!
       end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
+      end
   end
 end

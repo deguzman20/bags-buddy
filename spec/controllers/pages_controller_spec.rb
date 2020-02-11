@@ -5,7 +5,7 @@ RSpec.describe PagesController, type: :controller do
   let(:pre_orders) { PreOrder.all }
   let(:carousels) { Carousel.limit(5) }
   let(:brands) { Brand.all.decorate }
-  
+
   describe "GET #home" do
     it "check instance variable for home action" do
       get :home

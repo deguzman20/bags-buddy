@@ -8,6 +8,8 @@ require "net/http"
 require "json"
 # Exchange Rate
 class ExchangeRate < ApplicationRecord
+  alias_attribute :amount, :value
+
   def self.update_exchange_rate
     url = "https://api.exchangerate-api.com/v4/latest/USD"
     uri = URI(url)
@@ -17,7 +19,7 @@ class ExchangeRate < ApplicationRecord
     # Getting a rate
     rate = response_obj["rates"]["PHP"]
     if count.zero?
-      new_record = new
+      new_record = neww
       new_record.currency = "PHP"
       new_record.value = rate
       new_record.save

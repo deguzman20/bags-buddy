@@ -22,5 +22,9 @@ module Pages
           Wishlist.create(user_id: user_id, product_id: product_id, quantity: 1)
         end
       end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
+      end
   end
 end

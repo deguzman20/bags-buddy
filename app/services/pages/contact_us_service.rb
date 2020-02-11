@@ -19,5 +19,9 @@ module Pages
       def add_contact_us
         ContactUs.create(first_name: @firstname, last_name: @lastname, email: @email, subject: @subject, message: @message)
       end
+
+      def method_missing(m, *args, &block)
+        "undefined #{m} method"
+      end
   end
 end

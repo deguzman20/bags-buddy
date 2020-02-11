@@ -12,7 +12,7 @@
                     %a{:href => "#{@product_info.image.image_galleries.to_s}"}
                       = image_tag @product_info.image.image_galleries.to_s, style: "width:450px!important;height:565px!important"
                     %a{:href => "#{pg.image.image_galleries.to_s}"}
-                      = image_tag pg.image.image_galleries.to_s, style: "width:450px!important;height:565px!important"  
+                      = image_tag pg.image.image_galleries.to_s, style: "width:450px!important;height:565px!important"
             .col-lg-6.col-12
               .product__info__main
                 %h1 
@@ -53,7 +53,7 @@
                     = succeed "," do
                       %a{:href => "#"} 
                         = @product_info.category.name
-          
+
                 .product-share
                   %ul
                     %li.categories-title Share :

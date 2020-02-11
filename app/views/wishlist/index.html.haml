@@ -18,7 +18,7 @@
                     %th.product-stock-qty
                       %span.nobr Qty
                     %th.product-stock-status
-                      %span.nobr Stock Status  
+                      %span.nobr Stock Status
                     %th.product-add-to-cart
                 %tbody
                   - @wishlists.each do |wishlist|
@@ -29,14 +29,14 @@
                         %a{:href => "#"}
                           = image_tag wishlist.product.image.wishlist.to_s
                       %td.product-name
-                        %a{:href => "#"} 
+                        %a{:href => "#"}
                           = wishlist.product.name
                       %td.product-price
-                        %span.amount 
+                        %span.amount
                           = number_to_currency(wishlist.product.price, :unit => "₱", :separator => ".", :delimiter => ",")  
                       %td.product-qty
                         %span.qty
-                          = wishlist.quantity 
+                          = wishlist.quantity
                       %td.product-stock-status
                         %span.wishlist-in-stock In Stock
                       %td.product-add-to-cart

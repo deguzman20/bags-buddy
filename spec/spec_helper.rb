@@ -14,6 +14,7 @@
 #
 require "factory_bot_rails"
 require "shoulda/matchers"
+require "rspec/active_model/mocks"
 # require "shoulda/matchers/integrations/rspec"
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

@@ -1,4 +1,9 @@
-# require "rails_helper"
+ require "rails_helper"
 
-# RSpec.describe CalculatorDecorator do
-# end
+ RSpec.describe CalculatorDecorator do
+  describe "" do
+    it "check brand and categories decorator" do
+      
+    end
+  end
+ end

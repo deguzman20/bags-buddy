@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   def cart
     return redirect_to new_user_session_path unless user_signed_in?
 
-    @exchange_rate = ExchangeRate.first.value.to_i
+    @exchange_rate = ExchangeRate.first
     cart_id = Cart.find_by_user_id(current_user.id)
     @cart_products = CartProduct.where(cart_id: cart_id)
   end
