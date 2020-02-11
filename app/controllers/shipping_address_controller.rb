@@ -32,19 +32,19 @@ class ShippingAddressController < ApplicationController
     order = Order.new(user_id: current_user.id, order_status_id: 1, payment_order_status_id: 2, down_payment: 0, balance: subtotal,
                       total: subtotal, shipping_address_id: id)
 
-    next unless order.save
+    if order.save
+      batch_id = nil
+      exchange_rate = ExchangeRate.first.value
+      Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }.pluck(:id).each { |i| batch_id = i.to_i }
+      cart = Cart.find_by_user_id(current_user.id)
+      CartProduct.where(cart_id: cart.id).each do |cp|
+        cp_subtotal = 0
+        cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
+        order_product = OrderProduct.new(order_id: order.id, product_id: cp.product_id, sub_total: cp_subtotal, batch_id: batch_id)
+        next unless order_product.save
 
-    batch_id = nil
-    exchange_rate = ExchangeRate.first.value
-    Batch.select { |btch| btch.from <= DateTime.now && btch.to >= DateTime.now }.pluck(:id).each { |i| batch_id = i.to_i }
-    cart = Cart.find_by_user_id(current_user.id)
-    CartProduct.where(cart_id: cart.id).each do |cp|
-      cp_subtotal = 0
-      cp_subtotal += !cp.product_id.nil? ? cp.product.price * cp.quantity : (cp.price * cp.quantity) * exchange_rate
-      order_product = OrderProduct.new(order_id: order.id, product_id: cp.product_id, sub_total: cp_subtotal, batch_id: batch_id)
-      next unless order_product.save
-
-      CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!
+        CartProduct.where(cart_id: cart.id).delete_all if OrderMailer.order_smtp(current_user.email).deliver!
+      end
     end
   end
 
