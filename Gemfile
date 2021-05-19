@@ -21,7 +21,7 @@ gem "rolify"
 gem "bootsnap", ">= 1.1.0", "< 1.4.2", require: false
 gem "paper_trail"
 gem "paperclip", "~> 6.0.0"
-gem "puma", "~> 3.11"
+gem "puma", "~> 4.3"
 gem "rack-cors"
 gem "rails", "~> 5.2.3"
 gem "rails_admin", "~> 2.0"
